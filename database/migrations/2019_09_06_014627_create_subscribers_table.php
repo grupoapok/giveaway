@@ -1,9 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateSubscribersTable extends Migration
 {
@@ -19,7 +18,7 @@ class CreateSubscribersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->uuid('token');
-            $table->srtring('language')->nullable();
+            $table->string('language')->nullable();
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->string('region')->nullable();

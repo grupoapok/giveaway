@@ -1,0 +1,25 @@
+.fade-enter-active {
+  transition: opacity .3s ease-in;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-to {
+  opacity: 1;
+}
+
+
+.fade-leave-active {
+  display: none;
+}
+
+.scale-up-down-active {
+  transition: all .3s ease-in-out;
+}
+
+.scale-up-down-enter {
+  transform: scale(1.1);
+  opacity: 0;
+}

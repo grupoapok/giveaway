@@ -16,3 +16,14 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource("/subscribers","SubscriberController")->only(["index","store"]);
+Route::resource("/tasks","TaskController")->only("index");
+
+Route::post("/tasks/{task}/complete","TaskCompletionController@store");
+
+Route::post("/share/linkedin", "LinkedInController@share");
+Route::post("/share/twitter", "TwitterController@share");
+
+Route::post("/twitter/token","TwitterController@getRequestToken");
+Route::post("/twitter/authorize", "TwitterController@authorize");

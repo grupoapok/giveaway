@@ -2,19 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TaskResource;
 use App\Task;
+use App\TaskCompletion;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    use ProcessTokenTrait;
+
+    public function index(Request $request){
+        $user = $this->getUser($request);
+        $tasks = Task::all();
+        if (!is_null($user)) {
+            $completedTasks = TaskCompletion::where("subscriber_id", $user->id)->distinct("task_id")->pluck("task_id")->toArray();
+            foreach($tasks as $t) {
+                $t->completed = in_array($t->id, $completedTasks);
+            }
+        }
+        return new TaskResource($tasks);
     }
 
     /**

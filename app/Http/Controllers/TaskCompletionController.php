@@ -2,84 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\TaskCompletedEvent;
+use App\Http\Resources\SubscriberResource;
+use App\Task;
 use App\TaskCompletion;
+use App\Ticket;
 use Illuminate\Http\Request;
 
-class TaskCompletionController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+class TaskCompletionController extends Controller {
+    use ProcessTokenTrait;
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function store(Task $task, Request $request) {
+        $user = $this->getUser($request);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $taskCompletion = TaskCompletion::create([
+            "subscriber_id" => $user->id,
+            "task_id" => $task->id
+        ]);
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\TaskCompletion  $taskCompletion
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TaskCompletion $taskCompletion)
-    {
-        //
-    }
+        for ($i = 0; $i < $task->tickets; $i++) {
+            Ticket::create(["subscriber_id" => $user->id]);
+        }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\TaskCompletion  $taskCompletion
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(TaskCompletion $taskCompletion)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TaskCompletion  $taskCompletion
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, TaskCompletion $taskCompletion)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\TaskCompletion  $taskCompletion
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(TaskCompletion $taskCompletion)
-    {
-        //
+        return new SubscriberResource($user->load("tickets"));
     }
 }
