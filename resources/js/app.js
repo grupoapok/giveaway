@@ -13,7 +13,7 @@ Vue.use({
     install(vue) {
         vue.prototype.$cookies = Cookies;
         vue.prototype.$axios = axios.create({
-            baseURL: 'http://local.test:8000/api',
+            baseURL: `${process.env.MIX_APP_URL}/api`,
             headers: {
                 'Content-Type': 'application/json',
                 'Token': (() => Cookies.get('token'))()
