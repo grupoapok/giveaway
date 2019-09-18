@@ -53,7 +53,7 @@ class TwitterController {
             }
 
             if (!isset($token['oauth_token_secret'])) {
-                return response('We could not log you in on Twitter.', 400);
+                return redirect('/');
             }
 
             return Redirect::to('/')->withCookies([
