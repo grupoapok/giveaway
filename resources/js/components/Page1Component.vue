@@ -30,7 +30,7 @@
 <script>
     import Layout from './Layout';
     import {mapActions} from 'vuex';
-    import LangMixin from './lang_mixin';
+    import LangMixin from '../mixin/lang';
 
     export default {
         name: "Page1Component",
@@ -79,7 +79,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../sass/colors";
+    @import "../../sass/colors";
 
     #left {
         h2 {

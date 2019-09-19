@@ -16,7 +16,7 @@
 <script>
     import {mapActions} from 'vuex';
     import BrandIcon from './BrandIcon';
-    import LangMixin from './lang_mixin';
+    import LangMixin from '../mixin/lang';
 
     export default {
         name: "Task",
@@ -125,7 +125,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../sass/app";
+    @import "../../sass/app";
 
     moon-spinner {
         --moon-spinner__color: #FFF;

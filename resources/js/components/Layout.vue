@@ -22,7 +22,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../sass/colors";
+    @import "../../sass/colors";
 
     .layout {
         height: 100%;

@@ -36,9 +36,9 @@
 <script>
     import Layout from './Layout';
     import Task from './TaskComponent';
-    import vector from '../img/page2_text.svg';
+    import vector from '../../img/page2_text.svg';
     import {mapActions, mapState} from 'vuex';
-    import LangMixin from './lang_mixin';
+    import LangMixin from '../mixin/lang';
 
     export default {
         name: "Page2Component",

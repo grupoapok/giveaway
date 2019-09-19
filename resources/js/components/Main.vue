@@ -30,11 +30,11 @@
 
 <script>
     import {mapActions, mapState} from 'vuex';
-    import logo from '../img/apok_logo.png';
+    import logo from '../../img/apok_logo.png';
     import SocialLinks from './SocialLinksComponent'
 
     export default {
-        name: "Layout",
+        name: "Main",
         components: {SocialLinks},
         data() {
             return {
@@ -77,7 +77,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../sass/colors";
+    @import "../../sass/colors";
 
     .layout {
         height: 100%;
@@ -89,7 +89,7 @@
         }
 
         &.bg {
-            background: #eee7df url("../img/blank-clean-device-891679.png") no-repeat right bottom;
+            background: #eee7df url("../../img/blank-clean-device-891679.png") no-repeat right bottom;
             background-size: contain;
         }
 
