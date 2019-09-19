@@ -17,13 +17,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource("/subscribers","SubscriberController")->only(["index","store"]);
-Route::resource("/tasks","TaskController")->only("index");
+Route::get('/social_info', function () {
+    return array_map(
+        function ($e) {
+            list ($name, $url) = explode("|", $e);
+            return compact("name", "url");
+        },
+        explode(",", env("SOCIAL_NETWORKS"))
+    );
+});
 
-Route::post("/tasks/{task}/complete","TaskCompletionController@store");
+Route::resource("/subscribers", "SubscriberController")->only(["index", "store"]);
+Route::get("/subscribers/tasks", "SubscriberController@myTasks");
 
-Route::post("/share/linkedin", "LinkedInController@share");
-Route::post("/share/twitter", "TwitterController@share");
+Route::post("/tasks/{task}/complete", "TaskCompletionController@store");
 
-Route::post("/twitter/token","TwitterController@getRequestToken");
-Route::post("/twitter/authorize", "TwitterController@authorize");
+Route::post("/share/linkedin", "OAuth\LinkedInController@share");
+Route::post("/share/twitter", "OAuth\TwitterController@share");
+
+Route::get("/lang/{step}", "LangController@index");

@@ -1,8 +1,8 @@
 <template>
     <ul>
-        <li v-for="(logo, i) in logos">
-            <a :href="links[i]" target="_blank">
-                <i :class="logo"></i>
+        <li v-for="(link, i) in links">
+            <a :href="links[i].url" target="_blank">
+                <font-awesome-icon :icon="['fab', link.name]" class="logo"></font-awesome-icon>
             </a>
         </li>
     </ul>
@@ -13,19 +13,14 @@
         name: "SocialLinksComponent",
         data() {
             return {
-                logos: [
-                    'icon-twitter-logo',
-                    'icon-facebook-logo',
-                    'icon-instagram-logo',
-                    'icon-linkedin-logo'
-                ],
-                links: [
-                    'https://twitter.com/grupoapok',
-                    'https://facebook.com/grupoapok',
-                    'https://instagram.com/grupoapok',
-                    'https://linkedin.com/company/grupoapok'
-                ]
+                links: []
             }
+        },
+        mounted() {
+            this.$axios.get('/social_info')
+                .then(({data}) => {
+                    this.links = data;
+                });
         }
     }
 </script>
@@ -60,11 +55,10 @@
                 &:hover {
                     color: $naranja;
                 }
+                .logo {
+                    font-size: 2rem;
+                }
             }
         }
-    }
-
-    [class^="icon-"], [class*=" icon-"] {
-        font-size: 25px;
     }
 </style>

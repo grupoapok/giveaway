@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\OAuth;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
@@ -10,9 +10,56 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Thujohn\Twitter\Facades\Twitter;
 
-class TwitterController {
+class TwitterController extends OauthTaskController {
 
-    public function getRequestToken(Request $request) {
+    function getCookieName() {
+        return "twitter_token";
+    }
+
+    function isValidAuthToken() {
+        Twitter::reconfig([
+            $this->getAuthToken(),
+            Crypt::decryptString(Cookie::get("twitter_token_secret"))
+        ]);
+        try {
+            Twitter::getCredentials();
+            return true;
+        }catch (\Exception $e){
+            return false;
+        }
+    }
+
+    function sendContent() {
+        try {
+            Twitter::reconfig([
+                $this->getAuthToken(),
+                Crypt::decryptString(Cookie::get("twitter_token_secret"))
+            ]);
+
+            $content = [
+                'status' => 'Laravel is beautiful',
+            ];
+
+            if (env("SHARE_IMG")) {
+                $uploaded_media = Twitter::uploadMedia(['media' => File::get(storage_path(env("SHARE_IMG")))]);
+                $content['media_ids'] = $uploaded_media->media_id_string;
+            }
+
+            if (env("TWITTER_FOLLOW_US")) {
+                Twitter::postFollow([
+                    "screen_name" => env("TWITTER_FOLLOW_US")
+                ]);
+            }
+
+            Twitter::postTweet($content);
+
+            return response("OK", 200);
+        }catch (\Exception $e){
+            return response($e->getMessage(), 400);
+        }
+    }
+
+    function getURLForOauth() {
         try {
             Twitter::reconfig(["token" => "", "secret" => ""]);
             $token = Twitter::getRequestToken(route("twitter.callback"));
@@ -20,7 +67,7 @@ class TwitterController {
             if (isset($token['oauth_token_secret'])) {
                 $url = Twitter::getAuthorizeURL($token, true, false);
 
-                $response = response()->json(["data" => $url]);
+                $response = response()->json(["url" => $url], 401);
                 $response->headers->setCookie(Cookie::make("tw_oauth_request_token", $token["oauth_token"],0,'/',null,null,false,false));
                 $response->headers->setCookie(Cookie::make("tw_oauth_request_token_secret", $token["oauth_token_secret"],0,'/',null,null,false,false));
 
@@ -32,7 +79,7 @@ class TwitterController {
         }
     }
 
-    public function auth(Request $request) {
+    function auth(Request $request) {
         $token = $_COOKIE['tw_oauth_request_token'];
         $token_secret = $_COOKIE['tw_oauth_request_token_secret'];
 
@@ -43,8 +90,6 @@ class TwitterController {
             ];
 
             Twitter::reconfig($request_token);
-
-            $oauth_verifier = false;
 
             if (Input::has('oauth_verifier')) {
                 $oauth_verifier = Input::get('oauth_verifier');
@@ -65,20 +110,6 @@ class TwitterController {
             ]);
         } else {
             return redirect('/');
-        }
-    }
-
-    public function share(){
-        try {
-            Twitter::reconfig([
-                Crypt::decryptString(Cookie::get("twitter_token")),
-                Crypt::decryptString(Cookie::get("twitter_token_secret"))
-            ]);
-            $uploaded_media = Twitter::uploadMedia(['media' => File::get(storage_path(env("SHARE_IMG")))]);
-            Twitter::postTweet(['status' => 'Laravel is beautiful', 'media_ids' => $uploaded_media->media_id_string]);
-            return response("OK", 200);
-        }catch (\Exception $e){
-            return response($e->getMessage(), 400);
         }
     }
 }

@@ -6,20 +6,19 @@
 
     <meta property="og:url" content="{{ env("APP_URL") }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:title"  content="Apok Winners" />
-    <meta property="og:description"        content="Concursa y gana una pagina web gratis" />
-    <meta property="og:image"              content="{{ asset("img/apok_logo.png") }}" />
+    <meta property="og:title" content="{{ env("APP_NAME") }}" />
+    <meta property="og:description" content="Concursa y gana una pagina web gratis" />
+    <meta property="og:image" content="{{ asset("img/apok_logo.png") }}" />
 
-    <title>Apök</title>
+    <title>{{ env("APP_NAME") }}</title>
     <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}"/>
-
+    <link rel="shortcut icon" type="image/png" href="{{ asset("img/favicon.png") }}">
 </head>
 <body>
 
 <div id="app"></div>
 
 <script src="{{ mix('/js/app.js') }}"></script>
-<script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
 
 <script>
     window.fbAsyncInit = function() {
@@ -31,6 +30,6 @@
         });
     };
 </script>
-<script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+<script async defer src="https://connect.facebook.net/{{ str_replace('_', '-', app()->getLocale()) }}/sdk.js"></script>
 </body>
 </html>

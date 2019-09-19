@@ -1,32 +1,27 @@
 <template>
     <layout :grow="false">
         <template v-slot:col1>
-            <h2 class="text-dark text-upper">
-                <span class="extra-bold">Participa</span> y gana
-            </h2>
-            <p class="text">
-                Al registrarte automáticamente participas por una página web y una asesoría de los puntos de contactos
-                de tu empresa.
-            </p>
+            <h2 class="text-dark text-upper" v-html="lang.title_1"></h2>
+            <p class="text" v-html="lang.text_1"></p>
             <form action="" id="subscribe_form" @submit.prevent="register">
                 <div class="form-group">
-                    <input class="form-control" type="text" placeholder="Nombres" v-model="name">
+                    <input class="form-control" type="text" :placeholder="lang.name_placeholder" v-model="name" :disabled="loading">
                 </div>
                 <div class="form-group">
-                    <input class="form-control" type="email" placeholder="Correo Electrónico" v-model="email">
+                    <input class="form-control" type="email" :placeholder="lang.email_placeholder" v-model="email" :disabled="loading">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-block btn-outline-secondary">Registrarme</button>
+                    <button type="submit" class="btn btn-block btn-outline-secondary" :disabled="loading">
+                        <font-awesome-icon icon="circle-notch" spin v-if="loading"></font-awesome-icon>
+                        <template v-else>{{ lang.register }}</template>
+                    </button>
                 </div>
-                <p class="text-center">
-                    Al inscribirte aceptas nuestros <a href="">Términos y Condiciones</a>
-                </p>
+                <p class="text-center" v-html="lang.terms_conditions"></p>
             </form>
         </template>
         <template v-slot:col2>
-            <h2>
-                Una <span>página web</span>
-                <br><span class="text-secondary">Gratis</span>
+            <h2 v-html="lang.title_2" class="text-dark">
+                <!--Una <span>página web</span><br><span class="text-secondary">Gratis</span>-->
             </h2>
         </template>
     </layout>
@@ -35,12 +30,15 @@
 <script>
     import Layout from './Layout';
     import {mapActions} from 'vuex';
+    import LangMixin from './lang_mixin';
 
     export default {
         name: "Page1Component",
+        mixins: [LangMixin('step1')],
         components: {Layout},
         data() {
             return {
+                loading: false,
                 name: '',
                 email: ''
             }
@@ -52,19 +50,30 @@
                     name: this.name,
                     email: this.email
                 };
+                this.loading = true;
                 this.$axios.post('/subscribers', data)
                     .then(({data}) => {
-                        const {name, email, token, tickets} = data.data;
+                        const {token} = data.data;
                         this.$cookies.set('token', token);
+                        return this.$axios.get('/subscribers', {
+                            headers: {
+                                'Token': token
+                            },
+                        })
+                    })
+                    .then(({data}) => {
+                        const {name, email, tickets} = data.data;
                         this.updateUserInfo({name, email, tickets});
-                        this.$router.push('/step2')
-                    }).catch(error => {
-
-                })
+                        this.loading = false;
+                        this.$router.push('/step2');
+                    })
+                    .catch(() => {
+                        this.loading = false;
+                    })
             }
         },
         mounted() {
-            this.alignElementsToLeft()
+            this.alignElementsToLeft();
         }
     }
 </script>
@@ -131,9 +140,6 @@
     }
 
     #page1 {
-        /*background: #eee7df url("../img/blank-clean-device-891679.png") no-repeat right bottom;
-        background-size: contain;*/
-
         #main_row {
             flex-grow: unset;
         }
@@ -143,20 +149,17 @@
     #right {
         h2 {
             padding-bottom: 1rem;
-            color: $dark;
-            text-transform: uppercase;
             font-weight: 300;
             font-size: 3rem;
             line-height: 3.4rem;
             margin-left: 31%;
+            text-transform: uppercase;
             @media(max-width: 768px) {
                 margin-left: 0;
             }
             span {
-                font-weight: 600;
                 &.text-secondary {
                     font-size: 4.875rem;
-                    font-weight: 800;
                     letter-spacing: -3%;
                     clear: both;
                 }

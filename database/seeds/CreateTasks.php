@@ -30,11 +30,6 @@ class CreateTasks extends Seeder {
                 "type" => "instagram",
                 "tickets" => 6
             ],
-            [
-                "description" => "¯\_(ツ)_/¯",
-                "type" => "other",
-                "tickets" => 7
-            ]
         ];
         foreach($tasks as $t){
             \App\Task::create($t);

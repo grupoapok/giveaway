@@ -11,11 +11,14 @@ class Task extends Model {
     protected $fillable = ["description", "type", "tickets"];
     protected $hidden = ["created_at", "updated_at", "deleted_at"];
 
+    protected $casts = [
+        "repeatable" => "boolean"
+    ];
+
     var $completed = false;
 
     public function toArray() {
         return array_merge(["completed" => $this->completed],parent::toArray());
     }
-
 
 }

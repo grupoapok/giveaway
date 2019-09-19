@@ -6,7 +6,7 @@
                     <img :src="vector"/>
                 </div>
 
-                <p id="tasks-title" class="text-secondary">Misiones disponibles</p>
+                <p id="tasks-title" class="text-secondary" v-html="lang.available_tasks"></p>
 
                 <transition-group name="scale-up-down" tag="div" id="tasks">
                     <task class="task mb-4 mb-xl-0"
@@ -20,19 +20,14 @@
         </template>
         <template v-slot:col2>
             <div id="col2_content" class="text-center text-lg-right">
-                <p id="gracias" class="text-secondary"><span>¡Gracias</span> por participar!</p>
-                <p>
-                    Puedes conseguir más tickets con hacer<br class="d-none d-sm-inline-block">
-                    cualquiera de nuestras misiones.<br class="d-none d-sm-inline-block">
-                    <span class="font-weight-bold">Más tickets, más oportunidad de ganar</span>
+                <p id="gracias" class="text-secondary" v-html="lang.thanks"></p>
+                <p v-html="lang.text_1"></p>
+                <p class="text-dark">
+                    <template v-if="tickets === 0" v-html="lang.no_tickets"></template>
+                    <template v-else>
+                        Tienes<span id="ntickets">{{ tickets }}</span>tickets
+                    </template>
                 </p>
-                <p v-if="tickets === 1">
-                    Tienes 1 ticket
-                </p>
-                <p v-else-if="tickets > 1">
-                    Tienes {{ tickets }} tickets
-                </p>
-                <p v-else>Aún no posees tickets</p>
             </div>
         </template>
     </layout>
@@ -43,9 +38,11 @@
     import Task from './TaskComponent';
     import vector from '../img/page2_text.svg';
     import {mapActions, mapState} from 'vuex';
+    import LangMixin from './lang_mixin';
 
     export default {
         name: "Page2Component",
+        mixins: [LangMixin('step2')],
         components: {Layout, Task},
         data() {
             return {
@@ -57,15 +54,17 @@
             ...mapState(['tickets'])
         },
         methods: {
-            ...mapActions(['alignElementsToRight']),
+            ...mapActions(['alignElementsToRight','updateUserInfo']),
             loadTasks() {
-                this.$axios.get('/tasks').then(response => {
+                this.$axios.get('/subscribers/tasks').then(response => {
                     const newTasks = response.data.data;
                     newTasks.push({
                         id: -1,
                         description: 'No se',
                         type: 'help',
-                        class: 'naranja'
+                        icon: ['fas', 'comments'],
+                        class: 'secondary',
+                        repeatable: true
                     });
                     this.tasks = newTasks;
                 })
@@ -145,10 +144,6 @@
         font-size: 3rem;
     }
 
-    #gracias span {
-        font-weight: 800;
-    }
-
     #col2_content {
         display: flex;
         flex-direction: column;
@@ -161,5 +156,11 @@
                 flex-grow: 1;
             }
         }
+    }
+
+    #ntickets {
+        font-size: 3rem;
+        font-weight: bold;
+        margin: 0 1rem;
     }
 </style>

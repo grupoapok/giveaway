@@ -5,9 +5,19 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import Cookies from 'js-cookie';
+
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
+import {fab} from '@fortawesome/free-brands-svg-icons';
+import {faCheck, faCircleNotch, faComments, faSpinner} from '@fortawesome/free-solid-svg-icons';
+
 import App from './App';
 import Page1 from './Page1Component';
 import Page2 from './Page2Component';
+
+library.add(fab, faCheck, faComments, faSpinner, faCircleNotch);
+
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 
 Vue.use({
     install(vue) {
@@ -84,7 +94,7 @@ const store = new Vuex.Store({
             context.commit('updateTickets', n);
         },
         updateUserInfo(context, payload) {
-            context.commit('updateUserInfo', payload)
+            context.commit('updateUserInfo', payload);
         },
         alignElementsToRight(context) {
             context.commit('alignRight', true);

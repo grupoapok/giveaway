@@ -59,6 +59,17 @@
                     .then(({data}) => {
                         const {name, email, tickets} = data.data;
                         this.updateUserInfo({name, email, tickets});
+                    })
+                    .catch(error => {
+                        if (error.response.status === 401) {
+                            this.$cookies.remove('token');
+                            this.$cookies.remove('twitter_token');
+                            this.$cookies.remove('twitter_token_secret');
+                            this.$cookies.remove('tw_oauth_request_token');
+                            this.$cookies.remove('tw_oauth_request_token_secret');
+                            this.$cookies.remove('linkedin_token');
+                            this.$router.push('/');
+                        }
                     });
             }
         }

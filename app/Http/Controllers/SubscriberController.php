@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Traits\ProcessTokenTrait;
 use App\Http\Requests\CreateSubscriberRequest;
 use App\Http\Resources\SubscriberResource;
+use App\Http\Resources\TaskResource;
+use App\Mail\NewSubscriber;
 use App\Subscriber;
+use App\Task;
+use App\TaskCompletion;
 use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
 class SubscriberController extends Controller {
@@ -14,16 +22,10 @@ class SubscriberController extends Controller {
 
     public function index(Request $request) {
         $user = $this->getUser($request);
-        return new SubscriberResource($user->load("tickets"));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create() {
-
+        if (!is_null($user)) {
+            return new SubscriberResource($user->load("tickets"));
+        }
+        return response("", 401);
     }
 
     public function store(CreateSubscriberRequest $request) {
@@ -41,50 +43,35 @@ class SubscriberController extends Controller {
 
             Ticket::create(["subscriber_id" => $newSubscriber->id]);
 
+            Mail::to($newSubscriber->email)
+                ->send(
+                    new NewSubscriber($newSubscriber->token)
+                );
+
             return new SubscriberResource($newSubscriber->load("tickets"));
         } else {
             return new SubscriberResource($existingUser);
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Subscriber $subscriber
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Subscriber $subscriber) {
-        //
+    public function myTasks(Request $request) {
+        $user = $this->getUser($request);
+        $tasks = Task::all();
+        if (!is_null($user)) {
+            $completedTasks = TaskCompletion::where("subscriber_id", $user->id)->distinct("task_id")->pluck("task_id")->toArray();
+            foreach($tasks as $t) {
+                $t->completed = in_array($t->id, $completedTasks);
+            }
+        }
+        return new TaskResource($tasks);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Subscriber $subscriber
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Subscriber $subscriber) {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Subscriber $subscriber
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Subscriber $subscriber) {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Subscriber $subscriber
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Subscriber $subscriber) {
-        //
+    public function existingSubscriber($encrypted_token) {
+        $token = Crypt::decryptString($encrypted_token);
+        $user = Subscriber::where("token", $token)->first();
+        if (!is_null($user)){
+            return redirect("/")->withCookie(Cookie::make("token", $token, 0, '/', null, null, false, false));
+        }
+        return redirect("/");
     }
 }

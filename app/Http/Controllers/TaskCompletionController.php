@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\TaskCompletedEvent;
+use App\Http\Controllers\Traits\ProcessTokenTrait;
 use App\Http\Resources\SubscriberResource;
+use App\Mail\TaskCompleted;
 use App\Task;
 use App\TaskCompletion;
 use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class TaskCompletionController extends Controller {
     use ProcessTokenTrait;
@@ -15,7 +17,7 @@ class TaskCompletionController extends Controller {
     public function store(Task $task, Request $request) {
         $user = $this->getUser($request);
 
-        $taskCompletion = TaskCompletion::create([
+        TaskCompletion::create([
             "subscriber_id" => $user->id,
             "task_id" => $task->id
         ]);
@@ -24,6 +26,17 @@ class TaskCompletionController extends Controller {
             Ticket::create(["subscriber_id" => $user->id]);
         }
 
-        return new SubscriberResource($user->load("tickets"));
+        $user->load("tickets");
+
+        Mail::to($user->email)
+            ->send(
+                new TaskCompleted(
+                    $task,
+                    count($user->tickets),
+                    str_replace('_', '-', $request->getLocale())
+                )
+            );
+
+        return new SubscriberResource($user);
     }
 }

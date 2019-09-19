@@ -1,17 +1,27 @@
 <template>
     <div class="task-container" :class="[task.class,task.completed && 'done', this.executed && 'completed']"
          @click="executeTask">
+
         <moon-spinner v-if="loading"></moon-spinner>
-        <i v-else :class="['icon', iconClass]"></i>
-        <p>{{ task.description }}</p>
+        <template v-else>
+            <brand-icon v-if="!task.icon" class="icon" :brand="task.type"></brand-icon>
+            <font-awesome-icon v-else :icon="task.icon" class="icon"></font-awesome-icon>
+        </template>
+
+        <font-awesome-icon icon="check" class="text-secondary" size="3x" v-if="!task.repeatable && task.completed"></font-awesome-icon>
+        <p v-else v-html="lang[task.type]">{{ task.description }}</p>
     </div>
 </template>
 
 <script>
     import {mapActions} from 'vuex';
+    import BrandIcon from './BrandIcon';
+    import LangMixin from './lang_mixin';
 
     export default {
         name: "Task",
+        mixins: [LangMixin('tasks')],
+        components: {BrandIcon},
         data() {
             return {
                 executed: false,
@@ -26,6 +36,7 @@
                     description: null,
                     completed: false,
                     type: null,
+                    repeatable: false,
                     tickets: 0,
                 }
             },
@@ -44,16 +55,16 @@
         },
         methods: {
             ...mapActions(["updateUserInfo"]),
-            notifyTaskCompleted(){
+            notifyTaskCompleted() {
                 setTimeout(() => {
                     this.$emit('taskCompleted', this.task.id)
                 }, 1000) //Espero 1seg para que termine la animacion
             },
-            markTaskAsCompleted(){
+            markTaskAsCompleted() {
                 return this.$axios.post(`/tasks/${this.task.id}/complete`).then(({data}) => data.data)
             },
             executeTask() {
-                if (this.isValid) {
+                if (this.task.repeatable || !this.task.completed) {
                     this.loading = true;
                     let promise = null;
                     if (this.task.type === 'facebook') {
@@ -67,12 +78,15 @@
                     promise
                         .then(this.markTaskAsCompleted)
                         .then(response => {
-                            this.updateUserInfo({ tickets: response.tickets});
+                            this.updateUserInfo({tickets: response.tickets});
                             this.executed = true;
                             this.loading = false;
                             this.notifyTaskCompleted()
                         })
-                        .catch(() => {
+                        .catch(error => {
+                            if (error.response && error.response.data.url) {
+                                window.location = error.response.data.url;
+                            }
                             this.loading = false;
                         });
                 }
@@ -80,8 +94,11 @@
             facebookTask() {
                 return new Promise((resolve, reject) => {
                     FB.ui({
-                        method: 'share',
-                        quote: 'Hey Listen'
+                        method: 'share_open_graph',
+                        action_type: 'og.likes',
+                        action_properties: JSON.stringify({
+                            object: `${process.env.MIX_APP_URL}`,
+                        })
                     }, function (response) {
                         if (response && !response.error_message) {
                             resolve();
@@ -92,28 +109,10 @@
                 });
             },
             linkedInTask() {
-                return this.$axios.post('/share/linkedin', null)
-                    .catch(error => {
-                        if (error.response.data.goto) {
-                            window.location = error.response.data.goto;
-                            throw new Error("Unauthorized");
-                        }
-                    })
+                return this.$axios.post('/share/linkedin')
             },
             twitterTask() {
-                return new Promise((resolve, reject) => {
-                    if (!this.$cookies.get("twitter_token")) {
-                        return this.$axios.post('/twitter/token')
-                            .then(response => {
-                                if (response.data.data) {
-                                    window.location = response.data.data;
-                                    reject()
-                                }
-                            }).catch(reject)
-                    } else {
-                        return this.$axios.post('/share/twitter').then(resolve).catch(reject)
-                    }
-                })
+                return this.$axios.post('/share/twitter')
             }
         },
         mounted() {
@@ -126,7 +125,7 @@
 </script>
 
 <style scoped lang="scss">
-    @import "../sass/colors";
+    @import "../sass/app";
 
     moon-spinner {
         --moon-spinner__color: #FFF;
@@ -144,11 +143,11 @@
         justify-content: space-between;
         color: white;
 
-        &.naranja {
-            background: $naranja;
+        &.secondary {
+            background: $secondary;
         }
         &.done {
-            background: $azul_oscuro;
+            background: $azul_oscuro2;
         }
 
         &.completed {
