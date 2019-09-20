@@ -31,6 +31,7 @@ Route::resource("/subscribers", "SubscriberController")->only(["index", "store"]
 Route::get("/subscribers/tasks", "SubscriberController@myTasks");
 
 Route::post("/tasks/{task}/complete", "TaskCompletionController@store");
+Route::post("/form/complete", "TaskCompletionController@formCompleted");
 
 Route::post("/share/linkedin", "OAuth\LinkedInController@share");
 Route::post("/share/twitter", "OAuth\TwitterController@share");
