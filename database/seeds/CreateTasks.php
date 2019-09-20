@@ -13,11 +13,13 @@ class CreateTasks extends Seeder {
             [
                 "description" => "Si publicas el sorteo en tu Twitter tendrás 3 tickets para el sorteo",
                 "type" => "twitter",
+                "repeatable" => true,
                 "tickets" => 3
             ],
             [
                 "description" => "Si publicas el sorteo en tu Facebook tendrás 4 tickets para el sorteo",
                 "type" => "facebook",
+                "repeatable" => true,
                 "tickets" => 4
             ],
             [
@@ -26,9 +28,10 @@ class CreateTasks extends Seeder {
                 "tickets" => 5
             ],
             [
-                "description" => "Si publicas el sorteo en tu Instagram tendrás 6 tickets para el sorteo",
-                "type" => "instagram",
-                "tickets" => 6
+                "description" => "",
+                "repeatable" => false,
+                "type" => "form",
+                "tickets" => 2
             ],
         ];
         foreach($tasks as $t){

@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Traits\ProcessTokenTrait;
 use App\Http\Resources\SubscriberResource;
 use App\Mail\TaskCompleted;
+use App\Subscriber;
 use App\Task;
 use App\TaskCompletion;
 use App\Ticket;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class TaskCompletionController extends Controller {
@@ -18,6 +18,27 @@ class TaskCompletionController extends Controller {
     public function store(Task $task, Request $request) {
         $user = $this->getUser($request);
 
+        if (!is_null($user)) {
+            $this->completeTask($user, $task, $request);
+
+            return new SubscriberResource($user);
+        }
+        return response("", 404);
+    }
+
+    public function fromWebhook(Task $task, Request $request) {
+        $email = $request->input("email");
+        $user = Subscriber::where("email", $email)->first();
+
+        if (!is_null($user)) {
+            $this->completeTask($user, $task, $request);
+
+            return new SubscriberResource($user);
+        }
+        return response("", 404);
+    }
+
+    private function completeTask(Subscriber $user, Task $task, Request $request) {
         TaskCompletion::create([
             "subscriber_id" => $user->id,
             "task_id" => $task->id
@@ -37,12 +58,5 @@ class TaskCompletionController extends Controller {
                     str_replace('_', '-', $request->getLocale())
                 )
             );
-
-        return new SubscriberResource($user);
-    }
-
-    public function formCompleted(Request $request){
-        $v = print_r($request->all(), true);
-        Log::debug("Form completed ".$v);
     }
 }

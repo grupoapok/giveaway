@@ -4,29 +4,31 @@
          @click="executeTask">
 
         <moon-spinner v-if="loading"></moon-spinner>
-        <div v-else>
+        <template v-else>
             <brand-icon v-if="!task.icon" class="icon" :brand="task.type"></brand-icon>
             <font-awesome-icon v-else :icon="task.icon" class="icon"></font-awesome-icon>
-        </div>
+        </template>
 
         <font-awesome-icon icon="check" class="text-secondary" size="3x" v-if="!task.repeatable && task.completed"></font-awesome-icon>
-        <p v-else v-html="lang[task.type]">{{ task.description }}</p>
+        <template v-else>
+            <p  v-if="lang[task.type]" v-html="lang[task.type]">{{ task.description }}</p>
+            <p v-else>{{ task.description }}</p>
+        </template>
     </div>
 </template>
 
 <script>
-    import {mapActions} from 'vuex';
+    import {mapActions, mapState} from 'vuex';
     import BrandIcon from './BrandIcon';
-    import LangMixin from '../mixin/lang';
 
     export default {
         name: "Task",
-        mixins: [LangMixin('tasks')],
         components: {BrandIcon},
         data() {
             return {
                 executed: false,
-                loading: false
+                loading: false,
+                lang: {},
             }
         },
         props: {
@@ -34,6 +36,7 @@
                 type: Object,
                 default: {
                     id: 0,
+                    url: null,
                     description: null,
                     completed: false,
                     type: null,
@@ -47,11 +50,13 @@
             }
         },
         computed: {
-            iconClass() {
-                return `icon-${this.task.type}-logo`
-            },
-            isValid() {
-                return this.task.id > 0;
+            ...mapState(['email']),
+        },
+        watch: {
+            email(newVal) {
+                if (newVal && this.task.url && this.task.url.indexOf(":email") !== -1) {
+                    this.task.url = this.task.url.replace(":email", newVal)
+                }
             }
         },
         methods: {
@@ -66,6 +71,11 @@
             },
             executeTask() {
                 if (this.task.repeatable || !this.task.completed) {
+                    if (this.task.url) {
+                        window.open(this.task.url, '_blank');
+                        return
+                    }
+
                     this.loading = true;
                     let promise = null;
                     if (this.task.type === 'facebook') {
@@ -123,8 +133,10 @@
         mounted() {
             if (this.autoExecute) {
                 this.executeTask();
-                this.$cookies.remove("execute_task")
+                this.$cookies.remove("execute_task");
             }
+            this.$axios.get(`/lang/task/${this.task.id}`)
+                .then(({data}) => this.lang = data);
         }
     }
 </script>

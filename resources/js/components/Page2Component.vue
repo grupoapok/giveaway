@@ -47,26 +47,22 @@
         data() {
             return {
                 vector,
-                tasks: [],
+                tasks: []
             }
         },
         computed: {
-            ...mapState(['tickets'])
+            ...mapState(['tickets']),
         },
         methods: {
-            ...mapActions(['alignElementsToRight','updateUserInfo']),
+            ...mapActions(['alignElementsToRight', 'updateUserInfo']),
             loadTasks() {
                 this.$axios.get('/subscribers/tasks').then(response => {
-                    const newTasks = response.data.data;
-                    newTasks.push({
-                        id: -1,
-                        description: 'No se',
-                        type: 'help',
-                        icon: ['fas', 'comments'],
-                        class: 'secondary',
-                        repeatable: true
+                    this.tasks = response.data.data.map(t => {
+                        if (t.type === 'form') {
+                            return {...t, icon: ['fas', 'comments'], class: 'secondary'};
+                        }
+                        return t;
                     });
-                    this.tasks = newTasks;
                 })
             },
             completeTask(id) {
@@ -114,12 +110,12 @@
                     }
                 }
                 @media(min-width: 1200px) {
-                    &:nth-child(2) {
+                    &:nth-child(2n) {
                         margin-right: 35% !important;
                     }
-                    &:last-child {
+                    /*&:last-child {
                         margin-right: 0 !important;
-                    }
+                    }*/
                 }
             }
         }
