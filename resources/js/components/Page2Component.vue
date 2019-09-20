@@ -25,7 +25,7 @@
                 <p class="text-dark">
                     <template v-if="tickets === 0" v-html="lang.no_tickets"></template>
                     <template v-else>
-                        Tienes<span id="ntickets">{{ tickets }}</span>tickets
+                        <span v-html="ticketsMessage"></span>
                     </template>
                 </p>
             </div>
@@ -52,6 +52,9 @@
         },
         computed: {
             ...mapState(['tickets']),
+            ticketsMessage() {
+                return this.lang['ticket_number'].replace(":tickets",this.tickets)
+            }
         },
         methods: {
             ...mapActions(['alignElementsToRight', 'updateUserInfo']),
@@ -152,11 +155,5 @@
                 flex-grow: 1;
             }
         }
-    }
-
-    #ntickets {
-        font-size: 3rem;
-        font-weight: bold;
-        margin: 0 1rem;
     }
 </style>

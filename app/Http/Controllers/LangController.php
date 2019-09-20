@@ -10,12 +10,12 @@ class LangController extends Controller {
     use ProcessTokenTrait;
 
     function index($step, Request $request) {
-        return  __($step);
+        return  __($step, [], $request->getLocale());
     }
 
-    function task(Task $task) {
+    function task(Task $task, Request $request) {
         $arr = [];
-        $arr[$task->type]  = __("tasks.".$task->type, ["tickets" => $task->tickets]);
+        $arr[$task->type]  = __("tasks.".$task->type, ["tickets" => $task->tickets], $request->getLocale());
         return $arr;
     }
 }
