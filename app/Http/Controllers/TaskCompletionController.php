@@ -9,6 +9,7 @@ use App\Task;
 use App\TaskCompletion;
 use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class TaskCompletionController extends Controller {
@@ -38,5 +39,10 @@ class TaskCompletionController extends Controller {
             );
 
         return new SubscriberResource($user);
+    }
+
+    public function formCompleted(Request $request){
+        $v = print_r($request->all(), true);
+        Log::debug("Form completed ".$v);
     }
 }
