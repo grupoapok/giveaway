@@ -13,7 +13,7 @@ return [
     */
 
     'supportsCredentials' => false,
-    'allowedOrigins' => [env("ALLOWED_DOMAINS")],
+    'allowedOrigins' => [ explode(",", env("ALLOWED_DOMAINS"))],
     'allowedOriginsPatterns' => [],
     'allowedHeaders' => ['*'],
     'allowedMethods' => ['*'],
