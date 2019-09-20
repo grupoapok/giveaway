@@ -1,8 +1,20 @@
 <?php
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
 
-Route::get('/', function () {
+Route::get('/', function (Request $request) {
+    $url = str_replace(["https://", "http://"], ["", ""], $request->root());
+
+    if (Str::startsWith($url, "concurso")) {
+        App::setLocale("es");
+    }
+    if (Str::startsWith($url, "giveaway")) {
+        App::setLocale("en");
+    }
+
     return view('welcome');
 });
 

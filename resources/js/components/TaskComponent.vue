@@ -1,5 +1,6 @@
 <template>
-    <div class="task-container" :class="[task.class,task.completed && 'done', this.executed && 'completed']"
+    <div class="task-container"
+         :class="[task.class,task.completed && 'done', this.executed && 'completed']"
          @click="executeTask">
 
         <moon-spinner v-if="loading"></moon-spinner>
@@ -9,23 +10,25 @@
         </template>
 
         <font-awesome-icon icon="check" class="text-secondary" size="3x" v-if="!task.repeatable && task.completed"></font-awesome-icon>
-        <p v-else v-html="lang[task.type]">{{ task.description }}</p>
+        <template v-else>
+            <p  v-if="lang[task.type]" v-html="lang[task.type]">{{ task.description }}</p>
+            <p v-else>{{ task.description }}</p>
+        </template>
     </div>
 </template>
 
 <script>
-    import {mapActions} from 'vuex';
+    import {mapActions, mapState} from 'vuex';
     import BrandIcon from './BrandIcon';
-    import LangMixin from '../mixin/lang';
 
     export default {
         name: "Task",
-        mixins: [LangMixin('tasks')],
         components: {BrandIcon},
         data() {
             return {
                 executed: false,
-                loading: false
+                loading: false,
+                lang: {},
             }
         },
         props: {
@@ -33,6 +36,7 @@
                 type: Object,
                 default: {
                     id: 0,
+                    url: null,
                     description: null,
                     completed: false,
                     type: null,
@@ -46,12 +50,7 @@
             }
         },
         computed: {
-            iconClass() {
-                return `icon-${this.task.type}-logo`
-            },
-            isValid() {
-                return this.task.id > 0;
-            }
+            ...mapState(['email']),
         },
         methods: {
             ...mapActions(["updateUserInfo"]),
@@ -65,6 +64,11 @@
             },
             executeTask() {
                 if (this.task.repeatable || !this.task.completed) {
+                    if (this.task.url) {
+                        window.open(this.task.url.replace(":email",this.email), '_blank');
+                        return
+                    }
+
                     this.loading = true;
                     let promise = null;
                     if (this.task.type === 'facebook') {
@@ -75,8 +79,12 @@
                         promise = this.twitterTask();
                     }
 
-                    promise
-                        .then(this.markTaskAsCompleted)
+                    if (promise === null) {
+                        this.loading = false;
+                        return
+                    }
+
+                    promise.then(this.markTaskAsCompleted)
                         .then(response => {
                             this.updateUserInfo({tickets: response.tickets});
                             this.executed = true;
@@ -118,8 +126,10 @@
         mounted() {
             if (this.autoExecute) {
                 this.executeTask();
-                this.$cookies.remove("execute_task")
+                this.$cookies.remove("execute_task");
             }
+            this.$axios.get(`/lang/task/${this.task.id}`)
+                .then(({data}) => this.lang = data);
         }
     }
 </script>

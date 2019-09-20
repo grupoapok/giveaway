@@ -15,7 +15,6 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset("img/favicon.png") }}">
 </head>
 <body>
-
 <div id="app"></div>
 
 <script src="{{ mix('/js/app.js') }}"></script>

@@ -81,8 +81,8 @@
 
     .layout {
         height: 100%;
-        overflow: hidden;
         position: relative;
+        overflow-x: hidden;
 
         @media(max-width: 1200px) {
             overflow: unset;

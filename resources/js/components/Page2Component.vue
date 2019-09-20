@@ -8,14 +8,14 @@
 
                 <p id="tasks-title" class="text-secondary" v-html="lang.available_tasks"></p>
 
-                <transition-group name="scale-up-down" tag="div" id="tasks">
+                <div id="tasks">
                     <task class="task mb-4 mb-xl-0"
                           :key="`task_${i}`"
                           v-for="(t,i) in tasks"
                           @taskCompleted="completeTask"
                           :auto-execute="$cookies.get('execute_task') === t.type"
                           :task="t"></task>
-                </transition-group>
+                </div>
             </div>
         </template>
         <template v-slot:col2>
@@ -25,7 +25,7 @@
                 <p class="text-dark">
                     <template v-if="tickets === 0" v-html="lang.no_tickets"></template>
                     <template v-else>
-                        Tienes<span id="ntickets">{{ tickets }}</span>tickets
+                        <span v-html="ticketsMessage"></span>
                     </template>
                 </p>
             </div>
@@ -47,26 +47,25 @@
         data() {
             return {
                 vector,
-                tasks: [],
+                tasks: []
             }
         },
         computed: {
-            ...mapState(['tickets'])
+            ...mapState(['tickets']),
+            ticketsMessage() {
+                return this.lang['ticket_number'].replace(":tickets",this.tickets)
+            }
         },
         methods: {
-            ...mapActions(['alignElementsToRight','updateUserInfo']),
+            ...mapActions(['alignElementsToRight', 'updateUserInfo']),
             loadTasks() {
                 this.$axios.get('/subscribers/tasks').then(response => {
-                    const newTasks = response.data.data;
-                    newTasks.push({
-                        id: -1,
-                        description: 'No se',
-                        type: 'help',
-                        icon: ['fas', 'comments'],
-                        class: 'secondary',
-                        repeatable: true
+                    this.tasks = response.data.data.map(t => {
+                        if (t.type === 'form') {
+                            return {...t, icon: ['fas', 'comments'], class: 'secondary'};
+                        }
+                        return t;
                     });
-                    this.tasks = newTasks;
                 })
             },
             completeTask(id) {
@@ -114,12 +113,12 @@
                     }
                 }
                 @media(min-width: 1200px) {
-                    &:nth-child(2) {
+                    &:nth-child(2n) {
                         margin-right: 35% !important;
                     }
-                    &:last-child {
+                    /*&:last-child {
                         margin-right: 0 !important;
-                    }
+                    }*/
                 }
             }
         }
@@ -156,11 +155,5 @@
                 flex-grow: 1;
             }
         }
-    }
-
-    #ntickets {
-        font-size: 3rem;
-        font-weight: bold;
-        margin: 0 1rem;
     }
 </style>

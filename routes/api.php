@@ -31,9 +31,10 @@ Route::resource("/subscribers", "SubscriberController")->only(["index", "store"]
 Route::get("/subscribers/tasks", "SubscriberController@myTasks");
 
 Route::post("/tasks/{task}/complete", "TaskCompletionController@store");
-Route::post("/form/complete", "TaskCompletionController@formCompleted");
+Route::post("/tasks/{task}/webhook", "TaskCompletionController@fromWebhook");
 
 Route::post("/share/linkedin", "OAuth\LinkedInController@share");
 Route::post("/share/twitter", "OAuth\TwitterController@share");
 
 Route::get("/lang/{step}", "LangController@index");
+Route::get("/lang/task/{task}", "LangController@task");

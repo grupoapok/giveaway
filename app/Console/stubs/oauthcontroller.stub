@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Controllers\OAuth;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
+
+class DummyClass extends OauthTaskController {
+    function getCookieName() { return ""; }
+
+    function isValidAuthToken() {
+        return false;
+    }
+
+    function sendContent() {
+
+    }
+
+    function getURLForOauth() {
+        return response([
+            "url" => ""
+        ], 401);
+    }
+
+    function auth(Request $request) {
+        $token = "";
+        return redirect("/")->withCookies([
+            Cookie::make("task_token", $token, 0, '/', null, null, false, false),
+            Cookie::make("execute_task", "taskname", 0, '/', null, null, false, false),
+        ]);
+    }
+}
