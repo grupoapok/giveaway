@@ -1,12 +1,13 @@
 <template>
-    <div class="task-container" :class="[task.class,task.completed && 'done', this.executed && 'completed']"
+    <div class="task-container"
+         :class="[task.class,task.completed && 'done', this.executed && 'completed']"
          @click="executeTask">
 
         <moon-spinner v-if="loading"></moon-spinner>
-        <template v-else>
+        <div v-else>
             <brand-icon v-if="!task.icon" class="icon" :brand="task.type"></brand-icon>
             <font-awesome-icon v-else :icon="task.icon" class="icon"></font-awesome-icon>
-        </template>
+        </div>
 
         <font-awesome-icon icon="check" class="text-secondary" size="3x" v-if="!task.repeatable && task.completed"></font-awesome-icon>
         <p v-else v-html="lang[task.type]">{{ task.description }}</p>
@@ -75,8 +76,12 @@
                         promise = this.twitterTask();
                     }
 
-                    promise
-                        .then(this.markTaskAsCompleted)
+                    if (promise === null) {
+                        this.loading = false;
+                        return
+                    }
+
+                    promise.then(this.markTaskAsCompleted)
                         .then(response => {
                             this.updateUserInfo({tickets: response.tickets});
                             this.executed = true;
