@@ -52,13 +52,6 @@
         computed: {
             ...mapState(['email']),
         },
-        watch: {
-            email(newVal) {
-                if (newVal && this.task.url && this.task.url.indexOf(":email") !== -1) {
-                    this.task.url = this.task.url.replace(":email", newVal)
-                }
-            }
-        },
         methods: {
             ...mapActions(["updateUserInfo"]),
             notifyTaskCompleted() {
@@ -72,7 +65,7 @@
             executeTask() {
                 if (this.task.repeatable || !this.task.completed) {
                     if (this.task.url) {
-                        window.open(this.task.url, '_blank');
+                        window.open(this.task.url.replace(":email",this.email), '_blank');
                         return
                     }
 

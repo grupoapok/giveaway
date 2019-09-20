@@ -8,14 +8,14 @@
 
                 <p id="tasks-title" class="text-secondary" v-html="lang.available_tasks"></p>
 
-                <transition-group name="scale-up-down" tag="div" id="tasks">
+                <div id="tasks">
                     <task class="task mb-4 mb-xl-0"
                           :key="`task_${i}`"
                           v-for="(t,i) in tasks"
                           @taskCompleted="completeTask"
                           :auto-execute="$cookies.get('execute_task') === t.type"
                           :task="t"></task>
-                </transition-group>
+                </div>
             </div>
         </template>
         <template v-slot:col2>

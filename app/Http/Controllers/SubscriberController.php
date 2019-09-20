@@ -29,8 +29,8 @@ class SubscriberController extends Controller {
     }
 
     public function store(CreateSubscriberRequest $request) {
-        $existingUser = Subscriber::where("email", $request->input("email"))->first();
-        if (is_null($existingUser)) {
+        $subscriber = Subscriber::where("email", $request->input("email"))->first();
+        if (is_null($subscriber)) {
             $ipinfo = $request->ipinfo;
 
             $newSubscriber = Subscriber::make($request->all());
@@ -48,10 +48,9 @@ class SubscriberController extends Controller {
                     new NewSubscriber($newSubscriber->token)
                 );
 
-            return new SubscriberResource($newSubscriber->load("tickets"));
-        } else {
-            return new SubscriberResource($existingUser);
+            $subscriber = $newSubscriber;
         }
+        return new SubscriberResource($subscriber->load("tickets"));
     }
 
     public function myTasks(Request $request) {
