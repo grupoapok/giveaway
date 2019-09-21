@@ -4,5 +4,6 @@
 
 return [
     'share_img' => env("SHARE_IMG"),
-    'social_networks' => env('SOCIAL_NETWORKS')
+    'social_networks' => env('SOCIAL_NETWORKS'),
+    'share_status' => 'Participa en nuestro concurso'
 ];
