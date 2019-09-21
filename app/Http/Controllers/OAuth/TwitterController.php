@@ -40,14 +40,14 @@ class TwitterController extends OauthTaskController {
                 'status' => 'Laravel is beautiful',
             ];
 
-            if (env("SHARE_IMG")) {
-                $uploaded_media = Twitter::uploadMedia(['media' => File::get(storage_path(env("SHARE_IMG")))]);
+            if (config('giveaway.share_img')) {
+                $uploaded_media = Twitter::uploadMedia(['media' => File::get(storage_path(config('giveaway.share_img')))]);
                 $content['media_ids'] = $uploaded_media->media_id_string;
             }
 
-            if (env("TWITTER_FOLLOW_US")) {
+            if (config("ttwitter.TWITTER_FOLLOW_US_ID")) {
                 Twitter::postFollow([
-                    "screen_name" => env("TWITTER_FOLLOW_US")
+                    "screen_name" => config("ttwitter.TWITTER_FOLLOW_US_ID")
                 ]);
             }
 
