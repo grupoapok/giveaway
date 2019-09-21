@@ -44,7 +44,7 @@ class LinkedInController extends OauthTaskController {
     function sendContent() {
         try {
             $asset = null;
-            if (env("SHARE_IMG")) {
+            if (config('giveaway.share_img')) {
                 list ($uploadUrl, $asset) = $this->registerImage($this->authorId);
 
                 $this->apiClient->post($uploadUrl, [
@@ -77,7 +77,7 @@ class LinkedInController extends OauthTaskController {
 
     function getURLForOauth() {
         return response([
-            "url" => "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=" . env("LINKED_IN_API_KEY") . "&redirect_uri=" . route("linkedin.callback") . "&scope=r_liteprofile%20r_emailaddress%20w_member_social"
+            "url" => "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=" . config('linkedin.client_id') . "&redirect_uri=" . route("linkedin.callback") . "&scope=r_liteprofile%20r_emailaddress%20w_member_social"
         ], 401);
     }
 
@@ -87,8 +87,8 @@ class LinkedInController extends OauthTaskController {
                 "form_params" => [
                     "grant_type" => "authorization_code",
                     "redirect_uri" => route("linkedin.callback"),
-                    "client_id" => env("LINKED_IN_API_KEY"),
-                    "client_secret" => env("LINKED_IN_API_SECRET"),
+                    "client_id" => config('linkedin.client_id'),
+                    "client_secret" => config('linkedin.client_secret'),
                     "code" => $request->input("code")
                 ]
             ]);
