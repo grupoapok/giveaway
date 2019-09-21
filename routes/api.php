@@ -23,7 +23,7 @@ Route::get('/social_info', function () {
             list ($name, $url) = explode("|", $e);
             return compact("name", "url");
         },
-        explode(",", env("SOCIAL_NETWORKS"))
+        explode(",", config('giveaway.social_networks'))
     );
 });
 
