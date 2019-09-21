@@ -1,0 +1,38 @@
+.legal{
+    .layout {
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+
+        @media(max-width: 1200px) {
+            overflow: unset;
+        }
+
+        &.bg {
+            background: #eee7df;
+            background-size: contain;
+        }
+
+        #main {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            padding: 2% 10%;
+            @media(max-width: 992px) {
+                padding: 10%;
+            }
+            justify-content: space-between;
+        }
+
+        #social-links {
+            transition: all 1s ease-in-out;
+            @media(max-width: 576px) {
+                transition: none;
+            }
+            &.right {
+                transform: translateX(-100%);
+                margin-left: 100%;
+            }
+        }
+    }
+}
