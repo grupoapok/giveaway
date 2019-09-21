@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col text-center">
             <h2 class="text-secondary font-weight-bolder mb-5">@lang("mail.thanks")</h2>
-            <p>{{ __("mail.new_subscriber_subject", ["title" => env("APP_NAME")]) }}</p>
+            <p>{{ __("mail.new_subscriber_subject", ["title" => config('app.name')]) }}</p>
             <p>
                 <a href="{{ route("returning_user", $token) }}">@lang("mail.go_back_link_text")</a>
             </p>

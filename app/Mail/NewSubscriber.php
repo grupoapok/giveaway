@@ -27,7 +27,7 @@ class NewSubscriber extends Mailable {
      */
     public function build() {
         return $this->view('mail.new_subscriber')
-            ->subject(__("mail.new_subscriber_subject", ["title" => env("APP_NAME")]))
+            ->subject(__("mail.new_subscriber_subject", ["title" => config('app.name')]))
             ->with([
                 "token" => Crypt::encryptString($this->token)
             ]);
