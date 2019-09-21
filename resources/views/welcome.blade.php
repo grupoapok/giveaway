@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta property="og:url" content="{{ env("APP_URL") }}" />
+    <meta property="og:url" content="{{ config('app.url') }}" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{ env("APP_NAME") }}" />
+    <meta property="og:title" content="{{ config('app.name')}}" />
     <meta property="og:description" content="Concursa y gana una pagina web gratis" />
     <meta property="og:image" content="{{ asset("img/apok_logo.png") }}" />
 
-    <title>{{ env("APP_NAME") }}</title>
+    <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}"/>
     <link rel="shortcut icon" type="image/png" href="{{ asset("img/favicon.png") }}">
 </head>
