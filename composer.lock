@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4440954c69840b3b567598f76dafeb47",
+    "content-hash": "01dae54f227f0dda68ef2cee96e2777b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -734,65 +734,6 @@
                 "ipinfo"
             ],
             "time": "2019-01-15T02:39:54+00:00"
-        },
-        {
-            "name": "ipinfo/ipinfolaravel",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ipinfo/laravel.git",
-                "reference": "870910b120d4e8dd08797e4c7b3f4ec612860e83"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ipinfo/laravel/zipball/870910b120d4e8dd08797e4c7b3f4ec612860e83",
-                "reference": "870910b120d4e8dd08797e4c7b3f4ec612860e83",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5",
-                "ipinfo/ipinfo": "^1.0@dev"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.1",
-                "orchestra/testbench": "~3.0",
-                "phpunit/phpunit": "~7.0",
-                "sempro/phpunit-pretty-print": "^1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ipinfo\\ipinfolaravel\\ipinfolaravelServiceProvider"
-                    ],
-                    "aliases": {
-                        "ipinfolaravel": "ipinfo\\ipinfolaravel\\Facades\\ipinfolaravel"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "ipinfo\\ipinfolaravel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "Apache-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "James Timmins",
-                    "email": "jameshtimmins@gmail.com",
-                    "homepage": "https://www.ipinfo.io"
-                }
-            ],
-            "description": ":description",
-            "homepage": "https://github.com/ipinfo/ipinfolaravel",
-            "keywords": [
-                "ipinfolaravel",
-                "laravel"
-            ],
-            "time": "2018-10-02T02:08:10+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",

@@ -31,6 +31,7 @@ class SubscriberController extends Controller {
 
     public function store(CreateSubscriberRequest $request) {
         $subscriber = Subscriber::where("email", $request->input("email"))->first();
+
         if (is_null($subscriber)) {
             $ipinfo = $request->ipinfo;
 
