@@ -53,7 +53,7 @@
             ...mapState(['email']),
         },
         methods: {
-            ...mapActions(["updateUserInfo"]),
+            ...mapActions(["updateUserInfo", "updateTicketsList"]),
             notifyTaskCompleted() {
                 setTimeout(() => {
                     this.$emit('taskCompleted', this.task.id)
@@ -89,6 +89,7 @@
                             this.updateUserInfo({tickets: response.tickets});
                             this.executed = true;
                             this.loading = false;
+                            this.updateTicketsList();
                             this.notifyTaskCompleted()
                         })
                         .catch(error => {

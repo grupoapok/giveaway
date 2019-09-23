@@ -8,6 +8,7 @@ const store = new Vuex.Store({
         name: '',
         email: '',
         tickets: 0,
+        ticketsList: [],
         alignRight: false
     },
     mutations: {
@@ -29,9 +30,19 @@ const store = new Vuex.Store({
         },
         updateTickets(state, n){
             state.tickets = parseInt(n, 10);
+        },
+        updateTicketsList(state, tickets) {
+            state.ticketsList = tickets;
         }
     },
     actions: {
+        updateTicketsList(context) {
+            Vue.prototype.$axios.get('/subscribers/tickets')
+                .then(response => {
+                    context.commit('updateTicketsList',response.data.data)
+                })
+                .catch(console.error)
+        },
         updateTickets(context, n) {
             context.commit('updateTickets', n);
         },

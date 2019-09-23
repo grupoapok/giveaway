@@ -6,6 +6,7 @@ use App\Http\Controllers\Traits\ProcessTokenTrait;
 use App\Http\Requests\CreateSubscriberRequest;
 use App\Http\Resources\SubscriberResource;
 use App\Http\Resources\TaskResource;
+use App\Http\Resources\TicketResource;
 use App\Mail\NewSubscriber;
 use App\Subscriber;
 use App\Task;
@@ -41,7 +42,9 @@ class SubscriberController extends Controller {
             $newSubscriber->token = Str::uuid();
             $newSubscriber->save();
 
-            Ticket::create(["subscriber_id" => $newSubscriber->id]);
+            Ticket::create([
+                "subscriber_id" => $newSubscriber->id
+            ]);
 
             Mail::to($newSubscriber->email)
                 ->send(
@@ -62,7 +65,7 @@ class SubscriberController extends Controller {
                 $t->completed = in_array($t->id, $completedTasks);
             }
         }
-        return new TaskResource($tasks);
+        return TaskResource::collection($tasks);
     }
 
     public function existingSubscriber($encrypted_token) {
@@ -72,5 +75,11 @@ class SubscriberController extends Controller {
             return redirect("/")->withCookie(Cookie::make("token", $token, 0, '/', null, null, false, false));
         }
         return redirect("/");
+    }
+
+    public function myTickets(Request $request){
+        $user = $this->getUser($request);
+
+        return TicketResource::collection($user->tickets);
     }
 }

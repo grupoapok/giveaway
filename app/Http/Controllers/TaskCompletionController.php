@@ -10,6 +10,7 @@ use App\Task;
 use App\TaskCompletion;
 use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Mail;
 
 class TaskCompletionController extends Controller {
@@ -39,13 +40,16 @@ class TaskCompletionController extends Controller {
     }
 
     private function completeTask(Subscriber $user, Task $task, Request $request) {
-        TaskCompletion::create([
+        $tc = TaskCompletion::create([
             "subscriber_id" => $user->id,
             "task_id" => $task->id
         ]);
 
         for ($i = 0; $i < $task->tickets; $i++) {
-            Ticket::create(["subscriber_id" => $user->id]);
+            Ticket::create([
+                "subscriber_id" => $user->id,
+                "task_completions_id" => $tc->id
+            ]);
         }
 
         $user->load("tickets");
@@ -55,7 +59,7 @@ class TaskCompletionController extends Controller {
                 new TaskCompleted(
                     $task,
                     count($user->tickets),
-                    str_replace('_', '-', $request->getLocale())
+                    Cookie::get("lang")
                 )
             );
     }

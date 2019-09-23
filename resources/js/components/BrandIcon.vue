@@ -1,5 +1,5 @@
 <template>
-    <font-awesome-icon :icon="['fab', brand]"></font-awesome-icon>
+    <font-awesome-icon fixed-width :icon="['fab', brand]"></font-awesome-icon>
 </template>
 
 <script>

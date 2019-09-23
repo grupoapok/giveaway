@@ -15,6 +15,10 @@ $btn-border-width: 3px;
 
 @import "~bootstrap/scss/bootstrap";
 
+.cursor-pointer{
+    cursor: pointer;
+}
+
 @mixin rombo($bg, $width, $height) {
   background: $bg;
   width: $width;

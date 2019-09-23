@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Thujohn\Twitter\Facades\Twitter;
 
-
 class TwitterController extends OauthTaskController {
 
     function getCookieName() {
@@ -19,11 +18,11 @@ class TwitterController extends OauthTaskController {
     }
 
     function isValidAuthToken() {
-        Twitter::reconfig([
-            $this->getAuthToken(),
-            Crypt::decryptString(Cookie::get("twitter_token_secret"))
-        ]);
         try {
+            Twitter::reconfig([
+                "token" => $this->getAuthToken(),
+                "secret" => Crypt::decryptString(Cookie::get("twitter_token_secret"))
+            ]);
             Twitter::getCredentials();
             return true;
         }catch (\Exception $e){
@@ -35,12 +34,12 @@ class TwitterController extends OauthTaskController {
     function sendContent() {
         try {
             Twitter::reconfig([
-                $this->getAuthToken(),
-                Crypt::decryptString(Cookie::get("twitter_token_secret"))
+                "token" => $this->getAuthToken(),
+                "secret" => Crypt::decryptString(Cookie::get("twitter_token_secret"))
             ]);
 
             $content = [
-                'status' => config('giveaway.share_status'),
+                'status' => __("share.twitter", [], Cookie::get("lang") ?? app()->getLocale()),
             ];
 
             if (config('giveaway.share_img')) {
@@ -57,8 +56,8 @@ class TwitterController extends OauthTaskController {
             Twitter::postTweet($content);
 
             return response("OK", 200);
-        }catch (\Exception $e){
-            Log::error($e->getMessage());
+        }catch (Exception $e){
+            Log::error($e->getTraceAsString());
             return response($e->getMessage(), 400);
         }
     }
@@ -78,7 +77,9 @@ class TwitterController extends OauthTaskController {
                 return $response;
             }
             return response("error", 400);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
+            Log::error($e->getTraceAsString());
+            Log::error(Twitter::logs());
             return response($e->getMessage(), 400);
         }
     }

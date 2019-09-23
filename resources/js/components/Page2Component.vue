@@ -3,7 +3,7 @@
         <template v-slot:col1>
             <div id="col1_content">
                 <div id="title">
-                    <img :src="vector"/>
+                    <img :src="page2ImgHeader"/>
                 </div>
 
                 <p id="tasks-title" class="text-secondary" v-html="lang.available_tasks"></p>
@@ -22,39 +22,73 @@
             <div id="col2_content" class="text-center text-lg-right">
                 <p id="gracias" class="text-secondary" v-html="lang.thanks"></p>
                 <p v-html="lang.text_1"></p>
-                <p class="text-dark">
+                <p class="text-dark cursor-pointer" data-toggle="modal" data-target="#tickets_list">
                     <template v-if="tickets === 0" v-html="lang.no_tickets"></template>
                     <template v-else>
                         <span v-html="ticketsMessage"></span>
                     </template>
                 </p>
             </div>
+            <div class="modal fade" id="tickets_list">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-dark font-weight-bold" v-html="lang.my_tickets"></h5>
+                            <button type="button" class="text-dark close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <tickets :tickets="ticketsList" :tooltip-header="lang.task_completed_at"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </template>
+
     </layout>
 </template>
 
 <script>
+    import {mapActions, mapState} from 'vuex';
     import Layout from './Layout';
     import Task from './TaskComponent';
-    import vector from '../../img/page2_text.svg';
-    import {mapActions, mapState} from 'vuex';
+    import Tickets from './TicketsComponent';
     import LangMixin from '../mixin/lang';
+    import page2ImgHeader from '../../img/page2_text.svg';
 
     export default {
         name: "Page2Component",
         mixins: [LangMixin('step2')],
-        components: {Layout, Task},
+        components: {Layout, Task, Tickets},
         data() {
             return {
-                vector,
-                tasks: []
+                showTicketsModal: false,
+                page2ImgHeader,
+                tasks: [],
             }
         },
         computed: {
-            ...mapState(['tickets']),
+            ...mapState(['tickets', 'ticketsList']),
             ticketsMessage() {
-                return this.lang['ticket_number'].replace(":tickets",this.tickets)
-            }
+                return this.lang['ticket_number'].replace(":tickets", this.tickets)
+            },
+            myTickets() {
+                const arr = [];
+                for (let i = 0; i < 100; i++) {
+                    arr.push({
+                        id: i,
+                        task_completion: {
+                            id: i,
+                            task: {
+                                type: 'twitter',
+                                created_at: '2019-09-01'
+                            }
+                        }
+                    })
+                }
+                return arr;
+            },
         },
         methods: {
             ...mapActions(['alignElementsToRight', 'updateUserInfo']),
@@ -76,7 +110,10 @@
                     }
                 });
                 this.tasks = newTasks;
-            }
+            },
+            toggleTicketsModal() {
+                this.showTicketsModal = !this.showTicketsModal;
+            },
         },
         mounted() {
             this.loadTasks();
@@ -86,6 +123,8 @@
 </script>
 
 <style scoped lang="scss">
+    @import '../../sass/app';
+
     #col1_content {
         display: flex;
         flex-direction: column;
@@ -116,9 +155,6 @@
                     &:nth-child(2n) {
                         margin-right: 35% !important;
                     }
-                    /*&:last-child {
-                        margin-right: 0 !important;
-                    }*/
                 }
             }
         }

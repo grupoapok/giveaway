@@ -29,6 +29,7 @@ Route::get('/social_info', function () {
 
 Route::resource("/subscribers", "SubscriberController")->only(["index", "store"]);
 Route::get("/subscribers/tasks", "SubscriberController@myTasks");
+Route::get("/subscribers/tickets", "SubscriberController@myTickets");
 
 Route::post("/tasks/{task}/complete", "TaskCompletionController@store");
 Route::post("/tasks/{task}/webhook", "TaskCompletionController@fromWebhook");

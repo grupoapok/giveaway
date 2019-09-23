@@ -1,20 +1,20 @@
 <?php
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Str;
 
 Route::get('/', function (Request $request) {
-    $url = str_replace(["https://", "http://"], ["", ""], $request->root());
-
-    if (Str::startsWith($url, "concurso")) {
-        App::setLocale("es");
+    if ($request->has("lang")){
+        app()->setLocale($request->input("lang") ?? "es");
+        Cookie::queue(
+            Cookie::make("lang", $request->input("lang"),0,'/',null,null,false,false)
+        );
+    } else {
+        Cookie::queue(
+            Cookie::make("lang", app()->getLocale(), 0,'/',null,null,false,false)
+        );
     }
-    if (Str::startsWith($url, "giveaway")) {
-        App::setLocale("en");
-    }
-
     return view('welcome');
 });
 

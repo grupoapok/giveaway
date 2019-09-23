@@ -51,10 +51,12 @@
             ...mapState(['alignRight'])
         },
         methods: {
-            ...mapActions(['updateUserInfo'])
+            ...mapActions(['updateUserInfo', 'updateTicketsList'])
         },
         mounted() {
+
             if (this.$cookies.get("token")) {
+                this.updateTicketsList();
                 this.$axios.get('/subscribers')
                     .then(({data}) => {
                         const {name, email, tickets} = data.data;
