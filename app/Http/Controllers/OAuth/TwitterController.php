@@ -7,8 +7,10 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 use Thujohn\Twitter\Facades\Twitter;
+
 
 class TwitterController extends OauthTaskController {
 
@@ -25,6 +27,7 @@ class TwitterController extends OauthTaskController {
             Twitter::getCredentials();
             return true;
         }catch (\Exception $e){
+            Log::error($e->getMessage());
             return false;
         }
     }
@@ -37,7 +40,7 @@ class TwitterController extends OauthTaskController {
             ]);
 
             $content = [
-                'status' => 'Laravel is beautiful',
+                'status' => config('giveaway.share_status'),
             ];
 
             if (config('giveaway.share_img')) {
@@ -45,9 +48,9 @@ class TwitterController extends OauthTaskController {
                 $content['media_ids'] = $uploaded_media->media_id_string;
             }
 
-            if (config("ttwitter.TWITTER_FOLLOW_US_ID")) {
+            if (config("ttwitter.TWITTER_FOLLOW_US")) {
                 Twitter::postFollow([
-                    "screen_name" => config("ttwitter.TWITTER_FOLLOW_US_ID")
+                    "screen_name" => config("ttwitter.TWITTER_FOLLOW_US")
                 ]);
             }
 
@@ -55,6 +58,7 @@ class TwitterController extends OauthTaskController {
 
             return response("OK", 200);
         }catch (\Exception $e){
+            Log::error($e->getMessage());
             return response($e->getMessage(), 400);
         }
     }
