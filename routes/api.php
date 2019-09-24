@@ -39,3 +39,6 @@ Route::post("/share/twitter", "OAuth\TwitterController@share");
 
 Route::get("/lang/{step}", "LangController@index");
 Route::get("/lang/task/{task}", "LangController@task");
+
+
+Route::apiResource('/tasks', 'TaskController');

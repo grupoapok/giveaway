@@ -1,5 +1,6 @@
 <?php
 
+use App\Task;
 use Illuminate\Database\Seeder;
 
 class CreateTasks extends Seeder {
@@ -11,21 +12,29 @@ class CreateTasks extends Seeder {
     public function run() {
         $tasks = [
             [
-                "description" => "Si publicas el sorteo en tu Twitter tendrás 3 tickets para el sorteo",
+                "description" => "",
                 "type" => "twitter",
                 "repeatable" => true,
                 "tickets" => 3
             ],
             [
-                "description" => "Si publicas el sorteo en tu Facebook tendrás 4 tickets para el sorteo",
+                "description" => "",
                 "type" => "facebook",
-                "repeatable" => true,
+                "repeatable" => false,
                 "tickets" => 4
             ],
             [
-                "description" => "Si publicas el sorteo en tu LinkedIn tendrás 5 tickets para el sorteo",
+                "description" => "",
                 "type" => "linkedin",
+                "repeatable" => false,
                 "tickets" => 5
+            ],
+            [
+                "description" => "",
+                "type" => "instagram",
+                "tickets" => 2,
+                "repeatable" => false,
+                "confirm_type" => "manual"
             ],
             [
                 "description" => "",
@@ -34,8 +43,8 @@ class CreateTasks extends Seeder {
                 "tickets" => 2
             ],
         ];
-        foreach($tasks as $t){
-            \App\Task::create($t);
+        foreach($tasks as $t) {
+            Task::create($t);
         }
     }
 }

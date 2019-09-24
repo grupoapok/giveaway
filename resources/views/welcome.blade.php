@@ -7,8 +7,8 @@
     <meta property="og:url" content="{{ config('app.url') }}" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="{{ config('app.name')}}" />
-    <meta property="og:description" content="Concursa y gana una pagina web gratis" />
-    <meta property="og:image" content="{{ asset("img/apok_logo.png") }}" />
+    <meta property="og:description" content="{{ __("share.facebook", [], app()->getLocale()) }}" />
+    <meta property="og:image" content="{{ asset("img/".config("giveaway.share_img_facebook")) }}" />
 
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}"/>

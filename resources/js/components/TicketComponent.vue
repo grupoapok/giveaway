@@ -1,14 +1,12 @@
 <template>
-    <li class="ticket">
+    <li class="ticket cursor-pointer" v-b-tooltip.hover.right.html :title="tooltipTitle">
         <span>{{ ticket.id }}</span>
-        <div data-toggle="tooltip" data-placement="right" :title="tooltipTitle" data-html="true">
-            <template v-if="ticket.task_completion">
-                <brand-icon v-if="ticket.task_completion.task.type !== 'form'"
-                            :brand="ticket.task_completion.task.type"></brand-icon>
-                <font-awesome-icon v-else :icon="['fas','comments']"></font-awesome-icon>
-            </template>
-            <font-awesome-icon v-else icon="check"></font-awesome-icon>
-        </div>
+        <template v-if="ticket.task_completion">
+            <brand-icon v-if="ticket.task_completion.task.type !== 'form'"
+                        :brand="ticket.task_completion.task.type"></brand-icon>
+            <font-awesome-icon v-else :icon="['fas','comments']"></font-awesome-icon>
+        </template>
+        <font-awesome-icon v-else icon="check"></font-awesome-icon>
     </li>
 </template>
 
@@ -63,9 +61,6 @@
                     this.tooltipTitle = "";
                 }
             }
-        },
-        mounted() {
-            $('[data-toggle="tooltip"]').tooltip();
         }
     }
 </script>
@@ -73,7 +68,7 @@
 <style scoped lang="scss">
     @import '../../sass/app.scss';
 
-    li.ticket {
+    .ticket {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -82,9 +77,15 @@
         border: 1px solid $secondary;
         border-radius: .5rem;
         margin-bottom: .5rem;
+        transition: all .3s ease-in-out;
 
         span {
             font-weight: bold;
+        }
+
+        &:hover {
+            background: $secondary;
+            color: white;
         }
     }
 </style>

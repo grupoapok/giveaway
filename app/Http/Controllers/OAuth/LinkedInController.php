@@ -44,14 +44,14 @@ class LinkedInController extends OauthTaskController {
     function sendContent() {
         try {
             $asset = null;
-            if (config('giveaway.share_img')) {
-                list ($uploadUrl, $asset) = $this->registerImage($this->authorId);
+            if (config('giveaway.share_img_linkedin')) {
+                list ($uploadUrl, $asset) = $this->registerImage();
 
                 $this->apiClient->post($uploadUrl, [
                     "headers" => [
                         "Content-Type" => "application/octect-stream"
                     ],
-                    "body" => file_get_contents(storage_path(config('giveaway.share_img')))
+                    "body" => file_get_contents(storage_path(config('giveaway.share_img_linkedin')))
                 ]);
             }
 
@@ -104,7 +104,7 @@ class LinkedInController extends OauthTaskController {
         return redirect("/");
     }
 
-    private function getContentToShare($imageAsset = null){
+    private function getContentToShare($imageAsset = null) {
         $shareMediaCategory = "NONE";
         if (!is_null($imageAsset)) {
             $shareMediaCategory = "IMAGE";
@@ -118,7 +118,7 @@ class LinkedInController extends OauthTaskController {
             "specificContent" => [
                 "com.linkedin.ugc.ShareContent" => [
                     "shareCommentary" => [
-                        "text" => "Test http://www.grupoapok.com",
+                        "text" => __("share.linkedin", [], Cookie::get("lang") ?? app()->getLocale()),
                     ],
                     "shareMediaCategory" => $shareMediaCategory,
                 ]
@@ -160,7 +160,7 @@ class LinkedInController extends OauthTaskController {
         ];
         $query = ["action" => "registerUpload"];
 
-        $response = $this->apiClient->post("assets", compact("query","json"));
+        $response = $this->apiClient->post("assets", compact("query", "json"));
         $json = json_decode($response->getBody()->getContents(), true);
         return [
             $json["value"]["uploadMechanism"]["com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest"]["uploadUrl"],

@@ -1,7 +1,7 @@
 <template>
     <div class="task-container"
          :class="[task.class,task.completed && 'done', this.executed && 'completed']"
-         @click="executeTask">
+         @click="askForExtras">
 
         <moon-spinner v-if="loading"></moon-spinner>
         <template v-else>
@@ -9,11 +9,41 @@
             <font-awesome-icon v-else :icon="task.icon" class="icon"></font-awesome-icon>
         </template>
 
-        <font-awesome-icon icon="check" class="text-secondary" size="3x" v-if="!task.repeatable && task.completed"></font-awesome-icon>
+        <font-awesome-icon icon="check" class="text-secondary" size="3x"
+                           v-if="!canExecute"></font-awesome-icon>
         <template v-else>
-            <p  v-if="lang[task.type]" v-html="lang[task.type]">{{ task.description }}</p>
+            <p v-if="lang[task.type]" v-html="lang[task.type]">{{ task.description }}</p>
             <p v-else>{{ task.description }}</p>
         </template>
+
+        <div class="modal fade" ref="extra_modal">
+            <form @submit.prevent="executeTask">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title text-dark font-weight-bold">
+                                {{ task.type | capitalize}}
+                            </h5>
+                            <button type="button" class="text-dark close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group" v-for="(extra,i) in task.extras" :key="`extra_${i}`">
+                                <label>{{ extra['label'] }}</label>
+                                <input class="form-control" type="text" v-model="extraModel[extra.name]">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">
+                                <font-awesome-icon icon="check"></font-awesome-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </div>
 </template>
 
@@ -23,9 +53,10 @@
 
     export default {
         name: "Task",
-        components: {BrandIcon},
+        components: { BrandIcon },
         data() {
             return {
+                extraModel: {},
                 executed: false,
                 loading: false,
                 lang: {},
@@ -42,6 +73,7 @@
                     type: null,
                     repeatable: false,
                     tickets: 0,
+                    extras: []
                 }
             },
             autoExecute: {
@@ -51,21 +83,46 @@
         },
         computed: {
             ...mapState(['email']),
+            canExecute() {
+                return this.task.repeatable || !this.task.completed;
+            },
+            hasExtras() {
+                return this.task.extras && this.task.extras.length > 0;
+            }
         },
         methods: {
             ...mapActions(["updateUserInfo", "updateTicketsList"]),
             notifyTaskCompleted() {
                 setTimeout(() => {
                     this.$emit('taskCompleted', this.task.id)
-                }, 1000) //Espero 1seg para que termine la animacion
+                }, 1000) //Wait 1 sec for the animation to finish
             },
             markTaskAsCompleted() {
-                return this.$axios.post(`/tasks/${this.task.id}/complete`).then(({data}) => data.data)
+                const extras = {};
+                if (this.hasExtras()) {
+                    this.task.extras.forEach(e => {
+                        extras[e.name] = this.extraModel[e.name];
+                        this.extraModel[e.name] = '';
+                    })
+                }
+                return this.$axios.post(`/tasks/${this.task.id}/complete`, {
+                    data: { extras }
+                }).then(({data}) => data.data)
+            },
+            askForExtras() {
+                if (this.canExecute) {
+                    if (this.hasExtras) {
+                        $(this.$refs['extra_modal']).modal('show');
+                    } else {
+                        this.executeTask();
+                    }
+                }
             },
             executeTask() {
-                if (this.task.repeatable || !this.task.completed) {
+                $(this.$refs['extra_modal']).modal('hide');
+                if (this.canExecute) {
                     if (this.task.url) {
-                        window.open(this.task.url.replace(":email",this.email), '_blank');
+                        window.open(this.task.url.replace(":email", this.email), '_blank');
                         return
                     }
 
@@ -77,6 +134,8 @@
                         promise = this.linkedInTask();
                     } else if (this.task.type === 'twitter') {
                         promise = this.twitterTask();
+                    } else if (this.task.type === 'instagram') {
+                        promise = this.instagramTask();
                     }
 
                     if (promise === null) {
@@ -122,6 +181,12 @@
             },
             twitterTask() {
                 return this.$axios.post('/share/twitter')
+            },
+            instagramTask() {
+                return new Promise((resolve) => {
+                    window.open('https://www.instagram.com/grupoapok', '_blank');
+                    resolve();
+                })
             }
         },
         mounted() {
@@ -157,6 +222,7 @@
         &.secondary {
             background: $secondary;
         }
+
         &.done {
             background: $azul_oscuro2;
         }
@@ -174,6 +240,15 @@
             text-align: center;
             font-weight: bold;
             margin-bottom: 0 !important;
+        }
+
+        label {
+            color: initial;
+        }
+
+        .form-control {
+            border-width: 1px;
+            border-color: $primary;
         }
     }
 

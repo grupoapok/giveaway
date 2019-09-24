@@ -44,7 +44,7 @@
             }
         },
         methods: {
-            ...mapActions(['alignElementsToLeft', 'updateUserInfo']),
+            ...mapActions(['alignElementsToLeft', 'updateUserInfo', 'updateTicketsList']),
             register() {
                 const data = {
                     name: this.name,
@@ -64,6 +64,7 @@
                     .then(({data}) => {
                         const {name, email, tickets} = data.data;
                         this.updateUserInfo({name, email, tickets});
+                        this.updateTicketsList();
                         this.loading = false;
                         this.$router.push('/step2');
                     })

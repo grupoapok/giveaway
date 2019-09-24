@@ -12,7 +12,7 @@ const store = new Vuex.Store({
         alignRight: false
     },
     mutations: {
-        alignRight(state, val){
+        alignRight(state, val) {
             state.alignRight = val;
         },
         updateUserInfo(state, payload) {
@@ -28,7 +28,7 @@ const store = new Vuex.Store({
                 }
             }
         },
-        updateTickets(state, n){
+        updateTickets(state, n) {
             state.tickets = parseInt(n, 10);
         },
         updateTicketsList(state, tickets) {
@@ -37,11 +37,13 @@ const store = new Vuex.Store({
     },
     actions: {
         updateTicketsList(context) {
-            Vue.prototype.$axios.get('/subscribers/tickets')
-                .then(response => {
-                    context.commit('updateTicketsList',response.data.data)
-                })
-                .catch(console.error)
+            Vue.prototype.$axios.get('/subscribers/tickets', {
+                headers: {
+                    'Token': Vue.prototype.$cookies.get('token')
+                }
+            }).then(response => {
+                context.commit('updateTicketsList', response.data.data)
+            }).catch(console.error)
         },
         updateTickets(context, n) {
             context.commit('updateTickets', n);

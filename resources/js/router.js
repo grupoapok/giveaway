@@ -16,6 +16,7 @@ const router = new VueRouter({
             beforeEnter: (to, from, next) => {
                 if (Cookies.get("token")) {
                     next('/step2');
+                    return;
                 }
                 next();
             }
@@ -26,6 +27,7 @@ const router = new VueRouter({
             beforeEnter: (to, from, next) => {
                 if (!Cookies.get("token")) {
                     next('/step1');
+                    return;
                 }
                 next();
             }

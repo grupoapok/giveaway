@@ -54,7 +54,6 @@
             ...mapActions(['updateUserInfo', 'updateTicketsList'])
         },
         mounted() {
-
             if (this.$cookies.get("token")) {
                 this.updateTicketsList();
                 this.$axios.get('/subscribers')

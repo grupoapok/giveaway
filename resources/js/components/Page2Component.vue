@@ -22,28 +22,24 @@
             <div id="col2_content" class="text-center text-lg-right">
                 <p id="gracias" class="text-secondary" v-html="lang.thanks"></p>
                 <p v-html="lang.text_1"></p>
-                <p class="text-dark cursor-pointer" data-toggle="modal" data-target="#tickets_list">
-                    <template v-if="tickets === 0" v-html="lang.no_tickets"></template>
-                    <template v-else>
-                        <span v-html="ticketsMessage"></span>
-                    </template>
-                </p>
-            </div>
-            <div class="modal fade" id="tickets_list">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-dark font-weight-bold" v-html="lang.my_tickets"></h5>
-                            <button type="button" class="text-dark close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <tickets :tickets="ticketsList" :tooltip-header="lang.task_completed_at"/>
-                        </div>
-                    </div>
+                <div id="tickets_text_container">
+                    <p class="text-dark mb-0 font-weight-bold">
+                        <template v-if="tickets === 0" v-html="lang.no_tickets"></template>
+                        <template v-else>
+                            <span v-html="ticketsMessage"></span>
+                        </template>
+                    </p>
+                    <p v-if="tickets > 0" id="view_tickets_message" class="cursor-pointer" @click="showTicketsModal = true" v-html="lang.view_my_tickets"></p>
                 </div>
             </div>
+
+            <b-modal id="tickets_list" v-model="showTicketsModal" centered hide-footer>
+                <h5 class="modal-title text-dark font-weight-bold" slot="modal-title">
+                    <span v-html="lang.my_tickets"></span><br/>
+                    <span class="font-weight-normal">{{ name }} ({{ email }})</span>
+                </h5>
+                <tickets :tickets="ticketsList" :tooltip-header="lang.task_completed_at"/>
+            </b-modal>
         </template>
 
     </layout>
@@ -55,7 +51,7 @@
     import Task from './TaskComponent';
     import Tickets from './TicketsComponent';
     import LangMixin from '../mixin/lang';
-    import page2ImgHeader from '../../img/page2_text.svg';
+    import page2ImgHeader from '../../img/page2_text_es.svg';
 
     export default {
         name: "Page2Component",
@@ -69,25 +65,9 @@
             }
         },
         computed: {
-            ...mapState(['tickets', 'ticketsList']),
+            ...mapState(['name', 'email', 'tickets', 'ticketsList']),
             ticketsMessage() {
                 return this.lang['ticket_number'].replace(":tickets", this.tickets)
-            },
-            myTickets() {
-                const arr = [];
-                for (let i = 0; i < 100; i++) {
-                    arr.push({
-                        id: i,
-                        task_completion: {
-                            id: i,
-                            task: {
-                                type: 'twitter',
-                                created_at: '2019-09-01'
-                            }
-                        }
-                    })
-                }
-                return arr;
             },
         },
         methods: {
@@ -147,12 +127,12 @@
                 }
                 @media(min-width: 576px) {
                     width: 30%;
-                    &:last-child {
+                    /*&:last-child {
                         margin-right: 35% !important;
-                    }
+                    }*/
                 }
                 @media(min-width: 1200px) {
-                    &:nth-child(2n) {
+                    &:nth-child(2) {
                         margin-right: 35% !important;
                     }
                 }
@@ -189,6 +169,31 @@
             flex-direction: row;
             p {
                 flex-grow: 1;
+            }
+        }
+    }
+
+    .modal-title {
+        span {
+            & + br + span {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    #tickets_text_container {
+        width: fit-content;
+        align-self: flex-end;
+        #view_tickets_message {
+            text-align: center;
+            color: rgba($azul_oscuro, .5);
+            text-transform: uppercase;
+            font-size: .75rem;
+            font-weight: bold;
+            letter-spacing: .1rem;
+            transition: all .3s ease-in-out;
+            &:hover {
+                color: $naranja;
             }
         }
     }

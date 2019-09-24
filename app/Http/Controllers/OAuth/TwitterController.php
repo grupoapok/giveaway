@@ -42,8 +42,8 @@ class TwitterController extends OauthTaskController {
                 'status' => __("share.twitter", [], Cookie::get("lang") ?? app()->getLocale()),
             ];
 
-            if (config('giveaway.share_img')) {
-                $uploaded_media = Twitter::uploadMedia(['media' => File::get(storage_path(config('giveaway.share_img')))]);
+            if (config('giveaway.share_img_twiter')) {
+                $uploaded_media = Twitter::uploadMedia(['media' => File::get(storage_path(config('giveaway.share_img_twiter')))]);
                 $content['media_ids'] = $uploaded_media->media_id_string;
             }
 

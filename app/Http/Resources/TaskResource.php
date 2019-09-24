@@ -12,7 +12,10 @@ class TaskResource extends JsonResource {
             "description" => $this->description,
             "type" => $this->type,
             "tickets" => $this->tickets,
-            "url" => $this->url
+            "url" => $this->url,
+            "completed" => $this->completed,
+            "extras" => json_decode($this->extras),
+            "confirm_type" => $this->confirm_type
         ];
     }
 }

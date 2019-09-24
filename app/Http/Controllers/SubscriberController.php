@@ -33,13 +33,23 @@ class SubscriberController extends Controller {
         $subscriber = Subscriber::where("email", $request->input("email"))->first();
 
         if (is_null($subscriber)) {
+
             $ipinfo = $request->ipinfo;
 
             $newSubscriber = Subscriber::make($request->all());
-            $newSubscriber->city = $ipinfo->city;
-            $newSubscriber->country = $ipinfo->country_name;
-            $newSubscriber->region = $ipinfo->region;
-            $newSubscriber->ipinfo = json_encode($ipinfo);
+            if ($ipinfo) {
+                if ($ipinfo->city) {
+                    $newSubscriber->city = $ipinfo->city;
+                }
+                if ($ipinfo->country) {
+                    $newSubscriber->country = $ipinfo->country_name;
+                }
+                if ($ipinfo->region) {
+                    $newSubscriber->region = $ipinfo->region;
+                }
+                $newSubscriber->ipinfo = json_encode($ipinfo);
+            }
+
             $newSubscriber->token = Str::uuid();
             $newSubscriber->save();
 
@@ -61,9 +71,10 @@ class SubscriberController extends Controller {
         $user = $this->getUser($request);
         $tasks = Task::all();
         if (!is_null($user)) {
-            $completedTasks = TaskCompletion::where("subscriber_id", $user->id)->distinct("task_id")->pluck("task_id")->toArray();
+            $completedTasks = TaskCompletion::bySubscriber($user->id)->completed()->distinct("task_id")->pluck("task_id")->toArray();
+            $incompleteManualTasks = TaskCompletion::bySubscriber($user->id)->incomplete()->manual()->distinct("task_id")->pluck("task_id")->toArray();
             foreach($tasks as $t) {
-                $t->completed = in_array($t->id, $completedTasks);
+                $t->completed = in_array($t->id, $completedTasks) || in_array($t->id, $incompleteManualTasks);
             }
         }
         return TaskResource::collection($tasks);

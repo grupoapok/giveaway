@@ -18,6 +18,8 @@ Route::get('/', function (Request $request) {
     return view('welcome');
 });
 
+Route::get('/admin', function (Request $request) { return view('admin'); });
+
 Route::get('/subscriber/{encrypted_token}', "SubscriberController@existingSubscriber")->name("returning_user");
 
 Route::get('/auth/callback/linkedin', "OAuth\LinkedInController@auth")->name("linkedin.callback");
