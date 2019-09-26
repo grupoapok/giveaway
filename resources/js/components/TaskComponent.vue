@@ -105,33 +105,15 @@
                 return this.task.repeatable || !this.task.completed;
             },
             hasExtras() {
-                return this.task.extras && this.task.extras.length > 0;
+                return !!this.task.extras && this.task.extras.length > 0;
             }
         },
         methods: {
             ...mapActions(["updateUserInfo", "updateTicketsList"]),
-            notifyTaskCompleted() {
-                setTimeout(() => {
-                    this.$emit('taskCompleted', this.task.id)
-                }, 1000) //Wait 1 sec for the animation to finish
-            },
-            markTaskAsCompleted() {
-                const extras = {};
-                if (this.hasExtras()) {
-                    this.task.extras.forEach(e => {
-                        extras[e.name] = this.extraModel[e.name];
-                        this.extraModel[e.name] = '';
-                    })
-                }
-                return this.$axios.post(`/tasks/${this.task.id}/complete`, {
-                    data: {extras}
-                }).then(({data}) => data.data)
-            },
             askForExtras() {
                 if (this.canExecute) {
                     if (this.hasExtras) {
                         this.showExtraModal = true;
-                        // $(this.$refs['extra_modal']).modal('show');
                     } else {
                         this.executeTask();
                     }
@@ -139,7 +121,6 @@
             },
             executeTask() {
                 this.showExtraModal = false;
-                //$(this.$refs['extra_modal']).modal('hide');
                 if (this.canExecute) {
                     if (this.task.url) {
                         window.open(this.task.url.replace(":email", this.email), '_blank');
@@ -172,12 +153,30 @@
                             this.notifyTaskCompleted()
                         })
                         .catch(error => {
+                            console.error(error);
                             if (error.response && error.response.data.url) {
                                 window.location = error.response.data.url;
                             }
                             this.loading = false;
                         });
                 }
+            },
+            markTaskAsCompleted() {
+                const extras = {};
+                if (this.hasExtras) {
+                    this.task.extras.forEach(e => {
+                        extras[e.name] = this.extraModel[e.name];
+                        this.extraModel[e.name] = '';
+                    })
+                }
+                return this.$axios.post(`/tasks/${this.task.id}/complete`, {
+                    data: {extras}
+                }).then(({data}) => data.data);
+            },
+            notifyTaskCompleted() {
+                setTimeout(() => {
+                    this.$emit('taskCompleted', this.task.id)
+                }, 1000) //Wait 1 sec for the animation to finish
             },
             facebookTask() {
                 return new Promise((resolve, reject) => {
