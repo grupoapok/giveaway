@@ -69,7 +69,7 @@ class SubscriberController extends Controller {
 
     public function myTasks(Request $request) {
         $user = $this->getUser($request);
-        $tasks = Task::all();
+        $tasks = Task::orderBy("order","asc")->get();
         if (!is_null($user)) {
             $completedTasks = TaskCompletion::bySubscriber($user->id)->completed()->distinct("task_id")->pluck("task_id")->toArray();
             $incompleteManualTasks = TaskCompletion::bySubscriber($user->id)->incomplete()->manual()->distinct("task_id")->pluck("task_id")->toArray();

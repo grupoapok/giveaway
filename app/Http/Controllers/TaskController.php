@@ -12,7 +12,8 @@ class TaskController extends Controller {
     }
 
     public function store(Request $request) {
-        
+        $task = Task::create($request->all());
+        return new TaskResource($task);
     }
 
     public function show(Task $task) {
