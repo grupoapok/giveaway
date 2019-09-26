@@ -16,7 +16,24 @@
             <p v-else>{{ task.description }}</p>
         </template>
 
-        <div class="modal fade" ref="extra_modal">
+        <b-modal id="tickets_list" v-model="showExtraModal" centered hide-footer>
+            <h5 class="modal-title text-dark font-weight-bold" slot="modal-title">
+                {{ task.type | capitalize}}
+            </h5>
+            <form @submit.prevent="executeTask">
+                <div class="form-group" v-for="(extra,i) in task.extras" :key="`extra_${i}`">
+                    <label>{{ extra['label'] }}</label>
+                    <input class="form-control" type="text" v-model="extraModel[extra.name]">
+                </div>
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-primary">
+                        <font-awesome-icon icon="check"></font-awesome-icon>
+                    </button>
+                </div>
+            </form>
+        </b-modal>
+
+        <!--<div class="modal fade" ref="extra_modal">
             <form @submit.prevent="executeTask">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -42,7 +59,7 @@
                     </div>
                 </div>
             </form>
-        </div>
+        </div>-->
 
     </div>
 </template>
@@ -53,9 +70,10 @@
 
     export default {
         name: "Task",
-        components: { BrandIcon },
+        components: {BrandIcon},
         data() {
             return {
+                showExtraModal: false,
                 extraModel: {},
                 executed: false,
                 loading: false,
@@ -106,20 +124,22 @@
                     })
                 }
                 return this.$axios.post(`/tasks/${this.task.id}/complete`, {
-                    data: { extras }
+                    data: {extras}
                 }).then(({data}) => data.data)
             },
             askForExtras() {
                 if (this.canExecute) {
                     if (this.hasExtras) {
-                        $(this.$refs['extra_modal']).modal('show');
+                        this.showExtraModal = true;
+                        // $(this.$refs['extra_modal']).modal('show');
                     } else {
                         this.executeTask();
                     }
                 }
             },
             executeTask() {
-                $(this.$refs['extra_modal']).modal('hide');
+                this.showExtraModal = false;
+                //$(this.$refs['extra_modal']).modal('hide');
                 if (this.canExecute) {
                     if (this.task.url) {
                         window.open(this.task.url.replace(":email", this.email), '_blank');
@@ -241,15 +261,15 @@
             font-weight: bold;
             margin-bottom: 0 !important;
         }
+    }
 
-        label {
-            color: initial;
-        }
+    label {
+        color: initial;
+    }
 
-        .form-control {
-            border-width: 1px;
-            border-color: $primary;
-        }
+    .form-control {
+        border-width: 1px !important;
+        border-color: $primary !important;
     }
 
     @keyframes flip {

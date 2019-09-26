@@ -15,7 +15,8 @@ class TaskResource extends JsonResource {
             "url" => $this->url,
             "completed" => $this->completed,
             "extras" => json_decode($this->extras),
-            "confirm_type" => $this->confirm_type
+            "confirm_type" => $this->confirm_type,
+            "repeatable" => $this->repeatable
         ];
     }
 }
