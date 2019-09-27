@@ -1,0 +1,106 @@
+<mjml>
+    <mj-head>
+        <mj-attributes>
+            <mj-font name="Open Sans" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
+            <mj-all font-family="Open Sans"/>
+        </mj-attributes>
+    </mj-head>
+    <mj-body background-color="#EFF7FB">
+        <!-- Company Header -->
+        <mj-section
+            background-url="https://www.grupoapok.com/mail/layout/bgs/header.jpg"
+            background-repeat="no-repeat">
+            <mj-column>
+                <mj-image width="88px" src="https://www.grupoapok.com/mail/layout/logo-apok.png"/>
+            </mj-column>
+        </mj-section>
+        <!-- Image Header -->
+        <mj-section background-url="https://www.grupoapok.com/mail/layout/bgs/subject.jpg"
+                    background-repeat="no-repeat">
+            <mj-column padding-left="76px" width="225px">
+                <mj-text font-size="20px" color="#00596B">
+                    Únete<br/>
+                    a la pasión por las ideas.
+                </mj-text>
+            </mj-column>
+
+            <mj-column width="124px">
+                <mj-image width="88px" src="https://www.grupoapok.com/mail/september/a/subject.jpg"/>
+            </mj-column>
+        </mj-section>
+
+        <!-- Introduction Text -->
+        <mj-section background-color="#fafafa">
+            <mj-column width="400px">
+
+                <mj-text color="#00596B">
+                    Subscríbete en nuestro boletín con tú correo y recibe descuentos, contenido y datos importantes para
+                    tu empresa
+                </mj-text>
+
+                <mj-button background-color="#F18800"
+                           href="#">Subscribirme
+                </mj-button>
+
+            </mj-column>
+        </mj-section>
+
+        <!-- 2 columns section -->
+        <mj-section background-color="white">
+
+            <!-- Left image -->
+            <mj-column>
+                <mj-image width="200px"
+                          src="https://designspell.files.wordpress.com/2012/01/sciolino-paris-bw.jpg"/>
+            </mj-column>
+
+            <!-- right paragraph -->
+            <mj-column>
+                <mj-text font-style="italic"
+                         font-size="20px"
+                         font-family="Helvetica Neue"
+                         color="#626262">
+                    Find amazing places
+                </mj-text>
+
+                <mj-text color="#525252">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum enim eget magna efficitur, eu
+                    semper augue semper. Aliquam erat volutpat. Cras id dui lectus. Vestibulum sed finibus lectus.
+                </mj-text>
+
+            </mj-column>
+        </mj-section>
+
+
+        <!-- Icons -->
+        <!-- Icons -->
+
+        <mj-wrapper
+            background-url="https://www.grupoapok.com/mail/layout/bgs/footer.jpg"
+            background-repeat="no-repeat">
+            <mj-section padding-top="24px">
+                <mj-column>
+                    <mj-image width="32px" href="https://www.twitter.com/grupoapok" src="https://www.grupoapok.com/mail/layout/social/twitter-logo.jpg"/>
+                </mj-column>
+            </mj-section>
+            <mj-section>
+                <mj-column>
+                    <mj-text color="#ffffff">
+                        <a href="https://www.grupoapok.com" target="_blank">www.grupoapok.com</a>
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+            <mj-section>
+                <mj-column>
+                    <mj-text color="#ffffff">
+                        Email send by <strong>Apok</strong>
+                    </mj-text>
+                </mj-column>
+            </mj-section>
+
+
+        </mj-wrapper>
+
+
+    </mj-body>
+</mjml>
