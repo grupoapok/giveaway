@@ -2,97 +2,132 @@
     <mj-head>
         <mj-attributes>
             <mj-font name="Open Sans" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
-            <mj-all font-family="Open Sans"/>
+            <mj-all font-family="Open Sans" color="#00596B" font-size="16px"/>
+            <mj-class name="button-to-action"
+                      width="140px"
+                      height="30px"
+                      background-color="#F18800"
+                      border-radius="4px"
+                      font-weight="bold"
+                      font-size="16px"
+            />
+            <mj-class name="titles"/>
+            <mj-class name="paragraphs"/>
+            <mj-class name="images"/>
         </mj-attributes>
+        <mj-style>
+            a{
+                color: white;
+                text-decoration:none;
+            }
+        </mj-style>
+        <mj-style>
+            .button-to-action{
+                min-width:140px ;
+                padding: 10px 20px;
+                height:30px;
+                background-color:#F18800;
+                border-radius:4px;
+                font-weight:bold;
+                font-size:16px;
+            }
+        </mj-style>
     </mj-head>
     <mj-body background-color="#EFF7FB">
         <!-- Company Header -->
         <mj-section
             background-url="https://www.grupoapok.com/mail/layout/bgs/header.jpg"
-            background-repeat="no-repeat">
+            background-repeat="no-repeat"
+            padding-bottom="30px">
             <mj-column>
                 <mj-image width="88px" src="https://www.grupoapok.com/mail/layout/logo-apok.png"/>
             </mj-column>
         </mj-section>
         <!-- Image Header -->
-        <mj-section background-url="https://www.grupoapok.com/mail/layout/bgs/subject.jpg"
+        <mj-section padding-bottom="5px" background-url="https://www.grupoapok.com/mail/layout/bgs/subject.jpg"
+                    background-color="#FFFFFF"
                     background-repeat="no-repeat">
-            <mj-column padding-left="76px" width="225px">
-                <mj-text font-size="20px" color="#00596B">
-                    Únete<br/>
-                    a la pasión por las ideas.
+            <mj-column width="476px">
+                <mj-text padding-left="76px" font-weight="900" font-size="32px" color="#00596B">
+                    @yield('subject')
                 </mj-text>
             </mj-column>
 
-            <mj-column width="124px">
-                <mj-image width="88px" src="https://www.grupoapok.com/mail/september/a/subject.jpg"/>
+            <mj-column width="124px" padding="0">
+                <mj-image padding="0" width="111px" src="{{$subjectImage}}"/>
             </mj-column>
         </mj-section>
 
         <!-- Introduction Text -->
-        <mj-section background-color="#fafafa">
-            <mj-column width="400px">
+        <mj-section padding-top="0" padding-bottom="0"  background-color="#FFFFFF">
+            <mj-column width="500px">
 
-                <mj-text color="#00596B">
-                    Subscríbete en nuestro boletín con tú correo y recibe descuentos, contenido y datos importantes para
-                    tu empresa
+                <mj-text font-family="Open Sans"
+                         font-style="normal"
+                         font-weight="bold"
+                         font-size="16px"
+                         line-height="170%" color="#00596B">
+                    @yield('resume')
                 </mj-text>
-
-                <mj-button background-color="#F18800"
-                           href="#">Subscribirme
-                </mj-button>
-
             </mj-column>
         </mj-section>
 
         <!-- 2 columns section -->
         <mj-section background-color="white">
-
-            <!-- Left image -->
             <mj-column>
-                <mj-image width="200px"
-                          src="https://designspell.files.wordpress.com/2012/01/sciolino-paris-bw.jpg"/>
+                <mj-text>
+                    @yield('content')
+                </mj-text>
             </mj-column>
+        </mj-section>
 
-            <!-- right paragraph -->
+        <!-- 2 columns section -->
+        <mj-section padding="10px" background-color="#F18800">
             <mj-column>
-                <mj-text font-style="italic"
-                         font-size="20px"
-                         font-family="Helvetica Neue"
-                         color="#626262">
-                    Find amazing places
+                <mj-text font-weight="900" padding="5px" font-size="24px" color="#005F73" text-transform="uppercase"
+                         align="center"> {{ $bottonMessage ?? '¡Conoce nuestro blog!'}}
                 </mj-text>
-
-                <mj-text color="#525252">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum enim eget magna efficitur, eu
-                    semper augue semper. Aliquam erat volutpat. Cras id dui lectus. Vestibulum sed finibus lectus.
+                <mj-text align="center" color="white" font-weight="800" font-size="20px" padding="5px">
+                    <a style="color: white; text-decoration: none"
+                       href="{{ $bottonLink ?? 'https://blog.grupoapok.com/'}}">
+                        {{ $bottonLink ?? 'https://blog.grupoapok.com/'}}
+                    </a>
                 </mj-text>
-
             </mj-column>
         </mj-section>
 
 
-        <!-- Icons -->
-        <!-- Icons -->
-
         <mj-wrapper
             background-url="https://www.grupoapok.com/mail/layout/bgs/footer.jpg"
             background-repeat="no-repeat">
-            <mj-section padding-top="24px">
-                <mj-column>
-                    <mj-image width="32px" href="https://www.twitter.com/grupoapok" src="https://www.grupoapok.com/mail/layout/social/twitter-logo.jpg"/>
+            <mj-section padding-top="48px" padding="0px">
+                <mj-column padding="0px">
+                    <mj-social icon-size="40px" icon-size="30px" mode="horizontal">
+                        <mj-social-element background-color="#00596B" name="facebook-noshare"
+                                           href="https://www.facebook.com/grupoapok">
+                        </mj-social-element>
+                        <mj-social-element background-color="#00596B" name="instagram-noshare"
+                                           href="https://www.instagram.com/grupoapok/">
+                        </mj-social-element>
+                        <mj-social-element background-color="#00596B" name="twitter-noshare"
+                                           href="https://www.twitter.com/grupoapok">
+                        </mj-social-element>
+                        <mj-social-element background-color="#00596B" name="linkedin-noshare"
+                                           href="https://www.linkedin.com/company/2990066/admin/"></mj-social-element>
+
+                    </mj-social>
                 </mj-column>
             </mj-section>
-            <mj-section>
-                <mj-column>
-                    <mj-text color="#ffffff">
-                        <a href="https://www.grupoapok.com" target="_blank">www.grupoapok.com</a>
+            <mj-section padding="0px">
+                <mj-column padding="0px">
+                    <mj-text padding="5px" font-weight="bold" align="center" color="#FFFFFF">
+                        <a style="color: white; text-decoration: none" href="https://www.grupoapok.com" target="_blank">www.grupoapok.com</a>
                     </mj-text>
                 </mj-column>
             </mj-section>
-            <mj-section>
-                <mj-column>
-                    <mj-text color="#ffffff">
+            <mj-section padding="0px">
+                <mj-column padding="0px">
+                    <mj-text padding="5px" align="center" color="#FFFFFF" color="#FFFFFF">
                         Email send by <strong>Apok</strong>
                     </mj-text>
                 </mj-column>
