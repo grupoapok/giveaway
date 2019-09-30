@@ -68,9 +68,9 @@
         max-width: 100%;
       }
 
-      .mj-column-px-225 {
-        width: 225px !important;
-        max-width: 225px;
+      .mj-column-px-476 {
+        width: 476px !important;
+        max-width: 476px;
       }
 
       .mj-column-px-124 {
@@ -78,19 +78,9 @@
         max-width: 124px;
       }
 
-      .mj-column-px-400 {
-        width: 400px !important;
-        max-width: 400px;
-      }
-
-      .mj-column-per-50 {
-        width: 50% !important;
-        max-width: 50%;
-      }
-
-      .mj-column-per-33-333333333333336 {
-        width: 33.333333333333336% !important;
-        max-width: 33.333333333333336%;
+      .mj-column-px-500 {
+        width: 500px !important;
+        max-width: 500px;
       }
     }
   </style>
@@ -103,6 +93,22 @@
       td.mj-full-width-mobile {
         width: auto !important;
       }
+    }
+  </style>
+  <style type="text/css">
+    a {
+      color: white;
+      text-decoration: none;
+    }
+
+    .button-to-action {
+      min-width: 140px;
+      padding: 10px 20px;
+      height: 30px;
+      background-color: #F18800;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -126,7 +132,7 @@
         <table align="center" background="https://www.grupoapok.com/mail/layout/bgs/header.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url(https://www.grupoapok.com/mail/layout/bgs/header.jpg) top center / auto no-repeat;width:100%;">
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:30px;text-align:center;">
                 <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -144,7 +150,7 @@
                           <tbody>
                             <tr>
                               <td style="width:88px;">
-                                <img height="auto" src="https://www.grupoapok.com/mail/layout/logo-apok.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="88" />
+                                <img height="auto" src="https://www.grupoapok.com/mail/layout/logo-apok.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:16px;" width="88" />
                               </td>
                             </tr>
                           </tbody>
@@ -183,39 +189,31 @@
           <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
       
         <v:rect  style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
-        <v:fill  origin="0.5, 0" position="0.5, 0" src="https://www.grupoapok.com/mail/layout/bgs/subject.jpg" type="tile" />
+        <v:fill  origin="0.5, 0" position="0.5, 0" src="https://www.grupoapok.com/mail/layout/bgs/subject.jpg" color="#FFFFFF" type="tile" />
         <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
       <![endif]-->
-    <div style="background:url(https://www.grupoapok.com/mail/layout/bgs/subject.jpg) top center / auto no-repeat;margin:0px auto;max-width:600px;">
+    <div style="background:#FFFFFF url(https://www.grupoapok.com/mail/layout/bgs/subject.jpg) top center / auto no-repeat;margin:0px auto;max-width:600px;">
       <div style="line-height:0;font-size:0;">
-        <table align="center" background="https://www.grupoapok.com/mail/layout/bgs/subject.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:url(https://www.grupoapok.com/mail/layout/bgs/subject.jpg) top center / auto no-repeat;width:100%;">
+        <table align="center" background="https://www.grupoapok.com/mail/layout/bgs/subject.jpg" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF url(https://www.grupoapok.com/mail/layout/bgs/subject.jpg) top center / auto no-repeat;width:100%;">
           <tbody>
             <tr>
-              <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+              <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:5px;text-align:center;">
                 <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
         <tr>
       
             <td
-               class="" style="vertical-align:top;width:225px;"
+               class="" style="vertical-align:top;width:476px;"
             >
           <![endif]-->
-                <div class="mj-column-px-225 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
-                    <tbody>
-                      <tr>
-                        <td style="vertical-align:top;padding-left:76px;">
-                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
-                            <tr>
-                              <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                <div style="font-family:Open Sans;font-size:20px;line-height:1;text-align:left;color:#00596B;">Únete<br /> a la pasión por las ideas.</div>
-                              </td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </tbody>
+                <div class="mj-column-px-476 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                    <tr>
+                      <td align="left" style="font-size:0px;padding:10px 25px;padding-left:76px;word-break:break-word;">
+                        <div style="font-family:Open Sans;font-size:32px;font-weight:900;line-height:1;text-align:left;color:#00596B;">@yield('subject')</div>
+                      </td>
+                    </tr>
                   </table>
                 </div>
                 <!--[if mso | IE]>
@@ -226,20 +224,28 @@
             >
           <![endif]-->
                 <div class="mj-column-px-124 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                    <tr>
-                      <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                        <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-                          <tbody>
+                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                    <tbody>
+                      <tr>
+                        <td style="vertical-align:top;padding:0;">
+                          <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                             <tr>
-                              <td style="width:74px;">
-                                <img height="auto" src="https://www.grupoapok.com/mail/september/a/subject.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="74" />
+                              <td align="center" style="font-size:0px;padding:0;word-break:break-word;">
+                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
+                                  <tbody>
+                                    <tr>
+                                      <td style="width:111px;">
+                                        <img height="auto" src="{{$subjectImage}}" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:16px;" width="111" />
+                                      </td>
+                                    </tr>
+                                  </tbody>
+                                </table>
                               </td>
                             </tr>
-                          </tbody>
-                        </table>
-                      </td>
-                    </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </tbody>
                   </table>
                 </div>
                 <!--[if mso | IE]>
@@ -271,36 +277,25 @@
         <tr>
           <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
       <![endif]-->
-    <div style="background:#fafafa;background-color:#fafafa;margin:0px auto;max-width:600px;">
-      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#fafafa;background-color:#fafafa;width:100%;">
+    <div style="background:#FFFFFF;background-color:#FFFFFF;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#FFFFFF;background-color:#FFFFFF;width:100%;">
         <tbody>
           <tr>
-            <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+            <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:0;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
         <tr>
       
             <td
-               class="" style="vertical-align:top;width:400px;"
+               class="" style="vertical-align:top;width:500px;"
             >
           <![endif]-->
-              <div class="mj-column-px-400 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-px-500 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:13px;line-height:1;text-align:left;color:#00596B;">Subscríbete en nuestro boletín con tú correo y recibe descuentos, contenido y datos importantes para tu empresa</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="center" vertical-align="middle" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:separate;line-height:100%;">
-                        <tr>
-                          <td align="center" bgcolor="#F18800" role="presentation" style="border:none;border-radius:3px;cursor:auto;mso-padding-alt:10px 25px;background:#F18800;" valign="middle">
-                            <a href="#" style="display:inline-block;background:#F18800;color:#ffffff;font-family:Open Sans;font-size:13px;font-weight:normal;line-height:120%;margin:0;text-decoration:none;text-transform:none;padding:10px 25px;mso-padding-alt:0px;border-radius:3px;" target="_blank"> Subscribirme </a>
-                          </td>
-                        </tr>
-                      </table>
+                      <div style="font-family:Open Sans;font-size:16px;font-style:normal;font-weight:bold;line-height:170%;text-align:left;color:#00596B;">@yield('resume')</div>
                     </td>
                   </tr>
                 </table>
@@ -339,49 +334,16 @@
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
         <tr>
-      <![endif]-->
-              <!-- Left image -->
-              <!--[if mso | IE]>
+      
             <td
-               class="" style="vertical-align:top;width:300px;"
+               class="" style="vertical-align:top;width:600px;"
             >
           <![endif]-->
-              <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                  <tr>
-                    <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-                        <tbody>
-                          <tr>
-                            <td style="width:200px;">
-                              <img height="auto" src="https://designspell.files.wordpress.com/2012/01/sciolino-paris-bw.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="200" />
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </div>
-              <!--[if mso | IE]>
-            </td>
-          <![endif]-->
-              <!-- right paragraph -->
-              <!--[if mso | IE]>
-            <td
-               class="" style="vertical-align:top;width:300px;"
-            >
-          <![endif]-->
-              <div class="mj-column-per-50 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Helvetica Neue;font-size:20px;font-style:italic;line-height:1;text-align:left;color:#626262;">Find amazing places</div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:13px;line-height:1;text-align:left;color:#525252;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin rutrum enim eget magna efficitur, eu semper augue semper. Aliquam erat volutpat. Cras id dui lectus. Vestibulum sed finibus lectus.</div>
+                      <div style="font-family:Open Sans;font-size:16px;line-height:1;text-align:left;color:#00596B;">@yield('content')</div>
                     </td>
                   </tr>
                 </table>
@@ -403,9 +365,61 @@
         </tr>
       </table>
       <![endif]-->
-    <!-- Icons -->
-    <!-- Icons -->
+    <!-- 2 columns section -->
     <!--[if mso | IE]>
+      <table
+         align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
+      >
+        <tr>
+          <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
+      <![endif]-->
+    <div style="background:#F18800;background-color:#F18800;margin:0px auto;max-width:600px;">
+      <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#F18800;background-color:#F18800;width:100%;">
+        <tbody>
+          <tr>
+            <td style="direction:ltr;font-size:0px;padding:10px;text-align:center;">
+              <!--[if mso | IE]>
+                  <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                
+        <tr>
+      
+            <td
+               class="" style="vertical-align:top;width:580px;"
+            >
+          <![endif]-->
+              <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
+                  <tr>
+                    <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
+                      <div style="font-family:Open Sans;font-size:24px;font-weight:900;line-height:1;text-align:center;text-transform:uppercase;color:#005F73;">{{ $bottonMessage ?? '¡Conoce nuestro blog!'}}</div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
+                      <div style="font-family:Open Sans;font-size:20px;font-weight:800;line-height:1;text-align:center;color:white;"><a style="color: white; text-decoration: none" href="{{ $bottonLink ?? 'https://blog.grupoapok.com/'}}">
+                          {{ $bottonLink ?? 'https://blog.grupoapok.com/'}}
+                        </a></div>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+              <!--[if mso | IE]>
+            </td>
+          
+        </tr>
+      
+                  </table>
+                <![endif]-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--[if mso | IE]>
+          </td>
+        </tr>
+      </table>
+      
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
       >
@@ -440,81 +454,119 @@
                   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
                     <tbody>
                       <tr>
-                        <td style="direction:ltr;font-size:0px;padding:20px 0;padding-top:24px;text-align:center;">
+                        <td style="direction:ltr;font-size:0px;padding:0px;padding-top:48px;text-align:center;">
                           <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
         <tr>
       
             <td
-               class="" style="vertical-align:top;width:200px;"
+               class="" style="vertical-align:top;width:600px;"
             >
           <![endif]-->
-                          <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                              <tr>
-                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-                                    <tbody>
+                          <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                              <tbody>
+                                <tr>
+                                  <td style="vertical-align:top;padding:0px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                                       <tr>
-                                        <td style="width:32px;">
-                                          <a href="https://www.twitter.com/grupoapok" target="_blank">
-                                            <img height="auto" src="https://www.grupoapok.com/mail/layout/social/twitter-logo.jpg" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="32" />
-                                          </a>
+                                        <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
+                                          <!--[if mso | IE]>
+      <table
+         align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
+      >
+        <tr>
+      
+              <td>
+            <![endif]-->
+                                          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                                            <tr>
+                                              <td style="padding:4px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#00596B;border-radius:3px;width:40px;">
+                                                  <tr>
+                                                    <td style="font-size:0;height:40px;vertical-align:middle;width:40px;">
+                                                      <a href="https://www.facebook.com/grupoapok" target="_blank">
+                                                        <img height="40" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/facebook.png" style="border-radius:3px;display:block;" width="40" />
+                                                      </a>
+                                                    </td>
+                                                  </tr>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!--[if mso | IE]>
+              </td>
+            
+              <td>
+            <![endif]-->
+                                          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                                            <tr>
+                                              <td style="padding:4px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#00596B;border-radius:3px;width:40px;">
+                                                  <tr>
+                                                    <td style="font-size:0;height:40px;vertical-align:middle;width:40px;">
+                                                      <a href="https://www.instagram.com/grupoapok/" target="_blank">
+                                                        <img height="40" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/instagram.png" style="border-radius:3px;display:block;" width="40" />
+                                                      </a>
+                                                    </td>
+                                                  </tr>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!--[if mso | IE]>
+              </td>
+            
+              <td>
+            <![endif]-->
+                                          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                                            <tr>
+                                              <td style="padding:4px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#00596B;border-radius:3px;width:40px;">
+                                                  <tr>
+                                                    <td style="font-size:0;height:40px;vertical-align:middle;width:40px;">
+                                                      <a href="https://www.twitter.com/grupoapok" target="_blank">
+                                                        <img height="40" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/twitter.png" style="border-radius:3px;display:block;" width="40" />
+                                                      </a>
+                                                    </td>
+                                                  </tr>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!--[if mso | IE]>
+              </td>
+            
+              <td>
+            <![endif]-->
+                                          <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
+                                            <tr>
+                                              <td style="padding:4px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="background:#00596B;border-radius:3px;width:40px;">
+                                                  <tr>
+                                                    <td style="font-size:0;height:40px;vertical-align:middle;width:40px;">
+                                                      <a href="https://www.linkedin.com/company/2990066/admin/" target="_blank">
+                                                        <img height="40" src="https://www.mailjet.com/images/theme/v1/icons/ico-social/linkedin.png" style="border-radius:3px;display:block;" width="40" />
+                                                      </a>
+                                                    </td>
+                                                  </tr>
+                                                </table>
+                                              </td>
+                                            </tr>
+                                          </table>
+                                          <!--[if mso | IE]>
+              </td>
+            
+          </tr>
+        </table>
+      <![endif]-->
                                         </td>
                                       </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </div>
-                          <!--[if mso | IE]>
-            </td>
-          
-            <td
-               class="" style="vertical-align:top;width:200px;"
-            >
-          <![endif]-->
-                          <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                              <tr>
-                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-                                    <tbody>
-                                      <tr>
-                                        <td style="width:100px;">
-                                          <img height="auto" src="http://191n.mj.am/img/191n/3s/x01.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" />
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </div>
-                          <!--[if mso | IE]>
-            </td>
-          
-            <td
-               class="" style="vertical-align:top;width:200px;"
-            >
-          <![endif]-->
-                          <div class="mj-column-per-33-333333333333336 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                              <tr>
-                                <td align="center" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                  <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="border-collapse:collapse;border-spacing:0px;">
-                                    <tbody>
-                                      <tr>
-                                        <td style="width:100px;">
-                                          <img height="auto" src="http://191n.mj.am/img/191n/3s/x0s.png" style="border:0;display:block;outline:none;text-decoration:none;height:auto;width:100%;font-size:13px;" width="100" />
-                                        </td>
-                                      </tr>
-                                    </tbody>
-                                  </table>
-                                </td>
-                              </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
                             </table>
                           </div>
                           <!--[if mso | IE]>
@@ -552,7 +604,7 @@
                   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
                     <tbody>
                       <tr>
-                        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                        <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
                           <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -563,12 +615,20 @@
             >
           <![endif]-->
                           <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                              <tr>
-                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                  <div style="font-family:Open Sans;font-size:13px;line-height:1;text-align:left;color:#ffffff;"><a href="https://www.grupoapok.com" target="_blank">www.grupoapok.com</a></div>
-                                </td>
-                              </tr>
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                              <tbody>
+                                <tr>
+                                  <td style="vertical-align:top;padding:0px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                                      <tr>
+                                        <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
+                                          <div style="font-family:Open Sans;font-size:16px;font-weight:bold;line-height:1;text-align:center;color:#FFFFFF;"><a style="color: white; text-decoration: none" href="https://www.grupoapok.com" target="_blank">www.grupoapok.com</a></div>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
                             </table>
                           </div>
                           <!--[if mso | IE]>
@@ -606,7 +666,7 @@
                   <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="width:100%;">
                     <tbody>
                       <tr>
-                        <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
+                        <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
                           <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                 
@@ -617,12 +677,20 @@
             >
           <![endif]-->
                           <div class="mj-column-per-100 mj-outlook-group-fix" style="font-size:0px;text-align:left;direction:ltr;display:inline-block;vertical-align:top;width:100%;">
-                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
-                              <tr>
-                                <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                                  <div style="font-family:Open Sans;font-size:13px;line-height:1;text-align:left;color:#ffffff;">Email send by <strong>Apok</strong></div>
-                                </td>
-                              </tr>
+                            <table border="0" cellpadding="0" cellspacing="0" role="presentation" width="100%">
+                              <tbody>
+                                <tr>
+                                  <td style="vertical-align:top;padding:0px;">
+                                    <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
+                                      <tr>
+                                        <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
+                                          <div style="font-family:Open Sans;font-size:16px;line-height:1;text-align:center;color:#FFFFFF;">Email send by <strong>Apok</strong></div>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
                             </table>
                           </div>
                           <!--[if mso | IE]>

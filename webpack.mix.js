@@ -22,7 +22,8 @@ mix.js('resources/js/app.js', 'public/js')
     .options({
         processCssUrls: false
     })
-    .copyDirectory('resources/img','public/img').mjml();;
+    .copyDirectory('resources/img','public/img')
+    .mjml();
 
 if (mix.inProduction()) {
     mix.version();

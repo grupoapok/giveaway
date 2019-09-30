@@ -13,7 +13,7 @@ class TestMailTemplate extends Command
      *
      * @var string
      */
-    protected $signature = 'test:mail-layout';
+    protected $signature = 'test:mail-layout {email=dev+test@grupoapok.com}';
 
     /**
      * The console command description.
@@ -39,6 +39,6 @@ class TestMailTemplate extends Command
      */
     public function handle()
     {
-        Mail::to('dev+test@grupoapok.com')->send(new TestLayout());
+        Mail::to($this->argument('email'))->send(new TestLayout());
     }
 }

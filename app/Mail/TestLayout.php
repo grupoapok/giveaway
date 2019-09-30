@@ -11,6 +11,8 @@ class TestLayout extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $source;
+    public $referral;
     /**
      * Create a new message instance.
      *
@@ -18,7 +20,7 @@ class TestLayout extends Mailable
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
@@ -28,6 +30,6 @@ class TestLayout extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.layout',['messaje'=>['subject'=>'hey']]);
+        return $this->view('mail.new_subscriber');
     }
 }
