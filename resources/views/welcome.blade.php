@@ -20,10 +20,13 @@
 <script src="{{ mix('/js/app.js') }}"></script>
 
 <script>
+
     window.fbAsyncInit = function() {
         FB.init({
             appId            : '{{ config('facebook.app_id') }}',
             autoLogAppEvents : true,
+            status           : true,
+            cookie           : true,
             xfbml            : true,
             version          : 'v4.0'
         });
