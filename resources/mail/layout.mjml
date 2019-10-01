@@ -39,7 +39,7 @@
             background-url="https://www.grupoapok.com/mail/layout/bgs/header.jpg"
             background-repeat="no-repeat"
             padding-bottom="30px"
-            margin-top="30px">
+           >
             <mj-column>
                 <mj-image width="88px" src="https://www.grupoapok.com/mail/layout/logo-apok.png"/>
             </mj-column>
