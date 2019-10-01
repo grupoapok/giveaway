@@ -1,8 +1,8 @@
 <mjml>
     <mj-head>
         <mj-attributes>
-            <mj-font name="Open Sans" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
-            <mj-all font-family="Open Sans" color="#00596B" font-size="16px"/>
+            <mj-font name="Open Sans, sans-serif" href="https://fonts.googleapis.com/css?family=Open+Sans"/>
+            <mj-all font-family="Open Sans, sans-serif" color="#00596B" font-size="16px"/>
             <mj-class name="button-to-action"
                       width="140px"
                       height="30px"
@@ -38,7 +38,8 @@
         <mj-section
             background-url="https://www.grupoapok.com/mail/layout/bgs/header.jpg"
             background-repeat="no-repeat"
-            padding-bottom="30px">
+            padding-bottom="30px"
+            margin-top="30px">
             <mj-column>
                 <mj-image width="88px" src="https://www.grupoapok.com/mail/layout/logo-apok.png"/>
             </mj-column>
@@ -62,7 +63,7 @@
         <mj-section padding-top="0" padding-bottom="0"  background-color="#FFFFFF">
             <mj-column width="500px">
 
-                <mj-text font-family="Open Sans"
+                <mj-text font-family="Open Sans, sans-serif"
                          font-style="normal"
                          font-weight="bold"
                          font-size="16px"

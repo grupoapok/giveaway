@@ -12,7 +12,7 @@
     <p style="align-items: center;text-align: center; margin: 20px;">
         <br>
         <br>
-        <a class="button-to-action" href="{{ url("/subscriber/{$token}") }}>VER MIS TICKETS</a>
+        <a class="button-to-action" href="{{ url("/subscriber/{$token}") }}">VER MIS TICKETS</a>
         <br>
         <br>
     </p>
