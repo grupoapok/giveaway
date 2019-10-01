@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Subscriber extends Model {
-    protected $fillable = ["name", "email"];
+    protected $fillable = ["name", "email","referral"];
     protected $hidden = ["updated_at", "created_at" ,"ipinfo"];
     protected $with = ["tickets"];
 

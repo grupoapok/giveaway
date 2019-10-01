@@ -100,7 +100,7 @@
         <mj-wrapper
             background-url="https://www.grupoapok.com/mail/layout/bgs/footer.jpg"
             background-repeat="no-repeat">
-            <mj-section padding-top="48px" padding="0px">
+                    <mj-section padding-top="48px" padding="0px">
                 <mj-column padding="0px">
                     <mj-social icon-size="40px" icon-size="30px" mode="horizontal">
                         <mj-social-element background-color="#00596B" name="facebook-noshare"

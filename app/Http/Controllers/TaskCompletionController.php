@@ -56,15 +56,6 @@ class TaskCompletionController extends Controller {
             }
 
             $user->load("tickets");
-
-            Mail::to($user->email)
-                ->send(
-                    new TaskCompleted(
-                        $task,
-                        count($user->tickets),
-                        Cookie::get("lang")
-                    )
-                );
         }
     }
 

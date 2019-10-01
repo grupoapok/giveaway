@@ -59,7 +59,7 @@ class SubscriberController extends Controller {
 
             Mail::to($newSubscriber->email)
                 ->send(
-                    new NewSubscriber($newSubscriber->token)
+                    new NewSubscriber($newSubscriber->token, $newSubscriber->name)
                 );
 
             $subscriber = $newSubscriber;
