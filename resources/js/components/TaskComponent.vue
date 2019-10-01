@@ -9,8 +9,8 @@
             <font-awesome-icon v-else :icon="task.icon" class="icon"></font-awesome-icon>
         </template>
 
-        <font-awesome-icon icon="check" class="text-secondary" size="3x"
-                           v-if="!canExecute"></font-awesome-icon>
+        <font-awesome-icon icon="check" class="text-secondary" size="3x" v-if="!canExecute"></font-awesome-icon>
+        <span class="small" v-if="!canExecute">{{task.status}}</span>
         <template v-else>
             <p v-if="lang[task.type]" v-html="lang[task.type]">{{ task.description }}</p>
             <p v-else>{{ task.description }}</p>
@@ -91,7 +91,8 @@
                     type: null,
                     repeatable: false,
                     tickets: 0,
-                    extras: []
+                    extras: [],
+                    status:null
                 }
             },
             autoExecute: {

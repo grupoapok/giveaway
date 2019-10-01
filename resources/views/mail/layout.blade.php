@@ -211,7 +211,7 @@
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                     <tr>
                       <td align="left" style="font-size:0px;padding:10px 25px;padding-left:76px;word-break:break-word;">
-                        <div style="font-family:Open Sans;font-size:32px;font-weight:900;line-height:1;text-align:left;color:#00596B;">@yield('subject')</div>
+                        <div style="font-family:Open Sans, sans-serif;font-size:32px;font-weight:900;line-height:1;text-align:left;color:#00596B;">@yield('subject')</div>
                       </td>
                     </tr>
                   </table>
@@ -295,7 +295,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:16px;font-style:normal;font-weight:bold;line-height:170%;text-align:left;color:#00596B;">@yield('resume')</div>
+                      <div style="font-family:Open Sans, sans-serif;font-size:16px;font-style:normal;font-weight:bold;line-height:170%;text-align:left;color:#00596B;">@yield('resume')</div>
                     </td>
                   </tr>
                 </table>
@@ -343,7 +343,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:16px;line-height:1;text-align:left;color:#00596B;">@yield('content')</div>
+                      <div style="font-family:Open Sans, sans-serif;font-size:16px;line-height:1;text-align:left;color:#00596B;">@yield('content')</div>
                     </td>
                   </tr>
                 </table>
@@ -391,12 +391,12 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:24px;font-weight:900;line-height:1;text-align:center;text-transform:uppercase;color:#005F73;">{{ $bottonMessage ?? '¡Conoce nuestro blog!'}}</div>
+                      <div style="font-family:Open Sans, sans-serif;font-size:24px;font-weight:900;line-height:1;text-align:center;text-transform:uppercase;color:#005F73;">{{ $bottonMessage ?? '¡Conoce nuestro blog!'}}</div>
                     </td>
                   </tr>
                   <tr>
                     <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:20px;font-weight:800;line-height:1;text-align:center;color:white;"><a style="color: white; text-decoration: none" href="{{ $bottonLink ?? 'https://blog.grupoapok.com/'}}">
+                      <div style="font-family:Open Sans, sans-serif;font-size:20px;font-weight:800;line-height:1;text-align:center;color:white;"><a style="color: white; text-decoration: none" href="{{ $bottonLink ?? 'https://blog.grupoapok.com/'}}">
                           {{ $bottonLink ?? 'https://blog.grupoapok.com/'}}
                         </a></div>
                     </td>
@@ -622,7 +622,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                                       <tr>
                                         <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
-                                          <div style="font-family:Open Sans;font-size:16px;font-weight:bold;line-height:1;text-align:center;color:#FFFFFF;"><a style="color: white; text-decoration: none" href="https://www.grupoapok.com" target="_blank">www.grupoapok.com</a></div>
+                                          <div style="font-family:Open Sans, sans-serif;font-size:16px;font-weight:bold;line-height:1;text-align:center;color:#FFFFFF;"><a style="color: white; text-decoration: none" href="https://www.grupoapok.com" target="_blank">www.grupoapok.com</a></div>
                                         </td>
                                       </tr>
                                     </table>
@@ -684,7 +684,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                                       <tr>
                                         <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
-                                          <div style="font-family:Open Sans;font-size:16px;line-height:1;text-align:center;color:#FFFFFF;">Email send by <strong>Apok</strong></div>
+                                          <div style="font-family:Open Sans, sans-serif;font-size:16px;line-height:1;text-align:center;color:#FFFFFF;">Email send by <strong>Apok</strong></div>
                                         </td>
                                       </tr>
                                     </table>

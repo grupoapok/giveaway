@@ -7,7 +7,7 @@
     <div class="col-12">
         <h1>Política de Privacidad</h1>
         <p>
-            <small>Última actualización el 20 septiembre de 2019</small>
+            <small>Última actualización el 28 septiembre de 2019</small>
         </p>
         <p>Mediante la aceptación
             de la presente Política de Privacidad prestas tu consentimiento informado, expreso, libre e inequívoco
@@ -27,18 +27,15 @@
         </ul>
         </p>
         <p>APOK C.A garantiza que se han aplicado las medidas de seguridad tanto organizativas como técnicas requeridas
-            para
-            garantizar la seguridad de los datos.</p>
-        <p>La presente Política de Privacidad será válida únicamente para los datos de carácter personal obtenidos
-            en el
-            Sitio Web, no siendo aplicable para aquella información recabada por terceros en otras páginas web,
-            incluso si
-            éstas se encuentran enlazadas por el Sitio Web.</p>
+            para garantizar la seguridad de los datos.</p>
+        <p>La presente Política de Privacidad será válida únicamente para los datos de carácter personal obtenidos en el
+            Sitio Web, no siendo aplicable para aquella información recabada por terceros en otras páginas web, incluso
+            si éstas se encuentran enlazadas por el Sitio Web.
+        </p>
         <p>Con ello manifiesto mi compromiso por mantener y garantizar las relaciones comerciales de forma segura
-            mediante
-            la protección de los datos personales y garantizando el derecho a la privacidad de cada uno de los
-            usuarios de
-            nuestro sitio web.</p>
+            mediante la protección de los datos personales y garantizando el derecho a la privacidad de cada uno de los
+            usuarios de nuestro sitio web.
+        </p>
 
         <h4>1. ¿QUÉ SON LOS DATOS PERSONALES?</h4>
         <p> Es cualquier información relativa a una persona que esta nos facilita cuando visita nuestro sitio web,
@@ -83,9 +80,11 @@
             suscripciones se recaban datos, los cuales se almacenan en una base de datos, con la exclusiva finalidad de
             envío
             de comunicaciones electrónicas, tales como: boletines (newsletters), nuevas entradas (posts), ofertas
-            comerciales, así como otras comunicaciones que Apok C.A entiende interesantes para sus USUARIOS. Los campos
-            marcados como de cumplimentación obligatoria son imprescindibles para realizar la finalidad expresada.
-            Asimismo, podrá dar cumplimiento mediante los datos a los requerimientos solicitados por los USUARIOS. </p>
+            comerciales, así como otras comunicaciones que Apok C.A entiende interesantes para sus USUARIOS. </p>
+
+        <p>Los campos marcados como de cumplimentación obligatoria son imprescindibles para realizar la finalidad
+            expresada. Asimismo, podrá dar cumplimiento mediante los datos a los requerimientos solicitados por los
+            USUARIOS. </p>
         <p>En definitiva, la FINALIDAD es la siguiente: Ofrecer información sobre productos y servicios de APOK, C.A o
             sus asociados.
             Únicamente el titular tendrá acceso a sus datos, y bajo ningún concepto, estos datos serán cedidos,
@@ -117,8 +116,8 @@
             datos personales facilitados debiendo
             aportar la información completa y correcta en los distintos formularios de captación de datos.</p>
         <h4> 4. CUMPLIMIENTO DE LA NORMATIVA DE APLICACIÓN</h4>
-        <p> Apok C.A cumple con el Reglamento General de Protección de Datos (RGPD), velando por garantizar un correcto
-            uso y tratamiento de los datos personales del usuario.</p>
+        <p> Apok C.A vela por garantizar un correcto uso y tratamiento de los datos personales del usuario según las
+            normas vigentes en el territorio venezolano.</p>
         <p> En cumplimiento de lo establecido en la normativa, le informamos que los datos suministrados, así como
             aquellos datos derivados de su navegación, podrán ser almacenados en los ficheros de Apok C.A y tratados
             para la finalidad de atender su solicitud y el mantenimiento de la relación que se establezca en los

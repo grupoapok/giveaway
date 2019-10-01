@@ -20,6 +20,7 @@ class Task extends Model {
     ];
 
     var $completed = false;
+    var $status = null;
 
     public function toArray() {
         return array_merge(["completed" => $this->completed],parent::toArray());

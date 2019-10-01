@@ -15,6 +15,7 @@ use App\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 
@@ -75,7 +76,11 @@ class SubscriberController extends Controller {
             $incompleteManualTasks = TaskCompletion::bySubscriber($user->id)->incomplete()->manual()->distinct("task_id")->pluck("task_id")->toArray();
             foreach($tasks as $t) {
                 $t->completed = in_array($t->id, $completedTasks) || in_array($t->id, $incompleteManualTasks);
+                $completion = TaskCompletion::bySubscriber($user->id)->byTask($t->id)->first();
+                $t->status = is_object($completion)? __('tasks.'.$completion->status): null;
+
             }
+
         }
         return TaskResource::collection($tasks);
     }
