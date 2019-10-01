@@ -16,8 +16,9 @@ class NewSubscriber extends Mailable {
      * Create a new message instance.
      *
      * @param $token
+     * @param $name
      */
-    public function __construct($token,$name) {
+    public function __construct($token, $name) {
         $this->token = $token;
         $this->name = $name;
     }

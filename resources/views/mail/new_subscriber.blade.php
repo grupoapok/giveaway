@@ -1,5 +1,4 @@
 @extends('mail.layout',[
-    'actionURL'=>'https://concurso.grupoapok.com?source=email?referral=apok',
     'subjectImage'=> 'https://www.grupoapok.com/mail/september/a/subject.png'
 ])
 @section('subject')
@@ -13,7 +12,7 @@
     <p style="align-items: center;text-align: center; margin: 20px;">
         <br>
         <br>
-        <a class="button-to-action" href="{{url()}}/subscriber/{{$token}}">VER MIS TICKETS</a>
+        <a class="button-to-action" href="{{ url("/subscriber/{$token}") }}>VER MIS TICKETS</a>
         <br>
         <br>
     </p>
@@ -24,7 +23,7 @@
     <p style="align-items: center;text-align: center; margin: 20px;">
         <br>
         <br>
-        <a class="button-to-action" href="{{url()}}/subscriber/{{$token}}">QUIERO MÁS TICKETS</a>
+        <a class="button-to-action" href="{{ url("/subscriber/{$token}") }}">QUIERO MÁS TICKETS</a>
         <br>
         <br>
     </p>
