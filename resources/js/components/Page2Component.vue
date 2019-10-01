@@ -41,7 +41,6 @@
                 <tickets :tickets="ticketsList" :tooltip-header="lang.task_completed_at"/>
             </b-modal>
         </template>
-
     </layout>
 </template>
 

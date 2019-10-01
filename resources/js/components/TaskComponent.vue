@@ -153,7 +153,6 @@
                             this.notifyTaskCompleted()
                         })
                         .catch(error => {
-                            console.error(error);
                             if (error.response && error.response.data.url) {
                                 window.location = error.response.data.url;
                             }
@@ -169,6 +168,12 @@
                         this.extraModel[e.name] = '';
                     })
                 }
+                if (this.task.type === 'facebook' && this.$cookies.get('facebook_info')) {
+                    const fbExtras = JSON.parse(this.$cookies.get('facebook_info'));
+                    Object.keys(fbExtras).forEach(k => {
+                        extras[k] = fbExtras[k]
+                    })
+                }
                 return this.$axios.post(`/tasks/${this.task.id}/complete`, {
                     data: {extras}
                 }).then(({data}) => data.data);
@@ -179,7 +184,67 @@
                 }, 1000) //Wait 1 sec for the animation to finish
             },
             facebookTask() {
-                return new Promise((resolve, reject) => {
+                const loginPromise = new Promise((resolve, reject) => {
+                    FB.getLoginStatus(response => {
+                        if (response.status === 'connected') {
+                            const uid = response.authResponse.userID;
+                            const accessToken = response.authResponse.accessToken;
+                            resolve({
+                                uid,
+                                accessToken
+                            })
+                        } else {
+                            FB.login(response => {
+                                if (response.authResponse) {
+                                    const uid = response.authResponse.userID;
+                                    const accessToken = response.authResponse.accessToken;
+                                    resolve({
+                                        uid,
+                                        accessToken
+                                    })
+                                } else {
+                                    reject(new Error("facebook login cancelled"));
+                                }
+                            }, {
+                                scopes: 'email,user_age_range,user_gender,user_photos'
+                            })
+                        }
+                    })
+                });
+
+                return loginPromise
+                    .then(response => {
+                        this.$cookies.set('facebook_token', response.accessToken);
+                        this.$cookies.set('facebook_userId', response.uid);
+                        return new Promise((res, rej) => {
+                            FB.api('/me', r => {
+                                this.$cookies.set('facebook_info', r);
+                                res()
+                            })
+                        });
+                    })
+                    .then(() => {
+                        return new Promise((resolve, reject) => {
+                            FB.ui({
+                                method: 'share_open_graph',
+                                action_type: 'og.likes',
+                                action_properties: JSON.stringify({
+                                    object: `${process.env.MIX_APP_URL}`,
+                                })
+                            }, function (response) {
+                                if (response && !response.error_message) {
+                                    resolve();
+                                } else {
+                                    reject('error');
+                                }
+                            });
+                        });
+                    })
+                    .catch(e => {
+                        throw e
+                    })
+
+                /*return new Promise((resolve, reject) => {
                     FB.ui({
                         method: 'share_open_graph',
                         action_type: 'og.likes',
@@ -187,13 +252,14 @@
                             object: `${process.env.MIX_APP_URL}`,
                         })
                     }, function (response) {
+                        console.log(response);
                         if (response && !response.error_message) {
                             resolve();
                         } else {
                             reject('error');
                         }
                     });
-                });
+                });*/
             },
             linkedInTask() {
                 return this.$axios.post('/share/linkedin')
@@ -203,7 +269,7 @@
             },
             instagramTask() {
                 return new Promise((resolve) => {
-                    window.open('https://www.instagram.com/grupoapok', '_blank');
+                    window.open(process.env.MIX_INSTAGRAM_URL, '_blank');
                     resolve();
                 })
             }
