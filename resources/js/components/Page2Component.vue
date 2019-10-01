@@ -9,7 +9,7 @@
                 <p id="tasks-title" class="text-secondary" v-html="lang.available_tasks"></p>
 
                 <div id="tasks">
-                    <task class="task mb-4 mb-xl-0"
+                    <task class="task mb-4"
                           :key="`task_${i}`"
                           v-for="(t,i) in tasks"
                           @taskCompleted="completeTask"
