@@ -1,24 +1,41 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}"/>
-    <title></title>
-</head>
-<body>
+@extends('mail.layout',[
+    'subjectImage'=> 'https://www.grupoapok.com/mail/september/a/subject.png'
+])
+@section('subject')
+    ¡{{$name}}<br/>
+    ya estás participando!
+@endsection
+@section('resume')
+    Se ha generado tu primer ticket del sorteo, por lo que ya estás participando para ganar una Página Web para tu marca o negocio.
+@endsection
+@section('content')
+    <p style="align-items: center;text-align: center; margin: 20px;">
+        <br>
+        <br>
+        <a class="button-to-action" href="{{ url("/subscriber/{$token}") }}">VER MIS TICKETS</a>
+        <br>
+        <br>
+    </p>
 
-<div class="container">
-    <div class="row">
-        <div class="col text-center">
-            <h2 class="text-secondary font-weight-bolder mb-5">@lang("mail.thanks")</h2>
-            <p>{{ __("mail.new_subscriber_subject", ["title" => config('app.name')]) }}</p>
-            <p>
-                <a href="{{ route("returning_user", $token) }}">@lang("mail.go_back_link_text")</a>
-            </p>
-        </div>
-    </div>
-</div>
+    <p  style="align-items: center;text-align: center;">
+        Si quieres obtener más tickets y aumentar tus probabilidades de ganar, recuerda que debes cumplir todas las misiones disponibles en la página del sorteo.
+    </p>
+    <p style="align-items: center;text-align: center; margin: 20px;">
+        <br>
+        <br>
+        <a class="button-to-action" href="{{ url("/subscriber/{$token}") }}">QUIERO MÁS TICKETS</a>
+        <br>
+        <br>
+    </p>
+    <p style="align-items: center;text-align: center;">
+        EL GANADOR SERÁ ANUNCIADO EL<br/>
+        <span style="font-size: 24px; color: #F18800;" > <strong> 20 SEPTIEMBRE 2019</strong></span><br/>
+          EN NUESTRAS REDES SOCIALES
+    </p>
+    <br>
+    <br>
+    <p><strong>¿Serás tú el/la ganador@?</strong></p>
+    <p><strong>Esperamos que sí.</strong></p>
+    <p><strong>¡Mucha Suerte!</strong></p>
+@endsection
 
-</body>
-</html>

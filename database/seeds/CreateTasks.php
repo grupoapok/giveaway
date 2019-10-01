@@ -14,33 +14,44 @@ class CreateTasks extends Seeder {
             [
                 "description" => "",
                 "type" => "twitter",
-                "repeatable" => true,
-                "tickets" => 3
+                "repeatable" => false,
+                "tickets" => 2,
+                "order" => 1,
+                "confirm_type"=>'auto'
             ],
             [
                 "description" => "",
                 "type" => "facebook",
                 "repeatable" => false,
-                "tickets" => 4
+                "tickets" => 2,
+                "order" => 2,
+                "confirm_type"=>'auto'
             ],
             [
                 "description" => "",
                 "type" => "linkedin",
                 "repeatable" => false,
-                "tickets" => 5
+                "tickets" => 5,
+                "order" => 3,
+                "confirm_type"=>'auto'
             ],
             [
                 "description" => "",
                 "type" => "instagram",
                 "tickets" => 2,
                 "repeatable" => false,
+                "order" => 4,
                 "confirm_type" => "manual"
             ],
             [
                 "description" => "",
                 "repeatable" => false,
                 "type" => "form",
-                "tickets" => 2
+                "tickets" => 2,
+                 "order" => 5,
+                "url" => 'https://docs.google.com/forms/d/e/1FAIpQLSeNeIEz6qjQBPQoFrOSSZORzmf6YpUfEaQxDdyZ4WDoZBy3gg/viewform?usp=pp_url&entry.34967049=:email',
+                "confirm_type"=>'auto',
+                "extras"=> '[{"name": "username", "label": "Instagram Username"}]'
             ],
         ];
         foreach($tasks as $t) {

@@ -30,3 +30,8 @@ Route::get('/privacy', function () {
 Route::get('/terms-and-conditions', function () {
     return view('legal.conditions');
 });
+
+Route::get('/test/mail-layout', function () {
+    return view('mail.new_subscriber');
+});
+
