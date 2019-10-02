@@ -1,7 +1,7 @@
 <template>
     <ul>
         <li v-for="(link, i) in links">
-            <a :href="links[i].url" target="_blank">
+            <a :href="links[i].url" target="_blank" @click="() => registerEvent(link)">
                 <font-awesome-icon :icon="['fab', link.name]" class="logo"></font-awesome-icon>
             </a>
         </li>
@@ -14,6 +14,11 @@
         data() {
             return {
                 links: []
+            }
+        },
+        methods: {
+            registerEvent(data) {
+                fbq('trackCustom', 'SocialLinkClick', data);
             }
         },
         mounted() {

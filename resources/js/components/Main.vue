@@ -54,6 +54,7 @@
             ...mapActions(['updateUserInfo', 'updateTicketsList'])
         },
         mounted() {
+            fbq('track', 'PageView');
             if (this.$cookies.get("token")) {
                 this.updateTicketsList();
                 this.$axios.get('/subscribers')

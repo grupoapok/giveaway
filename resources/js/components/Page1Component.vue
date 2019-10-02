@@ -66,6 +66,7 @@
                         this.updateUserInfo({name, email, tickets});
                         this.updateTicketsList();
                         this.loading = false;
+                        fbq('track', 'CompleteRegistration');
                         this.$router.push('/step2');
                     })
                     .catch(() => {
@@ -75,6 +76,9 @@
         },
         mounted() {
             this.alignElementsToLeft();
+            fbq('track', 'ViewContent', {
+                page: "Register Page"
+            });
         }
     }
 </script>

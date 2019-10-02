@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
   <title>
@@ -122,7 +122,7 @@
       >
         <tr>
           <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
-      
+
         <v:rect  style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
         <v:fill  origin="0.5, 0" position="0.5, 0" src="https://www.grupoapok.com/mail/layout/bgs/header.jpg" type="tile" />
         <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
@@ -135,9 +135,9 @@
               <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:30px;text-align:center;">
                 <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
+
         <tr>
-      
+
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -161,9 +161,9 @@
                 </div>
                 <!--[if mso | IE]>
             </td>
-          
+
         </tr>
-      
+
                   </table>
                 <![endif]-->
               </td>
@@ -175,7 +175,7 @@
     <!--[if mso | IE]>
         </v:textbox>
       </v:rect>
-    
+
           </td>
         </tr>
       </table>
@@ -187,7 +187,7 @@
       >
         <tr>
           <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
-      
+
         <v:rect  style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
         <v:fill  origin="0.5, 0" position="0.5, 0" src="https://www.grupoapok.com/mail/layout/bgs/subject.jpg" color="#FFFFFF" type="tile" />
         <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
@@ -200,9 +200,9 @@
               <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:5px;text-align:center;">
                 <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
+
         <tr>
-      
+
             <td
                class="" style="vertical-align:top;width:476px;"
             >
@@ -211,14 +211,14 @@
                   <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                     <tr>
                       <td align="left" style="font-size:0px;padding:10px 25px;padding-left:76px;word-break:break-word;">
-                        <div style="font-family:Open Sans;font-size:32px;font-weight:900;line-height:1;text-align:left;color:#00596B;">@yield('subject')</div>
+                        <div style="font-family:Open Sans, sans-serif;font-size:32px;font-weight:900;line-height:1;text-align:left;color:#00596B;">@yield('subject')</div>
                       </td>
                     </tr>
                   </table>
                 </div>
                 <!--[if mso | IE]>
             </td>
-          
+
             <td
                class="" style="vertical-align:top;width:124px;"
             >
@@ -250,9 +250,9 @@
                 </div>
                 <!--[if mso | IE]>
             </td>
-          
+
         </tr>
-      
+
                   </table>
                 <![endif]-->
               </td>
@@ -264,7 +264,7 @@
     <!--[if mso | IE]>
         </v:textbox>
       </v:rect>
-    
+
           </td>
         </tr>
       </table>
@@ -284,9 +284,9 @@
             <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:0;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
+
         <tr>
-      
+
             <td
                class="" style="vertical-align:top;width:500px;"
             >
@@ -295,16 +295,16 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:16px;font-style:normal;font-weight:bold;line-height:170%;text-align:left;color:#00596B;">@yield('resume')</div>
+                      <div style="font-family:Open Sans, sans-serif;font-size:16px;font-style:normal;font-weight:bold;line-height:170%;text-align:left;color:#00596B;">@yield('resume')</div>
                     </td>
                   </tr>
                 </table>
               </div>
               <!--[if mso | IE]>
             </td>
-          
+
         </tr>
-      
+
                   </table>
                 <![endif]-->
             </td>
@@ -332,9 +332,9 @@
             <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
+
         <tr>
-      
+
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -343,16 +343,16 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:16px;line-height:1;text-align:left;color:#00596B;">@yield('content')</div>
+                      <div style="font-family:Open Sans, sans-serif;font-size:16px;line-height:1;text-align:left;color:#00596B;">@yield('content')</div>
                     </td>
                   </tr>
                 </table>
               </div>
               <!--[if mso | IE]>
             </td>
-          
+
         </tr>
-      
+
                   </table>
                 <![endif]-->
             </td>
@@ -380,9 +380,9 @@
             <td style="direction:ltr;font-size:0px;padding:10px;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
+
         <tr>
-      
+
             <td
                class="" style="vertical-align:top;width:580px;"
             >
@@ -391,12 +391,12 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:24px;font-weight:900;line-height:1;text-align:center;text-transform:uppercase;color:#005F73;">{{ $bottonMessage ?? '¡Conoce nuestro blog!'}}</div>
+                      <div style="font-family:Open Sans, sans-serif;font-size:24px;font-weight:900;line-height:1;text-align:center;text-transform:uppercase;color:#005F73;">{{ $bottonMessage ?? '¡Conoce nuestro blog!'}}</div>
                     </td>
                   </tr>
                   <tr>
                     <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
-                      <div style="font-family:Open Sans;font-size:20px;font-weight:800;line-height:1;text-align:center;color:white;"><a style="color: white; text-decoration: none" href="{{ $bottonLink ?? 'https://blog.grupoapok.com/'}}">
+                      <div style="font-family:Open Sans, sans-serif;font-size:20px;font-weight:800;line-height:1;text-align:center;color:white;"><a style="color: white; text-decoration: none" href="{{ $bottonLink ?? 'https://blog.grupoapok.com/'}}">
                           {{ $bottonLink ?? 'https://blog.grupoapok.com/'}}
                         </a></div>
                     </td>
@@ -405,9 +405,9 @@
               </div>
               <!--[if mso | IE]>
             </td>
-          
+
         </tr>
-      
+
                   </table>
                 <![endif]-->
             </td>
@@ -419,13 +419,13 @@
           </td>
         </tr>
       </table>
-      
+
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
       >
         <tr>
           <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
-      
+
         <v:rect  style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
         <v:fill  origin="0.5, 0" position="0.5, 0" src="https://www.grupoapok.com/mail/layout/bgs/footer.jpg" type="tile" />
         <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
@@ -438,12 +438,12 @@
               <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
                 <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
+
             <tr>
               <td
                  class="" width="600px"
               >
-          
+
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
       >
@@ -457,9 +457,9 @@
                         <td style="direction:ltr;font-size:0px;padding:0px;padding-top:48px;text-align:center;">
                           <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
+
         <tr>
-      
+
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -477,7 +477,7 @@
          align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
       >
         <tr>
-      
+
               <td>
             <![endif]-->
                                           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
@@ -497,7 +497,7 @@
                                           </table>
                                           <!--[if mso | IE]>
               </td>
-            
+
               <td>
             <![endif]-->
                                           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
@@ -517,7 +517,7 @@
                                           </table>
                                           <!--[if mso | IE]>
               </td>
-            
+
               <td>
             <![endif]-->
                                           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
@@ -537,7 +537,7 @@
                                           </table>
                                           <!--[if mso | IE]>
               </td>
-            
+
               <td>
             <![endif]-->
                                           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
@@ -557,7 +557,7 @@
                                           </table>
                                           <!--[if mso | IE]>
               </td>
-            
+
           </tr>
         </table>
       <![endif]-->
@@ -571,9 +571,9 @@
                           </div>
                           <!--[if mso | IE]>
             </td>
-          
+
         </tr>
-      
+
                   </table>
                 <![endif]-->
                         </td>
@@ -585,15 +585,15 @@
           </td>
         </tr>
       </table>
-      
+
               </td>
             </tr>
-          
+
             <tr>
               <td
                  class="" width="600px"
               >
-          
+
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
       >
@@ -607,9 +607,9 @@
                         <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
                           <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
+
         <tr>
-      
+
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -622,7 +622,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                                       <tr>
                                         <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
-                                          <div style="font-family:Open Sans;font-size:16px;font-weight:bold;line-height:1;text-align:center;color:#FFFFFF;"><a style="color: white; text-decoration: none" href="https://www.grupoapok.com" target="_blank">www.grupoapok.com</a></div>
+                                          <div style="font-family:Open Sans, sans-serif;font-size:16px;font-weight:bold;line-height:1;text-align:center;color:#FFFFFF;"><a style="color: white; text-decoration: none" href="https://www.grupoapok.com" target="_blank">www.grupoapok.com</a></div>
                                         </td>
                                       </tr>
                                     </table>
@@ -633,9 +633,9 @@
                           </div>
                           <!--[if mso | IE]>
             </td>
-          
+
         </tr>
-      
+
                   </table>
                 <![endif]-->
                         </td>
@@ -647,15 +647,15 @@
           </td>
         </tr>
       </table>
-      
+
               </td>
             </tr>
-          
+
             <tr>
               <td
                  class="" width="600px"
               >
-          
+
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
       >
@@ -669,9 +669,9 @@
                         <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
                           <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-                
+
         <tr>
-      
+
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -684,7 +684,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                                       <tr>
                                         <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
-                                          <div style="font-family:Open Sans;font-size:16px;line-height:1;text-align:center;color:#FFFFFF;">Email send by <strong>Apok</strong></div>
+                                          <div style="font-family:Open Sans, sans-serif;font-size:16px;line-height:1;text-align:center;color:#FFFFFF;">Email send by <strong>Apok</strong></div>
                                         </td>
                                       </tr>
                                     </table>
@@ -695,9 +695,9 @@
                           </div>
                           <!--[if mso | IE]>
             </td>
-          
+
         </tr>
-      
+
                   </table>
                 <![endif]-->
                         </td>
@@ -709,10 +709,10 @@
           </td>
         </tr>
       </table>
-      
+
               </td>
             </tr>
-          
+
                   </table>
                 <![endif]-->
               </td>
@@ -724,7 +724,7 @@
     <!--[if mso | IE]>
         </v:textbox>
       </v:rect>
-    
+
           </td>
         </tr>
       </table>
