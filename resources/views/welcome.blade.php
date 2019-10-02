@@ -26,9 +26,6 @@
             'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', {{ config('facebook.pixel_id') }} );
     </script>
-    <noscript>
-        <img height="1" width="1" src="https://www.facebook.com/tr?id=685215331954337&ev=PageView&noscript=1"/>
-    </noscript>
 
 </head>
 <body>
@@ -49,6 +46,14 @@
     };
 </script>
 <script async defer src="https://connect.facebook.net/{{ str_replace('_', '-', app()->getLocale()) }}/sdk.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ config("google.analytics_id") }}"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
+    gtag('config', {{ config("google.analytics_id") }});
+</script>
 </body>
 </html>
