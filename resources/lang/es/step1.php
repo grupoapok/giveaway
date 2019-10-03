@@ -6,5 +6,5 @@ return [
     "email_placeholder" => "Correo Electrónico",
     "register" => "Suscribirme",
     "terms_conditions"=> "Al inscribirte aceptas nuestros <a href='/terms-and-conditions' target='_blank'>Términos y Condiciones</a> y nuestra  <a href='/privacy' target='_blank'>Politica de privacidad</a>" ,
-    "title_2" => "Una <span class='font-weight-bold'>página web para</span><br><span class='extra-bold text-secondary'>Tu Emprendimiento</span>"
+    "title_2" => "Una <span class='font-weight-bold'>página web para</span>&nbsp;<span class='extra-bold text-secondary'>Tu Emprendimiento</span>"
 ];

@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
 <head>
   <title>
@@ -122,7 +122,7 @@
       >
         <tr>
           <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
-
+      
         <v:rect  style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
         <v:fill  origin="0.5, 0" position="0.5, 0" src="https://www.grupoapok.com/mail/layout/bgs/header.jpg" type="tile" />
         <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
@@ -135,9 +135,9 @@
               <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:30px;text-align:center;">
                 <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
+                
         <tr>
-
+      
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -161,9 +161,9 @@
                 </div>
                 <!--[if mso | IE]>
             </td>
-
+          
         </tr>
-
+      
                   </table>
                 <![endif]-->
               </td>
@@ -175,7 +175,7 @@
     <!--[if mso | IE]>
         </v:textbox>
       </v:rect>
-
+    
           </td>
         </tr>
       </table>
@@ -187,7 +187,7 @@
       >
         <tr>
           <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
-
+      
         <v:rect  style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
         <v:fill  origin="0.5, 0" position="0.5, 0" src="https://www.grupoapok.com/mail/layout/bgs/subject.jpg" color="#FFFFFF" type="tile" />
         <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
@@ -200,9 +200,9 @@
               <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:5px;text-align:center;">
                 <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
+                
         <tr>
-
+      
             <td
                class="" style="vertical-align:top;width:476px;"
             >
@@ -218,7 +218,7 @@
                 </div>
                 <!--[if mso | IE]>
             </td>
-
+          
             <td
                class="" style="vertical-align:top;width:124px;"
             >
@@ -250,9 +250,9 @@
                 </div>
                 <!--[if mso | IE]>
             </td>
-
+          
         </tr>
-
+      
                   </table>
                 <![endif]-->
               </td>
@@ -264,7 +264,7 @@
     <!--[if mso | IE]>
         </v:textbox>
       </v:rect>
-
+    
           </td>
         </tr>
       </table>
@@ -284,9 +284,9 @@
             <td style="direction:ltr;font-size:0px;padding:20px 0;padding-bottom:0;padding-top:0;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
+                
         <tr>
-
+      
             <td
                class="" style="vertical-align:top;width:500px;"
             >
@@ -302,9 +302,9 @@
               </div>
               <!--[if mso | IE]>
             </td>
-
+          
         </tr>
-
+      
                   </table>
                 <![endif]-->
             </td>
@@ -332,9 +332,9 @@
             <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
+                
         <tr>
-
+      
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -350,9 +350,9 @@
               </div>
               <!--[if mso | IE]>
             </td>
-
+          
         </tr>
-
+      
                   </table>
                 <![endif]-->
             </td>
@@ -380,9 +380,9 @@
             <td style="direction:ltr;font-size:0px;padding:10px;text-align:center;">
               <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
+                
         <tr>
-
+      
             <td
                class="" style="vertical-align:top;width:580px;"
             >
@@ -405,9 +405,9 @@
               </div>
               <!--[if mso | IE]>
             </td>
-
+          
         </tr>
-
+      
                   </table>
                 <![endif]-->
             </td>
@@ -419,13 +419,13 @@
           </td>
         </tr>
       </table>
-
+      
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
       >
         <tr>
           <td style="line-height:0px;font-size:0px;mso-line-height-rule:exactly;">
-
+      
         <v:rect  style="width:600px;" xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false">
         <v:fill  origin="0.5, 0" position="0.5, 0" src="https://www.grupoapok.com/mail/layout/bgs/footer.jpg" type="tile" />
         <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
@@ -438,12 +438,12 @@
               <td style="direction:ltr;font-size:0px;padding:20px 0;text-align:center;">
                 <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
+                
             <tr>
               <td
                  class="" width="600px"
               >
-
+          
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
       >
@@ -457,9 +457,9 @@
                         <td style="direction:ltr;font-size:0px;padding:0px;padding-top:48px;text-align:center;">
                           <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
+                
         <tr>
-
+      
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -477,7 +477,7 @@
          align="center" border="0" cellpadding="0" cellspacing="0" role="presentation"
       >
         <tr>
-
+      
               <td>
             <![endif]-->
                                           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
@@ -497,7 +497,7 @@
                                           </table>
                                           <!--[if mso | IE]>
               </td>
-
+            
               <td>
             <![endif]-->
                                           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
@@ -517,7 +517,7 @@
                                           </table>
                                           <!--[if mso | IE]>
               </td>
-
+            
               <td>
             <![endif]-->
                                           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
@@ -537,7 +537,7 @@
                                           </table>
                                           <!--[if mso | IE]>
               </td>
-
+            
               <td>
             <![endif]-->
                                           <table align="center" border="0" cellpadding="0" cellspacing="0" role="presentation" style="float:none;display:inline-table;">
@@ -557,7 +557,7 @@
                                           </table>
                                           <!--[if mso | IE]>
               </td>
-
+            
           </tr>
         </table>
       <![endif]-->
@@ -571,9 +571,9 @@
                           </div>
                           <!--[if mso | IE]>
             </td>
-
+          
         </tr>
-
+      
                   </table>
                 <![endif]-->
                         </td>
@@ -585,15 +585,15 @@
           </td>
         </tr>
       </table>
-
+      
               </td>
             </tr>
-
+          
             <tr>
               <td
                  class="" width="600px"
               >
-
+          
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
       >
@@ -607,9 +607,9 @@
                         <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
                           <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
+                
         <tr>
-
+      
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -633,9 +633,9 @@
                           </div>
                           <!--[if mso | IE]>
             </td>
-
+          
         </tr>
-
+      
                   </table>
                 <![endif]-->
                         </td>
@@ -647,15 +647,15 @@
           </td>
         </tr>
       </table>
-
+      
               </td>
             </tr>
-
+          
             <tr>
               <td
                  class="" width="600px"
               >
-
+          
       <table
          align="center" border="0" cellpadding="0" cellspacing="0" class="" style="width:600px;" width="600"
       >
@@ -669,9 +669,9 @@
                         <td style="direction:ltr;font-size:0px;padding:0px;text-align:center;">
                           <!--[if mso | IE]>
                   <table role="presentation" border="0" cellpadding="0" cellspacing="0">
-
+                
         <tr>
-
+      
             <td
                class="" style="vertical-align:top;width:600px;"
             >
@@ -695,9 +695,9 @@
                           </div>
                           <!--[if mso | IE]>
             </td>
-
+          
         </tr>
-
+      
                   </table>
                 <![endif]-->
                         </td>
@@ -709,10 +709,10 @@
           </td>
         </tr>
       </table>
-
+      
               </td>
             </tr>
-
+          
                   </table>
                 <![endif]-->
               </td>
@@ -724,7 +724,7 @@
     <!--[if mso | IE]>
         </v:textbox>
       </v:rect>
-
+    
           </td>
         </tr>
       </table>
