@@ -29,7 +29,7 @@
                             <span v-html="ticketsMessage"></span>
                         </template>
                     </p>
-                    <p v-if="tickets > 0" id="view_tickets_message" class="cursor-pointer" @click="showTicketsModal = true" v-html="lang.view_my_tickets"></p>
+                    <p v-if="tickets > 0" id="view_tickets_message" class="cursor-pointer" @click="toggleTicketsModal" v-html="lang.view_my_tickets"></p>
                 </div>
             </div>
 
@@ -92,11 +92,19 @@
             },
             toggleTicketsModal() {
                 this.showTicketsModal = !this.showTicketsModal;
+                if (this.showTicketsModal){
+                    fbq('track', 'ViewContent', {
+                        page: "Tickets Modal"
+                    });
+                }
             },
         },
         mounted() {
             this.loadTasks();
             this.alignElementsToRight();
+            fbq('track', 'ViewContent', {
+                page: "Tasks Page"
+            });
         }
     }
 </script>

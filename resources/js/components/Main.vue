@@ -54,6 +54,7 @@
             ...mapActions(['updateUserInfo', 'updateTicketsList'])
         },
         mounted() {
+            fbq('track', 'PageView');
             if (this.$cookies.get("token")) {
                 this.updateTicketsList();
                 this.$axios.get('/subscribers')
@@ -92,6 +93,9 @@
         &.bg {
             background: #eee7df url("../../img/blank-clean-device-891679.png") no-repeat right bottom;
             background-size: contain;
+            @media(max-width: 576px) {
+                background-image: none !important;
+            }
         }
 
         #main {

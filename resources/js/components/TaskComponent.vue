@@ -113,6 +113,12 @@
             ...mapActions(["updateUserInfo", "updateTicketsList"]),
             askForExtras() {
                 if (this.canExecute) {
+                    fbq('trackCustom', 'ClickTask', {
+                        type: this.task.type,
+                        id: this.task.id,
+                        completed: this.task.completed,
+                        url: this.task.url,
+                    });
                     if (this.hasExtras) {
                         this.showExtraModal = true;
                     } else {
@@ -147,6 +153,12 @@
 
                     promise.then(this.markTaskAsCompleted)
                         .then(response => {
+                            fbq('trackCustom', 'CompleteTask', {
+                                type: this.task.type,
+                                id: this.task.id,
+                                completed: this.task.completed,
+                                url: this.task.url,
+                            });
                             this.updateUserInfo({tickets: response.tickets});
                             this.executed = true;
                             this.loading = false;

@@ -66,6 +66,7 @@
                         this.updateUserInfo({name, email, tickets});
                         this.updateTicketsList();
                         this.loading = false;
+                        fbq('track', 'CompleteRegistration');
                         this.$router.push('/step2');
                     })
                     .catch(() => {
@@ -75,6 +76,9 @@
         },
         mounted() {
             this.alignElementsToLeft();
+            fbq('track', 'ViewContent', {
+                page: "Register Page"
+            });
         }
     }
 </script>
@@ -91,6 +95,7 @@
             font-weight: 600;
             @media(max-width: 576px) {
                 text-align: center;
+                font-size: 3rem;
             }
         }
         p {
@@ -155,6 +160,9 @@
             line-height: 3.4rem;
             margin-left: 31%;
             text-transform: uppercase;
+            @media(max-width: 576px) {
+                font-size: 2rem;
+            }
             @media(max-width: 768px) {
                 margin-left: 0;
             }
