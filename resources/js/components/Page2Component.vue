@@ -21,7 +21,9 @@
         <template v-slot:col2>
             <div id="col2_content" class="text-center text-lg-right">
                 <p id="gracias" class="text-secondary" v-html="lang.thanks"></p>
-                <p v-html="lang.text_1"></p>
+                <p v-html="lang.text_1_1_ticket" v-if="tickets == 1" class="text-primary"></p>
+                <p v-html="lang.text_1" v-else class="text-primary"></p>
+
                 <div id="tickets_text_container">
                     <p class="text-dark mb-0 font-weight-bold">
                         <template v-if="tickets === 0" v-html="lang.no_tickets"></template>
@@ -31,6 +33,9 @@
                     </p>
                     <p v-if="tickets > 0" id="view_tickets_message" class="cursor-pointer" @click="toggleTicketsModal" v-html="lang.view_my_tickets"></p>
                 </div>
+
+                <p class="text-primary mt-5" v-html="lang.winner_announcement"></p>
+                <p class="my-5 text-primary" v-html="lang.good_luck"></p>
             </div>
 
             <b-modal id="tickets_list" v-model="showTicketsModal" centered hide-footer>
@@ -66,12 +71,16 @@
         computed: {
             ...mapState(['name', 'email', 'tickets', 'ticketsList']),
             ticketsMessage() {
-                return this.lang['ticket_number'].replace(":tickets", this.tickets)
+                if (this.lang) {
+                    return this.lang['ticket_number'].replace(":tickets", this.tickets)
+                }
+                return null
             },
         },
         methods: {
             ...mapActions(['alignElementsToRight', 'updateUserInfo']),
             loadTasks() {
+                console.log("loadTasks", this.$cookies.get("token"));
                 this.$axios.get('/subscribers/tasks').then(response => {
                     this.tasks = response.data.data.map(t => {
                         if (t.type === 'form') {
@@ -191,6 +200,9 @@
     #tickets_text_container {
         width: fit-content;
         align-self: flex-end;
+        @media(max-width: 576px) {
+            align-self: center;
+        }
         #view_tickets_message {
             text-align: center;
             color: rgba($azul_oscuro, .5);

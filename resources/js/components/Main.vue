@@ -24,6 +24,9 @@
                     <social-links id="social-links" :class="alignRight && 'right'"></social-links>
                 </div>
             </div>
+            <div class="row">
+                <router-view name="extra"></router-view>
+            </div>
         </div>
     </div>
 </template>
@@ -110,6 +113,7 @@
         }
 
         #social-links {
+            display: inline-block;
             transition: all 1s ease-in-out;
             @media(max-width: 576px) {
                 transition: none;
@@ -141,7 +145,8 @@
             left: 0;
             top: -70vw;
             &.right {
-                right: 0;
+                right: 0 !important;
+                left: unset;
             }
         }
 

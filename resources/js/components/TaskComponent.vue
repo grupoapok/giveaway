@@ -11,9 +11,10 @@
 
         <font-awesome-icon icon="check" class="text-secondary" size="3x" v-if="!canExecute"></font-awesome-icon>
         <span class="small" v-if="!canExecute">{{task.status}}</span>
+
         <template v-else>
-            <p v-if="lang[task.type]" v-html="lang[task.type]">{{ task.description }}</p>
-            <p v-else>{{ task.description }}</p>
+            <p v-html="lang[task.type]" class="extra-bold task-title"></p>
+            <p v-html="lang.tickets_message" class="mb-0 semi-bold text-darker task-tickets-message"></p>
         </template>
 
         <b-modal id="tickets_list" v-model="showExtraModal" centered hide-footer>
@@ -32,35 +33,6 @@
                 </div>
             </form>
         </b-modal>
-
-        <!--<div class="modal fade" ref="extra_modal">
-            <form @submit.prevent="executeTask">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-dark font-weight-bold">
-                                {{ task.type | capitalize}}
-                            </h5>
-                            <button type="button" class="text-dark close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group" v-for="(extra,i) in task.extras" :key="`extra_${i}`">
-                                <label>{{ extra['label'] }}</label>
-                                <input class="form-control" type="text" v-model="extraModel[extra.name]">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">
-                                <font-awesome-icon icon="check"></font-awesome-icon>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>-->
-
     </div>
 </template>
 
@@ -298,6 +270,12 @@
     }
 </script>
 
+<style>
+    span.ticket-number {
+        font-weight: 800;
+        font-size: 1rem !important;
+    }
+</style>
 <style scoped lang="scss">
     @import "../../sass/app";
 
@@ -336,8 +314,16 @@
         p {
             font-size: .75rem;
             text-align: center;
-            font-weight: bold;
             margin-bottom: 0 !important;
+
+            &.task-title {
+                color: white;
+                text-transform: uppercase;
+            }
+
+            &.task-tickets-message {
+                font-size: .75rem;
+            }
         }
     }
 

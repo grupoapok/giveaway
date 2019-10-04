@@ -21,12 +21,13 @@ class LangController extends Controller {
     }
 
     function index($step, Request $request) {
-        return  __($step, [], $this->locale);
+        return  __($step, ["winner_date" => config("giveaway.date")], $this->locale);
     }
 
     function task(Task $task, Request $request) {
         $arr = [];
-        $arr[$task->type]  = __("tasks.".$task->type, ["tickets" => $task->tickets], $this->locale);
+        $arr[$task->type]  = __("tasks.".$task->type, [], $this->locale);
+        $arr["tickets_message"]  = __("tasks.tickets_message", ["tickets" => $task->tickets], $this->locale);
         return $arr;
     }
 }

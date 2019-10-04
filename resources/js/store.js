@@ -37,11 +37,7 @@ const store = new Vuex.Store({
     },
     actions: {
         updateTicketsList(context) {
-            Vue.prototype.$axios.get('/subscribers/tickets', {
-                headers: {
-                    'Token': Vue.prototype.$cookies.get('token')
-                }
-            }).then(response => {
+            Vue.prototype.$axios.get('/subscribers/tickets').then(response => {
                 context.commit('updateTicketsList', response.data.data)
             }).catch(console.error)
         },

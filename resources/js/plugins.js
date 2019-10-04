@@ -8,18 +8,23 @@ Vue.use({
         vue.$cookies = Cookies;
         const $axios = axios.create({
             baseURL: `${process.env.MIX_APP_URL}/api`,
-            headers: {
-                'Content-Type': 'application/json',
-                'Token': (() => Cookies.get('token'))()
-            },
         });
+        $axios.interceptors.request.use( (config) => {
+            config.headers['Content-Type'] = 'application/json';
+            const token = Cookies.get("token");
+            if (!!token) {
+                config.headers['Token'] = token;
+            }
+            return config;
+        });
+
         vue.prototype.$axios = $axios;
         vue.$axios = $axios;
     }
 });
 
 Vue.filter("capitalize", (str) => {
-    if (str !== null && str !== "") {
+    if (!!str) {
         return str[0].toUpperCase() + str.substring(1);
     }
     return "";

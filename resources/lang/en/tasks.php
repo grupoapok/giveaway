@@ -5,6 +5,4 @@ return [
     "linkedin" => "Publishing on LinkedIn will earn you :tickets tickets",
     "instagram" => "Follow us on Instagram and earn :tickets tickets",
     "form" => "Answer our form and earn :tickets tickets",
-    "incomplete" => "Pending Review",
-    "completed" => "Completed"
 ];

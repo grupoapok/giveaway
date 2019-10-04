@@ -1,29 +1,31 @@
 <template>
     <layout :grow="false">
         <template v-slot:col1>
-            <h2 class="text-dark text-upper" v-html="lang.title_1"></h2>
-            <p class="text" v-html="lang.text_1"></p>
+            <h2 class="text-dark text-upper extra-bold" v-html="lang.title_1"></h2>
+            <p class="text semi-bold mt-4" v-html="lang.text_1"></p>
             <form action="" id="subscribe_form" @submit.prevent="register">
-                <div class="form-group">
+                <div class="form-group mt-4">
                     <input class="form-control" type="text" :placeholder="lang.name_placeholder" v-model="name" :disabled="loading">
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="email" :placeholder="lang.email_placeholder" v-model="email" :disabled="loading">
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-block btn-outline-secondary" :disabled="loading">
+                    <button type="submit" class="btn btn-block btn-outline-secondary text-uppercase" :disabled="loading">
                         <font-awesome-icon icon="circle-notch" spin v-if="loading"></font-awesome-icon>
                         <template v-else>{{ lang.register }}</template>
                     </button>
                 </div>
                 <p class="text-center" v-html="lang.terms_conditions"></p>
             </form>
+            <div>
+                <h3 class="mt-5 mb-2" v-html="lang.details_title"></h3>
+                <ul>
+                    <li v-for="(t, i) in lang.details_text.split('|')">{{ t }}</li>
+                </ul>
+            </div>
         </template>
-        <template v-slot:col2>
-            <h2 v-html="lang.title_2" class="text-dark">
-                <!--Una <span>página web</span><br><span class="text-secondary">Gratis</span>-->
-            </h2>
-        </template>
+
     </layout>
 </template>
 
@@ -87,12 +89,29 @@
     @import "../../sass/colors";
 
     #left {
+        h3 {
+            color: $azul_oscuro;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            li {
+                &::before {
+                    margin-right: .5rem;
+                    display: inline-block;
+                    content: '✔'
+                }
+            }
+        }
+
         h2 {
             line-height: 1em;
             color: $dark !important;
-            font-size: 4rem;
+            font-size: 3rem;
             text-transform: uppercase;
-            font-weight: 600;
             @media(max-width: 576px) {
                 text-align: center;
                 font-size: 3rem;
@@ -103,25 +122,20 @@
                 text-align: center;
             }
             font-size: .75rem;
-            color: $dark;
-            a {
-                color: $dark;
-                text-decoration: underline;
-            }
+            color: $azul_oscuro;
             &.text {
                 font-style: normal;
-                font-weight: normal;
                 font-size: 1.25rem;
                 line-height: 1.6875rem;
                 font-feature-settings: 'liga' off;
                 @media(min-width: 1200px) {
-                    width: 484px;
+                    width: 570px;
                 }
                 color: #575757 !important;
             }
         }
         form {
-            width: 50%;
+            width: 66%;
             @media(max-width: 768px) {
                 width: unset;
             }
@@ -134,7 +148,7 @@
             }
             .form-group {
                 & + .form-group {
-                    margin-top: 50px;
+                    margin-top: 30px;
                 }
             }
             .form-control {
