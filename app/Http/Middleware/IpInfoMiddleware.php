@@ -14,10 +14,6 @@ class IpInfoMiddleware {
         $ip_address = $request->ip();
         if ($ip_address !== "127.0.0.1") {
             $details = $client->getDetails($ip_address);
-
-            Log::debug($request->getClientIp());
-            Log::debug(print_r($details, TRUE));
-
             $request->merge(['ipinfo' => $details]);
         }
 
