@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Newsletter;
 
 class SubscriberController extends Controller {
     use ProcessTokenTrait;
@@ -32,6 +33,7 @@ class SubscriberController extends Controller {
 
     public function store(CreateSubscriberRequest $request) {
         $subscriber = Subscriber::where("email", $request->input("email"))->first();
+        Log::debug($request->input('grecaptcha'));
 
         if (is_null($subscriber)) {
 
@@ -53,6 +55,12 @@ class SubscriberController extends Controller {
 
             $newSubscriber->token = Str::uuid();
             $newSubscriber->save();
+
+          Newsletter::subscribe($newSubscriber->email,[
+                'FNAME' => explode(' ',$newSubscriber->name,2)[0],
+                'LNAME'  => explode(' ',$newSubscriber->name,2)[1]
+            ]);
+            Log::debug( print_r(Newsletter::getLastError(),true));
 
             Ticket::create([
                 "subscriber_id" => $newSubscriber->id

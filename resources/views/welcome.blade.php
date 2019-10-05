@@ -26,7 +26,7 @@
             'https://connect.facebook.net/en_US/fbevents.js');
         fbq('init', {{ config('facebook.pixel_id') }} );
     </script>
-
+    {!! RecaptchaV3::initJs() !!}
 </head>
 <body>
 <div id="app"></div>
@@ -55,5 +55,6 @@
 
     gtag('config', '{{ config("google.analytics_id") }}');
 </script>
+{!! RecaptchaV3::field('subscribe','grecaptcha') !!}
 </body>
 </html>

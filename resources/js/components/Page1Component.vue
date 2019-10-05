@@ -50,7 +50,9 @@
             register() {
                 const data = {
                     name: this.name,
-                    email: this.email
+                    email: this.email,
+                    grecaptcha: document.getElementsByName('grecaptcha')
+
                 };
                 this.loading = true;
                 this.$axios.post('/subscribers', data)

@@ -12,7 +12,6 @@ import store from './store';
 import Main from './components/Main';
 
 Vue.use(BootstrapVue);
-
 new Vue({
     el: '#app',
     router,
