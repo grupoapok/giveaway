@@ -33,7 +33,7 @@ class SubscriberController extends Controller {
 
     public function store(CreateSubscriberRequest $request) {
         $subscriber = Subscriber::where("email", $request->input("email"))->first();
-        Log::debug($request->input('grecaptcha'));
+        Log::error($request->input('grecaptcha'));
 
         if (is_null($subscriber)) {
 
