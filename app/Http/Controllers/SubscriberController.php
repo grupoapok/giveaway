@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Newsletter;
+use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
 
 class SubscriberController extends Controller {
     use ProcessTokenTrait;
