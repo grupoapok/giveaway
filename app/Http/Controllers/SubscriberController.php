@@ -33,7 +33,9 @@ class SubscriberController extends Controller {
 
     public function store(CreateSubscriberRequest $request) {
         $subscriber = Subscriber::where("email", $request->input("email"))->first();
-        Log::error($request->input('grecaptcha'));
+        $score = RecaptchaV3::verify($request->get('grecaptcha'), 'subscribe');
+        Log::error (print_r($request->input('grecaptcha'),true));
+        Log::error($score);
 
         if (is_null($subscriber)) {
 
