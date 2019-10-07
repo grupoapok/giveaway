@@ -9,7 +9,7 @@ Vue.use({
         const $axios = axios.create({
             baseURL: `${process.env.MIX_APP_URL}/api`,
         });
-        $axios.interceptors.request.use( (config) => {
+        $axios.interceptors.request.use((config) => {
             config.headers['Content-Type'] = 'application/json';
             const token = Cookies.get("token");
             if (!!token) {

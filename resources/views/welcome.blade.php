@@ -55,6 +55,5 @@
 
     gtag('config', '{{ config("google.analytics_id") }}');
 </script>
-{!! RecaptchaV3::field('subscribe','grecaptcha') !!}
 </body>
 </html>

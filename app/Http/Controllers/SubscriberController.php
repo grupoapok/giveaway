@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
-use Newsletter;
 use Lunaweb\RecaptchaV3\Facades\RecaptchaV3;
+use Newsletter;
 
 class SubscriberController extends Controller {
     use ProcessTokenTrait;
@@ -34,11 +34,17 @@ class SubscriberController extends Controller {
 
     public function store(CreateSubscriberRequest $request) {
         $subscriber = Subscriber::where("email", $request->input("email"))->first();
-        $score = RecaptchaV3::verify($request->get('grecaptcha'), 'subscribe');
-        Log::error (print_r($request->input('grecaptcha'),true));
-        Log::error($score);
 
         if (is_null($subscriber)) {
+            $score = RecaptchaV3::verify($request->get('recaptchaToken'), 'register');
+
+            if ($score < .7){
+                return response()->json([
+                    "errors" => [
+                        "bot" => ["Bots are bad and you should feel bad"]
+                    ]
+                ], 400);
+            }
 
             $ipinfo = $request->ipinfo;
 

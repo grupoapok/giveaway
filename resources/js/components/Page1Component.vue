@@ -4,24 +4,24 @@
             <h2 class="text-dark text-upper extra-bold" v-html="lang.title_1"></h2>
             <p class="text semi-bold mt-4" v-html="lang.text_1"></p>
             <form action="" id="subscribe_form" @submit.prevent="register">
-                <div class="form-group mt-4">
-                    <input class="form-control" type="text" :placeholder="lang.name_placeholder" v-model="name" :disabled="loading">
-                </div>
-                <div class="form-group">
-                    <input class="form-control" type="email" :placeholder="lang.email_placeholder" v-model="email" :disabled="loading">
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-block btn-outline-secondary text-uppercase" :disabled="loading">
+                <b-form-group class="mt-4" :invalid-feedback="errors.name" :state="fieldStatus('name')">
+                    <b-form-input type="text" :placeholder="lang.name_placeholder" v-model="name" :disabled="loading" :state="fieldStatus('name')" trim/>
+                </b-form-group>
+                <b-form-group class="mt-4" :invalid-feedback="errors.email" :state="fieldStatus('email')">
+                    <b-form-input type="email" :placeholder="lang.email_placeholder" v-model="email" :disabled="loading" :state="fieldStatus('email')" trim/>
+                </b-form-group>
+                <b-form-group>
+                    <b-button type="submit" variant="outline-secondary" class="text-uppercase" block :disabled="loading">
                         <font-awesome-icon icon="circle-notch" spin v-if="loading"></font-awesome-icon>
                         <template v-else>{{ lang.register }}</template>
-                    </button>
-                </div>
+                    </b-button>
+                </b-form-group>
                 <p class="text-center" v-html="lang.terms_conditions"></p>
             </form>
-            <div>
+            <div v-if="lang.details_text">
                 <h3 class="mt-5 mb-2" v-html="lang.details_title"></h3>
                 <ul>
-                    <li v-for="(t, i) in lang.details_text.split('|')">{{ t }}</li>
+                    <li v-for="(t, i) in lang.details_text.split('|')" :key="`detail_${i}`">{{ t }}</li>
                 </ul>
             </div>
         </template>
@@ -42,19 +42,27 @@
             return {
                 loading: false,
                 name: '',
-                email: ''
+                email: '',
+                recaptchaToken: '',
+                errors: {}
             }
         },
         methods: {
             ...mapActions(['alignElementsToLeft', 'updateUserInfo', 'updateTicketsList']),
+            fieldStatus(field) {
+                if (this.errors[field] === undefined || this.errors[field] === null) {
+                    return null
+                }
+                return !this.errors[field];
+            },
             register() {
                 const data = {
                     name: this.name,
                     email: this.email,
-                    grecaptcha: document.getElementsByName('grecaptcha')
-
+                    recaptchaToken: this.recaptchaToken
                 };
                 this.loading = true;
+                this.errors = {};
                 this.$axios.post('/subscribers', data)
                     .then(({data}) => {
                         const {token} = data.data;
@@ -73,8 +81,19 @@
                         fbq('track', 'CompleteRegistration');
                         this.$router.push('/step2');
                     })
-                    .catch(() => {
+                    .catch((e) => {
                         this.loading = false;
+                        if(e.response && e.response.status === 422){
+                            const validationErrors = {};
+                            Object.keys(e.response.data.errors).forEach(k => {
+                                if(Array.isArray(e.response.data.errors[k])) {
+                                    validationErrors[k] = e.response.data.errors[k][0]
+                                } else {
+                                    validationErrors[k] = e.response.data.errors[k]
+                                }
+                            });
+                            this.errors = validationErrors;
+                        }
                     })
             }
         },
@@ -83,6 +102,11 @@
             fbq('track', 'ViewContent', {
                 page: "Register Page"
             });
+            grecaptcha.ready(() => {
+                grecaptcha.execute(process.env.MIX_GOOGLE_RECAPTCHAV3_WEB, { action: 'register' }).then((token) => {
+                    this.recaptchaToken = token
+                });
+            })
         }
     }
 </script>
