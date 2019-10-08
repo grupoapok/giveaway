@@ -29,7 +29,7 @@
     </p>
     <p style="align-items: center;text-align: center;">
         EL GANADOR SERÁ ANUNCIADO EL<br/>
-        <span style="font-size: 24px; color: #F18800;" > <strong> 20 SEPTIEMBRE 2019</strong></span><br/>
+        <span style="font-size: 24px; color: #F18800;" > <strong> {{ config('giveaway.announcementDate') }}</strong></span><br/>
           EN NUESTRAS REDES SOCIALES
     </p>
     <br>

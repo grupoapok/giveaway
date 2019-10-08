@@ -11,4 +11,5 @@ return [
     'share_status' => 'Participa en nuestro concurso',
     'date' => env("GIVEAWAY_DATE"),
     'startDate' => env("GIVEAWAY_START_DATE"),
+    'announcementDate' => env("GIVEAWAY_ANNOUNCEMENT"),
 ];
