@@ -33,13 +33,13 @@
             <li><strong>Misión 1:</strong> Seguir nuestra cuenta en Twitter @grupoapok y publicar el Sorteo en la red
                 social Twitter para lograr 2 Tickets del sorteo.
             </li>
-            <li><strong>Misión 2:</strong> Publicar el Sorteo en la red social Facebook para lograr 3 Tickets del
+            <li><strong>Misión 2:</strong> Publicar el Sorteo en la red social Facebook para lograr 2 Tickets del
                 sorteo.
             </li>
             <li><strong>Misión 3:</strong> Publicar el Sorteo en la red social Linkedin para lograr 3 Tickets del
                 sorteo.
             </li>
-            <li><strong>Misión 4:</strong> Publicar el Sorteo en la red social Instagram para lograr 3 Tickets del
+            <li><strong>Misión 4:</strong> Publicar el Sorteo en la red social Instagram para lograr 2 Tickets del
                 sorteo.
             </li>
             <li><strong>Misión 5:</strong> Completar el formulario con información verídica para lograr 5 Tickets del
