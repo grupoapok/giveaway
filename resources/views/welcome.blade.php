@@ -9,6 +9,7 @@
     <meta property="og:title" content="{{ config('app.name')}}" />
     <meta property="og:description" content="{{ __("share.facebook", [], app()->getLocale()) }}" />
     <meta property="og:image" content="{{ asset("img/".config("giveaway.share_img_facebook")) }}" />
+    <meta property="fb:app_id" content="{{ config('facebook.app_id') }}" />
 
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}"/>
