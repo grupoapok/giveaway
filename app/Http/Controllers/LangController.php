@@ -21,7 +21,7 @@ class LangController extends Controller {
     }
 
     function index($step, Request $request) {
-        return  __($step, ["winner_date" => config("giveaway.date")], $this->locale);
+        return  __($step, ["winner_date" => config("giveaway.announcementDate")], $this->locale);
     }
 
     function task(Task $task, Request $request) {

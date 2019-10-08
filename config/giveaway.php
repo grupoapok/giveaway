@@ -9,7 +9,7 @@ return [
     'share_img_facebook' => env("SHARE_IMG_FACEBOOK"),
     'social_networks' => env('SOCIAL_NETWORKS'),
     'share_status' => 'Participa en nuestro concurso',
-    'date' => env("GIVEAWAY_DATE"),
+    'endDate' => env("GIVEAWAY_END_DATE"),
     'startDate' => env("GIVEAWAY_START_DATE"),
     'announcementDate' => env("GIVEAWAY_ANNOUNCEMENT"),
 ];

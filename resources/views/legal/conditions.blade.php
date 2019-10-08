@@ -17,7 +17,7 @@
         <p> Quedarán excluidos de la participación de este sorteo todo el personal de Apok y sus familiares.</p>
 
         <h4> 3. Fecha del sorteo</h4>
-        <p>El presente sorteo comienza el {{ config('giveaway.startDate') }} a las 12:00 a.m. y finaliza el {{ config('giveaway.date') }} a las 11:59 pm, hora
+        <p>El presente sorteo comienza el {{ config('giveaway.startDate') }} a las 12:00 a.m. y finaliza el {{ config('giveaway.endDate') }} a las 11:59 pm, hora
             Venezuela.</p>
 
         <h4> 4. Sorteo y Mecanismo de participación y obtención de premios</h4>
