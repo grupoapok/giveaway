@@ -25,9 +25,7 @@
                 </ul>
             </div>
         </template>
-        <template v-slot:col2>
-            <video id="video" class="d-none d-lg-block" src="/img/Sorteo2.webm" autoplay loop></video>
-        </template>
+
     </layout>
 </template>
 

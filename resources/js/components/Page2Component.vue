@@ -8,13 +8,16 @@
 
                 <p id="tasks-title" class="text-secondary" v-html="lang.available_tasks"></p>
 
-                <div id="tasks">
-                    <task class="task mb-4"
-                          :key="`task_${i}`"
-                          v-for="(t,i) in tasks"
-                          @taskCompleted="completeTask"
-                          :auto-execute="$cookies.get('execute_task') === t.type"
-                          :task="t"></task>
+                <div id="tasks" class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-xl-4" :key="`task_${i}`"
+                             v-for="(t,i) in tasks">
+                            <task class="task mb-4"
+                                  @taskCompleted="completeTask"
+                                  :auto-execute="$cookies.get('execute_task') === t.type"
+                                  :task="t"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </template>
@@ -31,7 +34,8 @@
                             <span v-html="ticketsMessage"></span>
                         </template>
                     </p>
-                    <p v-if="tickets > 0" id="view_tickets_message" class="cursor-pointer" @click="toggleTicketsModal" v-html="lang.view_my_tickets"></p>
+                    <p v-if="tickets > 0" id="view_tickets_message" class="cursor-pointer" @click="toggleTicketsModal"
+                       v-html="lang.view_my_tickets"></p>
                 </div>
 
                 <p class="text-primary mt-5" v-html="lang.winner_announcement"></p>
@@ -101,7 +105,7 @@
             },
             toggleTicketsModal() {
                 this.showTicketsModal = !this.showTicketsModal;
-                if (this.showTicketsModal){
+                if (this.showTicketsModal) {
                     fbq('track', 'ViewContent', {
                         page: "Tickets Modal"
                     });
@@ -126,7 +130,7 @@
         flex-direction: column;
         height: 100%;
 
-        #tasks {
+        /*#tasks {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
@@ -143,9 +147,9 @@
                 }
                 @media(min-width: 576px) {
                     width: 30%;
-                    /*&:last-child {
+                    !*&:last-child {
                         margin-right: 35% !important;
-                    }*/
+                    }*!
                 }
                 @media(min-width: 1200px) {
                     &:nth-child(2) {
@@ -153,7 +157,7 @@
                     }
                 }
             }
-        }
+        }*/
 
         #tasks-title {
             font-size: 2.25rem;
@@ -203,6 +207,7 @@
         @media(max-width: 576px) {
             align-self: center;
         }
+
         #view_tickets_message {
             text-align: center;
             color: rgba($azul_oscuro, .5);
@@ -211,6 +216,7 @@
             font-weight: bold;
             letter-spacing: .1rem;
             transition: all .3s ease-in-out;
+
             &:hover {
                 color: $naranja;
             }

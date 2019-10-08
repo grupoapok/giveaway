@@ -94,7 +94,7 @@
         }
 
         &.bg {
-            background: #eee7df url("../../img/blank-clean-device-891679.png") no-repeat right bottom;
+            background: #eee7df url("../../img/Background.jpg") no-repeat right bottom;
             background-size: contain;
             @media(max-width: 576px) {
                 background-image: none !important;
