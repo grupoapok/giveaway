@@ -43,7 +43,7 @@ class TwitterController extends OauthTaskController {
             ];
 
             if (config('giveaway.share_img_twiter')) {
-                $uploaded_media = Twitter::uploadMedia(['media' => File::get(resource_path("img/".config('giveaway.share_img_twiter')))]);
+                $uploaded_media = Twitter::uploadMedia(['media' => File::get(resource_path("img/".config('giveaway.share_img_twitter')))]);
                 $content['media_ids'] = $uploaded_media->media_id_string;
             }
 
