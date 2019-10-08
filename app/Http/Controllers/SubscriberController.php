@@ -38,7 +38,7 @@ class SubscriberController extends Controller {
         if (is_null($subscriber)) {
             $score = RecaptchaV3::verify($request->get('recaptchaToken'), 'register');
 
-            if ($score < .7){
+            if ($score < .7) {
                 return response()->json([
                     "errors" => [
                         "bot" => ["Bots are bad and you should feel bad"]
@@ -65,11 +65,16 @@ class SubscriberController extends Controller {
             $newSubscriber->token = Str::uuid();
             $newSubscriber->save();
 
-          Newsletter::subscribe($newSubscriber->email,[
-                'FNAME' => explode(' ',$newSubscriber->name,2)[0],
-                'LNAME'  => explode(' ',$newSubscriber->name,2)[1]
-            ]);
-            Log::debug( print_r(Newsletter::getLastError(),true));
+            $fullName = explode(' ', $newSubscriber->name, 2);
+            $FNAME = $fullName[0];
+            $LNAME = "";
+            if (count($fullName) > 1) {
+                $LNAME = $fullName[1];
+            }
+
+            Newsletter::subscribe($newSubscriber->email, compact("FNAME", "LNAME"));
+
+            Log::debug(print_r(Newsletter::getLastError(), true));
 
             Ticket::create([
                 "subscriber_id" => $newSubscriber->id
@@ -87,14 +92,14 @@ class SubscriberController extends Controller {
 
     public function myTasks(Request $request) {
         $user = $this->getUser($request);
-        $tasks = Task::orderBy("order","asc")->get();
+        $tasks = Task::orderBy("order", "asc")->get();
         if (!is_null($user)) {
             $completedTasks = TaskCompletion::bySubscriber($user->id)->completed()->distinct("task_id")->pluck("task_id")->toArray();
             $incompleteManualTasks = TaskCompletion::bySubscriber($user->id)->incomplete()->manual()->distinct("task_id")->pluck("task_id")->toArray();
-            foreach($tasks as $t) {
+            foreach ($tasks as $t) {
                 $t->completed = in_array($t->id, $completedTasks) || in_array($t->id, $incompleteManualTasks);
                 $completion = TaskCompletion::bySubscriber($user->id)->byTask($t->id)->first();
-                $t->status = is_object($completion)? __('tasks.'.$completion->status): null;
+                $t->status = is_object($completion) ? __('tasks.' . $completion->status) : null;
 
             }
 
@@ -105,13 +110,13 @@ class SubscriberController extends Controller {
     public function existingSubscriber($encrypted_token) {
         $token = Crypt::decryptString($encrypted_token);
         $user = Subscriber::where("token", $token)->first();
-        if (!is_null($user)){
+        if (!is_null($user)) {
             return redirect("/")->withCookie(Cookie::make("token", $token, 0, '/', null, null, false, false));
         }
         return redirect("/");
     }
 
-    public function myTickets(Request $request){
+    public function myTickets(Request $request) {
         $user = $this->getUser($request);
 
         return TicketResource::collection($user->tickets);
