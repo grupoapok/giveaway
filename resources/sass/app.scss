@@ -116,3 +116,11 @@ html, body {
     font-weight: bold;
     margin: 0 1rem;
 }
+
+.modal {
+    width: 100vw !important;
+}
+
+.modal-backdrop {
+    height: 100% !important;
+}
