@@ -10,4 +10,5 @@ return [
     'social_networks' => env('SOCIAL_NETWORKS'),
     'share_status' => 'Participa en nuestro concurso',
     'date' => env("GIVEAWAY_DATE"),
+    'startDate' => env("GIVEAWAY_START_DATE"),
 ];
