@@ -51,7 +51,7 @@ class LinkedInController extends OauthTaskController {
                     "headers" => [
                         "Content-Type" => "application/octect-stream"
                     ],
-                    "body" => file_get_contents(storage_path(config('giveaway.share_img_linkedin')))
+                    "body" => file_get_contents(resource_path("img/".config('giveaway.share_img_linkedin')))
                 ]);
             }
 
