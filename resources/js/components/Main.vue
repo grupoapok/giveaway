@@ -12,7 +12,7 @@
             <div id="naranja"></div>
         </div>
 
-        <div class="fluid-container" id="main">
+        <div :class="['fluid-container', step1 && 'step1']" id="main">
             <div class="row">
                 <div class="col text-center text-sm-right"><img :src="logo" id="logo"></div>
             </div>
@@ -51,7 +51,10 @@
             }
         },
         computed: {
-            ...mapState(['alignRight'])
+            ...mapState(['alignRight']),
+            step1() {
+                return this.$route.name === 'step1';
+            }
         },
         methods: {
             ...mapActions(['updateUserInfo', 'updateTicketsList'])
@@ -102,9 +105,11 @@
         }
 
         #main {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+            &.step1 {
+                display: flex;
+                flex-direction: column;
+                height: 100%;
+            }
             padding: 2% 10%;
             @media(max-width: 992px) {
                 padding: 10%;

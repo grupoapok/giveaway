@@ -14,6 +14,7 @@ const router = new VueRouter({
             path: '/',
             component: Page1,
             alias: '/step1',
+            name: 'step1',
             beforeEnter: (to, from, next) => {
                 if (Cookies.get("token")) {
                     next('/step2');
@@ -24,6 +25,7 @@ const router = new VueRouter({
         },
         {
             path: '/step2',
+            name: 'step2',
             components: {
                 default: Page2,
                 extra: Page2Extra
