@@ -16,6 +16,9 @@
             <mj-class name="images"/>
         </mj-attributes>
         <mj-style>
+            body{
+                padding-top:40px;
+            }
             a{
                 color: white;
                 text-decoration:none;
@@ -81,6 +84,14 @@
                 </mj-text>
             </mj-column>
         </mj-section>
+        <!-- 2 columns section -->
+        <mj-section background-color="white">
+            <mj-column>
+                <mj-text>
+                    Si no puedes ver este email correctamente ingresa en
+                </mj-text>
+            </mj-column>
+        </mj-section>
 
         <!-- 2 columns section -->
         <mj-section padding="10px" background-color="#F18800">
@@ -128,8 +139,8 @@
             </mj-section>
             <mj-section padding="0px">
                 <mj-column padding="0px">
-                    <mj-text padding="5px" align="center" color="#FFFFFF" color="#FFFFFF">
-                        Email send by <strong>Apok</strong>
+                    <mj-text font-size="10px" padding="5px" align="center" color="#FFFFFF" color="#FFFFFF">
+                         <strong>Apok 2019</strong>
                     </mj-text>
                 </mj-column>
             </mj-section>

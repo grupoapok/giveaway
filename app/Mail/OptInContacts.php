@@ -6,21 +6,19 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use League\Flysystem\FileNotFoundException;
 
-class TestLayout extends Mailable
+class OptInContacts extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $template;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($template)
+    public function __construct()
     {
-        $this->template = $template;
+        //
     }
 
     /**
@@ -30,11 +28,6 @@ class TestLayout extends Mailable
      */
     public function build()
     {
-        $name = 'mail.'.$this->template;
-
-        if(view()->exists($name)){
-            return $this->view($name);
-        }
-        throw new FileNotFoundException();
+        return $this->view('view.name');
     }
 }

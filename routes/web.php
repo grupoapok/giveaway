@@ -31,7 +31,11 @@ Route::get('/terms-and-conditions', function () {
     return view('legal.conditions');
 });
 
-Route::get('/test/mail-layout', function () {
-    return view('mail.new_subscriber');
+Route::get('/mail/{template}', function ($template) {
+    $name = 'mail.'.$template;
+    if(view()->exists($name)){
+        return view($name);
+    }
+    return abort(404,'Page not found.');
 });
 
