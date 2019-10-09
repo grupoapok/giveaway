@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-12 col-md-9 mt-5">
+        <div class="col-12 mt-5">
             <h4 class="text-secondary extra-bold" v-html="lang.title"></h4>
             <p class="text-primary font-weight-bold" v-html="lang.subtitle"></p>
             <ul>

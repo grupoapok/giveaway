@@ -186,7 +186,6 @@
         height: 100%;
         font-size: 1.25rem;
         @media(max-width: 768px) and (min-width: 576px) {
-            flex-direction: row;
             p {
                 flex-grow: 1;
             }
@@ -204,7 +203,7 @@
     #tickets_text_container {
         width: fit-content;
         align-self: flex-end;
-        @media(max-width: 576px) {
+        @media(max-width: 768px) {
             align-self: center;
         }
 
