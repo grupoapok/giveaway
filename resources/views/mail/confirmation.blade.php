@@ -29,11 +29,16 @@
     <br>
 
     <p style="align-items: center;text-align: center; margin: 10px 0;">
-        <a class="button-to-action" style="color: white; margin-top: 20px" href="http://eepurl.com/gF3e89">CONFIRMAR SUSCRIPCIÓN</a>
+        <a class="button-to-action" style="color: white; margin-top: 20px" href="{{url('/')}}?referral=apok">CONFIRMAR SUSCRIPCIÓN</a>
     </p>
     <br>
 
     <h4>¿Qué beneficios obtendrás al suscribirte a nuestro boletín?</h4>
+    <p>Tenemos un sorteo especial para nuestros suscriptores donde te puedes ganar una <strong
+            style="color: #F18800">Pagina
+            Web</strong> para tu empresa o emprendimiento.
+    </p>
+    <p> Además recibiras información sobre: </p>
     <p>
     <ul>
         <li style="margin: 5px 0"> Noticias y artículos de interés que te ayudarán a lograr los objetivos de tu
@@ -49,17 +54,14 @@
     </p>
     <br>
     <p style="align-items: center;text-align: center;">
-        <a class="button-to-action" style="color: white; margin-top: 20px" href="http://eepurl.com/gF3e89">CONFIRMAR SUSCRIPCIÓN</a>
+        <a class="button-to-action" style="color: white; margin-top: 20px" href="{{url('/')}}?referral=apok">CONFIRMAR SUSCRIPCIÓN</a>
     </p>
     <br>
-    <p><strong>P.D.:</strong> Tenemos un sorteo especial para nuestros suscriptores donde te puedes ganar una <strong
-            style="color: #F18800">Pagina
-            Web</strong> para tu empresa o emprendimiento. Solo tienes que registrate acá:
-    </p>
     <br>
-    <p style="align-items: center;text-align: center;">
-        <a class="button-to-action" style="color: white; margin-top: 20px"
-           href="https://sorteo.grupoapok.com?referral=apok">PARTICIPAR EN EL SORTEO</a>
+
+    <p style="font-size: 14px">
+        Si no quieres recibir nuevamente un correo simplemente puedes hacer click sobre este link
+        <a style="color: #F18800" href="https://grupoapok.us19.list-manage.com/unsubscribe?u=2e45e55fcfb6fd4047caf2d86&id=913fe614aa">Darse de Baja</a>
     </p>
 
 @endsection

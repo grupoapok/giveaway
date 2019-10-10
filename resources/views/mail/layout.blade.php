@@ -395,7 +395,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Open Sans, sans-serif;font-size:14px;line-height:1;text-align:left;color:#00596B;">@if($webVersion) Si no puedes ver este email correctamente ingresa <a style="color: #F18800" href='{{url("/mail/$template")}}'>AQUí</a> @endif</div>
+                      <div style="font-family:Open Sans, sans-serif;font-size:12px;line-height:1;text-align:left;color:#00596B;">@if($webVersion) Si no puedes ver este email correctamente ingresa <a style="color: #F18800" href='{{url("/mail/$template")}}'>AQUí</a> @endif</div>
                     </td>
                   </tr>
                 </table>

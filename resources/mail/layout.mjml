@@ -88,7 +88,7 @@
 
         <mj-section background-color="white">
             <mj-column>
-                <mj-text font-size="14px">
+                <mj-text font-size="12px">
                     @if($webVersion)
                     Si no puedes ver este email correctamente ingresa <a style="color: #F18800" href='{{url("/mail/$template")}}'>AQUí</a>
                     @endif
