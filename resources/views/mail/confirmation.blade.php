@@ -1,6 +1,7 @@
 @extends('mail.layout',[
     'subjectImage'=> 'https://www.grupoapok.com/mail/september/confirmation/subject.jpg',
-    'template' => 'confirmation'
+    'template' => 'confirmation',
+    'webVersion' => true
 ])
 @section('subject')
     Confirma tu Suscripción

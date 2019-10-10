@@ -17,22 +17,22 @@
         </mj-attributes>
         <mj-style>
             body{
-                padding-top:40px;
+            padding-top:40px;
             }
             a{
-                color: white;
-                text-decoration:none;
+            color: white;
+            text-decoration:none;
             }
         </mj-style>
         <mj-style>
             .button-to-action{
-                min-width:140px ;
-                padding: 10px 20px;
-                height:30px;
-                background-color:#F18800;
-                border-radius:4px;
-                font-weight:bold;
-                font-size:16px;
+            min-width:140px ;
+            padding: 10px 20px;
+            height:30px;
+            background-color:#F18800;
+            border-radius:4px;
+            font-weight:bold;
+            font-size:16px;
             }
         </mj-style>
     </mj-head>
@@ -42,7 +42,7 @@
             background-url="https://www.grupoapok.com/mail/layout/bgs/header.jpg"
             background-repeat="no-repeat"
             padding-bottom="30px"
-           >
+        >
             <mj-column>
                 <mj-image width="88px" src="https://www.grupoapok.com/mail/layout/logo-apok.png"/>
             </mj-column>
@@ -63,7 +63,7 @@
         </mj-section>
 
         <!-- Introduction Text -->
-        <mj-section padding-top="0" padding-bottom="0"  background-color="#FFFFFF">
+        <mj-section padding-top="0" padding-bottom="0" background-color="#FFFFFF">
             <mj-column width="500px">
 
                 <mj-text font-family="Open Sans, sans-serif"
@@ -85,13 +85,17 @@
             </mj-column>
         </mj-section>
         <!-- 2 columns section -->
+
         <mj-section background-color="white">
             <mj-column>
                 <mj-text font-size="14px">
+                    @if($webVersion)
                     Si no puedes ver este email correctamente ingresa <a style="color: #F18800" href='{{url("/mail/$template")}}'>AQUí</a>
+                    @endif
                 </mj-text>
             </mj-column>
         </mj-section>
+
 
         <!-- 2 columns section -->
         <mj-section padding="10px" background-color="#F18800">
@@ -112,7 +116,7 @@
         <mj-wrapper
             background-url="https://www.grupoapok.com/mail/layout/bgs/footer.jpg"
             background-repeat="no-repeat">
-                    <mj-section padding-top="48px" padding="0px">
+            <mj-section padding-top="48px" padding="0px">
                 <mj-column padding="0px">
                     <mj-social icon-size="40px" icon-size="30px" mode="horizontal">
                         <mj-social-element background-color="#00596B" name="facebook-noshare"
@@ -140,7 +144,7 @@
             <mj-section padding="0px">
                 <mj-column padding="0px">
                     <mj-text font-size="12px" padding="5px" align="center" color="#FFFFFF" color="#FFFFFF">
-                         <strong>Apok 2019</strong>
+                        <strong>Apok 2019</strong>
                     </mj-text>
                 </mj-column>
             </mj-section>

@@ -1,6 +1,7 @@
 @extends('mail.layout',[
     'subjectImage'=> 'https://www.grupoapok.com/mail/september/giveaway_invitation/subject.jpg',
-    'template' => 'giveaway_invitation'
+    'template' => 'giveaway_invitation',
+    'webVersion' => true
 ])
 @section('subject')
     ¡SORTEO!<br/><br>
