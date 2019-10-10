@@ -18,7 +18,7 @@
         Puedes participar en SIMPLES PASOS.
     </p>
     <p style="align-items: center;text-align: center;">
-        ¡Ingresa a <a style="color:#F18800" href="{{url('/')}}?referral=apok">http://sorteo.grupoapok.com</a> y
+        ¡Ingresa a <a style="color:#F18800" href="{{url('/')}}{{isset($referral) ? "?referral=".$referral: ''}}">http://sorteo.grupoapok.com</a> y
         Participa!
     </p>
     <p style="align-items: center;text-align: center; margin: 20px;">
@@ -32,7 +32,7 @@
     <p style="align-items: center;text-align: center;">Click en el botón y recibe tu ticket para participar</p>
     <br>
     <p style="align-items: center;text-align: center;">
-        <a class="button-to-action" style="color: white; margin-top: 20px" href="{{url('/')}}?referral=apok">Participa
+        <a class="button-to-action" style="color: white; margin-top: 20px" href="{{url('/')}}{{isset($referral) ? "?referral=".$referral: ''}}">Participa
             en el Sorteo</a>
     </p>
     <br>

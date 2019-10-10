@@ -5,7 +5,6 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
 class GiveawayInvitation extends Mailable
 {
@@ -28,6 +27,7 @@ class GiveawayInvitation extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('mail.giveaway_invitation')
+            ->subject("Apok te invita a un SORTEO");
     }
 }

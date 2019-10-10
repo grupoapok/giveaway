@@ -5,14 +5,14 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function (Request $request) {
-    if ($request->has("lang")){
+    if ($request->has("lang")) {
         app()->setLocale($request->input("lang") ?? "es");
         Cookie::queue(
-            Cookie::make("lang", $request->input("lang"),0,'/',null,null,false,false)
+            Cookie::make("lang", $request->input("lang"), 0, '/', null, null, false, false)
         );
     } else {
         Cookie::queue(
-            Cookie::make("lang", app()->getLocale(), 0,'/',null,null,false,false)
+            Cookie::make("lang", app()->getLocale(), 0, '/', null, null, false, false)
         );
     }
     return view('welcome');
@@ -31,11 +31,11 @@ Route::get('/terms-and-conditions', function () {
     return view('legal.conditions');
 });
 
-Route::get('/mail/{template}', function ($template) {
-    $name = 'mail.'.$template;
-    if(view()->exists($name)){
-        return view($name);
+Route::get('/mail/{template}/{referral?}', function ($template, $referral = false) {
+    $name = 'mail.' . $template;
+    if (view()->exists($name)) {
+        return view($name)->with(['referral' => $referral]);
     }
-    return abort(404,'Page not found.');
+    return abort(404, 'Page not found.');
 });
 

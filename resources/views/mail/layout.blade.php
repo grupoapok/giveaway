@@ -97,7 +97,7 @@
   </style>
   <style type="text/css">
     body {
-      padding-top: 20px;
+      padding-top: 40px;
     }
 
     a {
@@ -395,7 +395,7 @@
                 <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="vertical-align:top;" width="100%">
                   <tr>
                     <td align="left" style="font-size:0px;padding:10px 25px;word-break:break-word;">
-                      <div style="font-family:Open Sans, sans-serif;font-size:16px;line-height:1;text-align:left;color:#00596B;">Si no puedes ver este email correctamente ingresa en</div>
+                      <div style="font-family:Open Sans, sans-serif;font-size:14px;line-height:1;text-align:left;color:#00596B;">Si no puedes ver este email correctamente ingresa <a style="color: #F18800" href='{{url("/mail/$template")}}'>AQUí</a></div>
                     </td>
                   </tr>
                 </table>
@@ -736,7 +736,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="" width="100%">
                                       <tr>
                                         <td align="center" style="font-size:0px;padding:5px;word-break:break-word;">
-                                          <div style="font-family:Open Sans, sans-serif;font-size:10px;line-height:1;text-align:center;color:#FFFFFF;"><strong>Apok 2019</strong></div>
+                                          <div style="font-family:Open Sans, sans-serif;font-size:12px;line-height:1;text-align:center;color:#FFFFFF;"><strong>Apok 2019</strong></div>
                                         </td>
                                       </tr>
                                     </table>
