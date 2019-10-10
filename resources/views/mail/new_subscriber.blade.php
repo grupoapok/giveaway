@@ -1,5 +1,6 @@
 @extends('mail.layout',[
-    'subjectImage'=> 'https://www.grupoapok.com/mail/september/a/subject.png'
+    'subjectImage'=> 'https://www.grupoapok.com/mail/september/a/subject.png',
+    'webVersion' => false
 ])
 @section('subject')
     ¡{{$name}}<br/>
