@@ -59,7 +59,8 @@
                 const data = {
                     name: this.name,
                     email: this.email,
-                    recaptchaToken: this.recaptchaToken
+                    recaptchaToken: this.recaptchaToken,
+                    referral: (typeof this.$route.query.referral !== 'undefined')? this.$route.query.referral : ' '
                 };
                 this.loading = true;
                 this.errors = {};
