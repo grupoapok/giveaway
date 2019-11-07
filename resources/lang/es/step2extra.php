@@ -22,6 +22,13 @@ return [
         [
             "title" => "Hosting y Dominio Gratis por un año.",
             "content" => "Alojamiento para tu sitio web y registro de dominio, en caso de que aún no lo tengas."
+        ],
+        [
+            "title" => "Auditorías de Redes Sociales. <span class='new_tag'>Nuevo</span>",
+            "content" => "Alojamiento para tu sitio web y registro de dominio, en caso de que aún no lo tengas."
+        ],
+        [
+            "title" => " Auditoría de Imagen Corporativa. <span class='new_tag'>Nuevo</span>"
         ]
     ]
 ];
