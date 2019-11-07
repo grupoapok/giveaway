@@ -6,7 +6,7 @@ return [
     "facebook" => "Postear en tu muro",
     "linkedin" => "Crear una publicación",
     "instagram" => "Síguenos en @grupoapok",
-    "form" => "Llear cuestionario",
+    "form" => "Llenar cuestionario",
 
     "incomplete" => "Pendiente Revisión",
     "completed" => "Completada"

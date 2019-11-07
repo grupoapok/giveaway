@@ -1,5 +1,6 @@
 @extends('mail.layout',[
-    'subjectImage'=> 'https://www.grupoapok.com/mail/september/a/subject.png'
+    'subjectImage'=> 'https://www.grupoapok.com/mail/september/a/subject.png',
+    'webVersion' => false
 ])
 @section('subject')
     ¡{{$name}}<br/>
@@ -12,7 +13,7 @@
     <p style="align-items: center;text-align: center; margin: 20px;">
         <br>
         <br>
-        <a class="button-to-action" href="{{ url("/subscriber/{$token}") }}">VER MIS TICKETS</a>
+        <a class="button-to-action" style="color: white" href="{{ url("/subscriber/{$token}") }}">VER MIS TICKETS</a>
         <br>
         <br>
     </p>
@@ -23,7 +24,7 @@
     <p style="align-items: center;text-align: center; margin: 20px;">
         <br>
         <br>
-        <a class="button-to-action" href="{{ url("/subscriber/{$token}") }}">QUIERO MÁS TICKETS</a>
+        <a class="button-to-action" style="color: white" href="{{ url("/subscriber/{$token}") }}">QUIERO MÁS TICKETS</a>
         <br>
         <br>
     </p>
