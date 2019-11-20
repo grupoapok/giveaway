@@ -2,6 +2,10 @@
     <layout :grow="false">
         <template v-slot:col1>
             <h2 class="text-dark text-upper extra-bold" v-html="lang.title_1"></h2>
+            <div class="d-flex flex-row align-items-center" v-if="lang.text_2">
+                <img :src="MasIcon">
+                <p class="text_2 ml-2 mb-0 text-uppercase extra-bold" v-html="lang.text_2"></p>
+            </div>
             <p class="text semi-bold mt-4" v-html="lang.text_1"></p>
             <form action="" id="subscribe_form" @submit.prevent="register">
                 <b-form-group class="mt-4" :invalid-feedback="errors.name" :state="fieldStatus('name')">
@@ -33,6 +37,7 @@
     import Layout from './Layout';
     import {mapActions} from 'vuex';
     import LangMixin from '../mixin/lang';
+    import MasIcon from '../../img/max.svg';
 
     export default {
         name: "Page1Component",
@@ -40,6 +45,7 @@
         components: {Layout},
         data() {
             return {
+                MasIcon,
                 loading: false,
                 name: '',
                 email: '',
@@ -156,9 +162,13 @@
                 line-height: 1.6875rem;
                 font-feature-settings: 'liga' off;
                 @media(min-width: 1200px) {
-                    width: 570px;
+                    width: 640px;
                 }
                 color: #575757 !important;
+            }
+            &.text_2 {
+                color: $azul_oscuro;
+                font-size: 2rem;
             }
         }
         form {

@@ -6,7 +6,7 @@
             <ul>
                 <li v-for="t in lang.items">
                     <span v-html="t.title"></span>
-                    <p class="ml-4" v-html="t.content"></p>
+                    <p class="ml-4" v-html="t.content" v-if="t.content"></p>
                 </li>
             </ul>
         </div>
