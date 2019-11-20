@@ -38,7 +38,7 @@ class SubscriberController extends Controller {
         if (is_null($subscriber)) {
             $score = RecaptchaV3::verify($request->get('recaptchaToken'), 'register');
 
-            if ($score < .7) {
+            if ($score < .7 && config('app.debug') === false ) {
                 return response()->json([
                     "errors" => [
                         "bot" => ["Bots are bad and you should feel bad"]

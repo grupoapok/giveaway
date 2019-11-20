@@ -9,7 +9,7 @@
 @endsection
 @section('resume')
     <p>
-        ¡Hola {{ $name ?? ''}}!,
+        Hola {{ $name ?? ''}},
     </p>
     <p>
         En algún momento te diste de alta en nuestra lista de contactos o de nuestros aliados comerciales y nos gustaría
@@ -35,10 +35,10 @@
 
     <h4>¿Qué beneficios obtendrás al suscribirte a nuestro boletín?</h4>
     <p>Tenemos un sorteo especial para nuestros suscriptores donde te puedes ganar una <strong
-            style="color: #F18800">Pagina
+            style="color: #F18800">Página
             Web</strong> para tu empresa o emprendimiento.
     </p>
-    <p> Además recibiras información sobre: </p>
+    <p> Además, recibirás información sobre: </p>
     <p>
     <ul>
         <li style="margin: 5px 0"> Noticias y artículos de interés que te ayudarán a lograr los objetivos de tu
